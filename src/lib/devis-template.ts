@@ -71,6 +71,7 @@ function renderTitleHtml(template: string, vars: Record<string, string>): string
 
 export function renderDevisHtml(d: DevisData): string {
   const intro = applyDevisVars(d.intro, d.vars);
+  const introHtml = esc(intro).replace(/\r?\n/g, "<br>");
   const titleHtml = renderTitleHtml(d.title, d.vars);
 
   const lines = d.lines
@@ -110,9 +111,7 @@ ${
   <div style="text-align:center;margin-bottom:28px"><img src="${d.logoUrl}" alt="Quintessence Spas" style="height:46px" /></div>
   <div style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:${C.muted};text-align:center">Devis personnalisé</div>
   <h1 style="font-family:${serif};font-weight:500;font-size:34px;text-align:center;line-height:1.25;margin:12px 0 0;color:${C.ink}">${titleHtml}</h1>
-  <p style="color:${C.muted};font-size:15px;margin:20px auto 0;text-align:center;max-width:440px">${esc(
-    intro,
-  )}</p>
+  <p style="color:${C.muted};font-size:15px;line-height:1.75;margin:20px 0 0;text-align:left">${introHtml}</p>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;margin-top:26px;border:1px solid ${C.line};border-radius:14px;background:${C.cream}">
     <tr>
