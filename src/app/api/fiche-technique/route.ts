@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { addMessage, getSpaBySlug } from "@/lib/store";
+import { sendMail, CONTACT_EMAIL } from "@/lib/email";
 
 /**
  * Demande de fiche technique : capte le lead (prénom, nom, e-mail) dans le
@@ -63,7 +64,15 @@ export async function POST(request: Request) {
     read: false,
   });
 
-  // TODO email — envoyer la fiche technique PDF au client ici.
+  // Notification e-mail du lead à l'adresse de contact (si SMTP configuré).
+  if (CONTACT_EMAIL) {
+    await sendMail({
+      to: CONTACT_EMAIL,
+      replyTo: data.email.trim(),
+      subject: `Téléchargement fiche technique — ${modele}`,
+      html: `<p><strong>${data.prenom.trim()} ${data.nom.trim()}</strong> (${data.email.trim()}) a téléchargé la fiche technique du <strong>${modele}</strong>.</p>`,
+    });
+  }
 
   return NextResponse.json({
     ok: true,

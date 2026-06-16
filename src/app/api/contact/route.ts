@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { addMessage } from "@/lib/store";
+import { sendMail, CONTACT_EMAIL } from "@/lib/email";
 
 /**
  * Réception des messages du formulaire de contact.
@@ -57,7 +58,17 @@ export async function POST(request: Request) {
     read: false,
   });
 
-  // TODO email — envoyer le message à l'adresse de contact ici.
+  // Notification e-mail à l'adresse de contact (si SMTP configuré).
+  if (CONTACT_EMAIL) {
+    const esc = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    await sendMail({
+      to: CONTACT_EMAIL,
+      replyTo: data.email,
+      subject: `Nouveau message de contact${data.sujet ? ` — ${data.sujet}` : ""}`,
+      html: `<p><strong>${esc(data.prenom)} ${esc(data.nom)}</strong> (${esc(data.email)})</p><p>${esc(data.message).replace(/\n/g, "<br>")}</p>`,
+    });
+  }
 
   return NextResponse.json({ ok: true });
 }

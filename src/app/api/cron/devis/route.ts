@@ -1,15 +1,14 @@
 import { NextResponse } from "next/server";
-import { getAllDevisRequests } from "@/lib/store";
+import { getAllDevisRequests, updateDevisRequest } from "@/lib/store";
+import { sendMail, emailConfigured } from "@/lib/email";
 
 /**
  * Déclencheur d'envoi des devis arrivés à échéance.
- * À appeler périodiquement par un planificateur (cron de l'hébergeur) une fois
- * déployé, idéalement toutes les 5 minutes.
+ * À appeler périodiquement par un planificateur (Vercel Cron), idéalement
+ * toutes les 5 minutes. Protéger par CRON_SECRET en production.
  *
- * ⚠️ L'envoi réel n'est PAS actif : il faut d'abord brancher un service email
- * et, en production, protéger cette route par un secret (CRON_SECRET).
- * Tant que ce n'est pas fait, cette route se contente de LISTER les devis dus
- * sans les marquer envoyés (pour ne rien prétendre faussement).
+ * Si l'e-mail est configuré (SMTP), chaque devis dû est envoyé puis marqué
+ * « envoyé ». Sinon, la route liste seulement les devis dus.
  */
 export const dynamic = "force-dynamic";
 
@@ -27,15 +26,32 @@ export async function GET(request: Request) {
     (r) => r.status === "pending" && Date.parse(r.sendAt) <= now,
   );
 
-  // TODO email — pour chaque devis dû :
-  //   await sendEmail({ to: r.email, subject: r.subject, html: r.html });
-  //   await updateDevisRequest(r.id, { status: "sent", sentAt: new Date().toISOString() });
+  let sent = 0;
+  if (emailConfigured) {
+    for (const r of due) {
+      const ok = await sendMail({
+        to: r.email,
+        subject: r.subject,
+        html: r.html,
+      });
+      if (ok) {
+        await updateDevisRequest(r.id, {
+          status: "sent",
+          sentAt: new Date().toISOString(),
+        });
+        sent++;
+      }
+    }
+  }
 
   return NextResponse.json({
     ok: true,
-    emailConfigured: false,
+    emailConfigured,
     due: due.length,
+    sent,
     refs: due.map((r) => r.ref),
-    note: "Devis dus identifiés. Branchez l'email pour activer l'envoi automatique.",
+    note: emailConfigured
+      ? `${sent}/${due.length} devis envoyé(s).`
+      : "Devis dus identifiés. Configurez SMTP pour activer l'envoi automatique.",
   });
 }
