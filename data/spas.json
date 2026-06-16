@@ -1,0 +1,1287 @@
+[
+  {
+    "slug": "vassania-4",
+    "name": "Vassania",
+    "gamme": "AquaLuxe",
+    "places": 4,
+    "dimensions": {
+      "largeur": 200,
+      "profondeur": 150,
+      "hauteur": 78
+    },
+    "prixIndicatif": 11580,
+    "prixPromo": 8685,
+    "badgeLabel": "Branchement Prise 16A",
+    "badgeActive": true,
+    "jets": 32,
+    "consommation": "Classe A · isolation renforcée",
+    "accroche": "Notre nouveau spa 4 places, pensé pour la convivialité.",
+    "description": "Dernier-né de la collection Quintessence, le Vassania accueille quatre personnes dans un design épuré et contemporain. Assises ergonomiques, hydromassage enveloppant et finitions soignées transforment votre terrasse en véritable espace de bien-être. Habillage anthracite, ligne sobre et premium. Les caractéristiques techniques détaillées seront précisées prochainement.",
+    "pointsForts": [
+      "4 places confortables",
+      "Hydromassage multizone",
+      "Musique bluetooth",
+      "Lampe UV-C 99,9 bactéries détruites",
+      "Isolation renforcée | Spa très économique",
+      "Prévu pour un usage professionnel / intensif"
+    ],
+    "pointsFortsIcons": [
+      "places",
+      "jets",
+      "music",
+      "germ",
+      "leaf",
+      "clock"
+    ],
+    "inclus": [
+      "Prévu pour les professionnels",
+      "Ecran déporté avec gestion de température et cycles de filtration",
+      "Se branche sur une prise électrique 16A"
+    ],
+    "placeholder": [
+      "#d3e9ef",
+      "#2e7c8f"
+    ],
+    "photos": [
+      "/products/vassania-2.jpg",
+      "/products/vassania-1.jpg",
+      "/products/vassania-3.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Vassania"
+          ],
+          [
+            "Nombre de places",
+            "4 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Artitech Acrylic"
+          ],
+          [
+            "Couleur de coque",
+            "Blanc nacré"
+          ],
+          [
+            "Contours",
+            "Noirs"
+          ],
+          [
+            "Structure de base",
+            "Base ABS standard"
+          ],
+          [
+            "Appuie-têtes",
+            "4 appuie-têtes"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Hydrojets",
+            "32 hydrojets"
+          ],
+          [
+            "Type de massage",
+            "Hydromassage multizone"
+          ],
+          [
+            "Pompe de massage principale",
+            "1 500 W"
+          ],
+          [
+            "Pompe de circulation",
+            "263 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Boîtier électronique",
+            "Gecko"
+          ],
+          [
+            "Réchauffeur",
+            "2 kW"
+          ],
+          [
+            "Clavier",
+            "Écran déporté (température + cycles de filtration)"
+          ],
+          [
+            "Branchement",
+            "Prise électrique 16A"
+          ],
+          [
+            "Système audio Bluetooth",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage niveau d'eau",
+            "LED ligne d'eau"
+          ],
+          [
+            "Éclairage sous-marin",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Classe énergétique",
+            "Isolation Scandinave Économique"
+          ],
+          [
+            "Isolation",
+            "Renforcée — spa très économique"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Filtration et traitement de l'eau",
+        "items": [
+          [
+            "Filtration",
+            "Filtre inclus"
+          ],
+          [
+            "Désinfection",
+            "Lampe UV-C (99,9 % des germes détruits)"
+          ]
+        ]
+      },
+      {
+        "groupe": "Équipements complémentaires",
+        "items": [
+          [
+            "Usage",
+            "Prévu pour un usage professionnel / intensif"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Blanc nacré",
+        "hex": "#f1f2ef"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Noir",
+        "hex": "#15181b"
+      }
+    ],
+    "stockStatus": "in_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 540
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1190,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ]
+  },
+  {
+    "slug": "prado-6",
+    "name": "Prado",
+    "gamme": "AquaLuxe",
+    "places": 6,
+    "dimensions": {
+      "largeur": 200,
+      "profondeur": 200,
+      "hauteur": 83
+    },
+    "prixIndicatif": 13520,
+    "prixPromo": 10140,
+    "badgeLabel": "Branchement Prise 16A",
+    "badgeActive": true,
+    "jets": 33,
+    "consommation": "Isolation renforcée · réchauffeur 2 kW",
+    "accroche": "Le spa familial 6 places, complet et équilibré.",
+    "description": "Le Spa Prado 6 places est un spa familial conçu pour une expérience de relaxation complète : coque en Artitech Acrylic blanche, contours noirs et équipement technique fiable basé sur la technologie Gecko. Pensé pour accueillir jusqu'à six personnes, il associe confort, massage par 33 hydrojets, éclairage d'ambiance LED et isolation renforcée pour répondre aux exigences d'un usage régulier en extérieur. Son hydromassage puissant et sa filtration continue garantissent une eau toujours saine, désinfectée par lampe UV-C qui élimine 99,9 % des germes et bactéries.",
+    "pointsForts": [
+      "6 places, 6 appuie-têtes",
+      "33 hydrojets",
+      "Électronique Gecko YJ3, réchauffeur 2 kW",
+      "Lampe UV-C : 99,9 % des germes et bactéries détruits",
+      "Isolation renforcée, pré-équipement pompe à chaleur",
+      "Éclairage LED et sous-marin"
+    ],
+    "pointsFortsIcons": [
+      "places",
+      "jets",
+      "control",
+      "germ",
+      "shield",
+      "light"
+    ],
+    "inclus": [
+      "Spa Prado 6 places",
+      "6 appuie-têtes",
+      "Filtre et lampe UV-C",
+      "Fontaine XXL",
+      "By-pass pompe à chaleur",
+      "Porte de meuble avec serrure"
+    ],
+    "placeholder": [
+      "#cfe2ea",
+      "#1c6e8e"
+    ],
+    "photos": [
+      "/products/prado-1.jpg",
+      "/products/prado-2.jpg",
+      "/products/prado-3.jpg",
+      "/products/prado-4.jpg",
+      "/products/prado-5.jpg",
+      "/products/prado-6.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Prado"
+          ],
+          [
+            "Nombre de places",
+            "6 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Aristech Acrylic"
+          ],
+          [
+            "Couleur de coque",
+            "Blanche"
+          ],
+          [
+            "Contours",
+            "Noirs"
+          ],
+          [
+            "Structure de base",
+            "Base ABS standard"
+          ],
+          [
+            "Appuie-têtes",
+            "6 appuie-têtes"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Hydrojets",
+            "33 hydrojets"
+          ],
+          [
+            "Pompe de massage principale",
+            "1 500 W"
+          ],
+          [
+            "Pompe de massage secondaire",
+            "750 W"
+          ],
+          [
+            "Pompe de circulation",
+            "263 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Boîtier électronique",
+            "Gecko YJ3"
+          ],
+          [
+            "Réchauffeur",
+            "2 kW"
+          ],
+          [
+            "Clavier principal",
+            "Gecko IN.K336"
+          ],
+          [
+            "Clavier auxiliaire",
+            "Gecko IN.K120"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage niveau d'eau",
+            "LED ligne d'eau"
+          ],
+          [
+            "Éclairage sous-marin",
+            "Inclus"
+          ],
+          [
+            "Fontaine XXL",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Isolation de cuve",
+            "18 à 20 mm"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ],
+          [
+            "Isolation de la base ABS",
+            "Incluse"
+          ],
+          [
+            "Isolation du meuble",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Filtration et traitement de l'eau",
+        "items": [
+          [
+            "Filtration",
+            "Filtre inclus"
+          ],
+          [
+            "Désinfection",
+            "Lampe UV intégrée"
+          ]
+        ]
+      },
+      {
+        "groupe": "Équipements complémentaires",
+        "items": [
+          [
+            "Pré-équipement pompe à chaleur",
+            "By-pass inclus"
+          ],
+          [
+            "Logo sur tablier",
+            "Inclus"
+          ],
+          [
+            "Porte de meuble avec serrure",
+            "Incluse"
+          ],
+          [
+            "Système audio Bluetooth",
+            "Non inclus"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Blanc nacré",
+        "hex": "#f1f2ef"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Noir",
+        "hex": "#15181b"
+      }
+    ],
+    "stockStatus": "in_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 540
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1190,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ]
+  },
+  {
+    "slug": "javelino-6",
+    "name": "Javelino",
+    "gamme": "AquaLuxe",
+    "places": 6,
+    "dimensions": {
+      "largeur": 200,
+      "profondeur": 200,
+      "hauteur": 82
+    },
+    "prixIndicatif": 10580,
+    "prixPromo": 7935,
+    "badgeLabel": "Branchement Prise 16A",
+    "badgeActive": true,
+    "jets": 48,
+    "consommation": "Classe A · isolation renforcée",
+    "accroche": "Le spa 6 places au design affirmé, pour de vrais moments de partage.",
+    "description": "Le Javelino accueille six personnes dans un spa rigide au caractère contemporain. Hydromassage enveloppant, assises ergonomiques et belle profondeur d'eau en font un espace de détente généreux, idéal en famille comme entre amis. Habillage anthracite et lignes nettes pour s'intégrer avec élégance à votre extérieur.",
+    "pointsForts": [
+      "6 places spacieuses",
+      "Hydromassage multizone",
+      "Design contemporain, habillage anthracite",
+      "Livraison, installation et mise en service par nos équipes"
+    ],
+    "pointsFortsIcons": [
+      "places",
+      "jets",
+      "check",
+      "truck"
+    ],
+    "placeholder": [
+      "#dcedf1",
+      "#3a8aa0"
+    ],
+    "photos": [
+      "/products/javelino-1.jpg",
+      "/products/javelino-2.jpg",
+      "/products/javelino-3.jpg",
+      "/products/javelino-4.jpg",
+      "/products/javelino-5.jpg",
+      "/products/javelino-6.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Javelino"
+          ],
+          [
+            "Nombre de places",
+            "6 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Artitech Acrylic"
+          ],
+          [
+            "Couleur de coque",
+            "Blanc nacré"
+          ],
+          [
+            "Contours",
+            "Noirs"
+          ],
+          [
+            "Structure de base",
+            "Base ABS standard"
+          ],
+          [
+            "Habillage",
+            "Anthracite"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Hydrojets",
+            "48 hydrojets"
+          ],
+          [
+            "Type de massage",
+            "Hydromassage multizone"
+          ],
+          [
+            "Pompe de massage principale",
+            "1 500 W"
+          ],
+          [
+            "Pompe de massage secondaire",
+            "750 W"
+          ],
+          [
+            "Pompe de circulation",
+            "263 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Boîtier électronique",
+            "Gecko"
+          ],
+          [
+            "Réchauffeur",
+            "2 kW"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage niveau d'eau",
+            "LED ligne d'eau"
+          ],
+          [
+            "Éclairage sous-marin",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Classe énergétique",
+            "Isolation Scandinave Économique"
+          ],
+          [
+            "Isolation",
+            "Renforcée"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Services",
+        "items": [
+          [
+            "Livraison",
+            "Sur toute la France"
+          ],
+          [
+            "Installation et mise en service",
+            "Par nos équipes"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Blanc nacré",
+        "hex": "#f1f2ef"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Noir",
+        "hex": "#15181b"
+      }
+    ],
+    "stockStatus": "out_of_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 540
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1190,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ]
+  },
+  {
+    "slug": "massidia-7",
+    "name": "Massidia",
+    "gamme": "AquaLuxe",
+    "places": 7,
+    "dimensions": {
+      "largeur": 257,
+      "profondeur": 219,
+      "hauteur": 90
+    },
+    "prixIndicatif": 16520,
+    "remisePct": 25,
+    "jets": 52,
+    "consommation": "Isolation renforcée · réchauffeur 3 kW",
+    "accroche": "Le spa grand format 7 places, massage hydrojets et air.",
+    "description": "Le Spa Massidia est un spa grand format conçu pour une expérience complète de détente : il associe massage par 52 hydrojets, massage par air (10 buses), gestion automatique de l'eau, éclairage sous-marin et électronique Gecko. Avec ses dimensions généreuses de 257 × 219 × 90 cm, sa coque en Artitech Acrylic blanche et ses contours noirs, il offre un espace confortable et une finition sobre et moderne, pensé pour un usage régulier en extérieur.",
+    "pointsForts": [
+      "7 places, grand format 257 × 219 cm",
+      "52 hydrojets + 10 buses d'air",
+      "Électronique Gecko YE5, réchauffeur 3 kW",
+      "Lampe UV-C : 99,9 % des germes et bactéries détruits",
+      "Gestion automatique de l'eau (réservoir + remplissage)",
+      "Isolation renforcée, pré-équipement pompe à chaleur"
+    ],
+    "pointsFortsIcons": [
+      "places",
+      "jets",
+      "control",
+      "germ",
+      "check",
+      "shield"
+    ],
+    "inclus": [
+      "Spa Massidia 7 places",
+      "Filtre et lampe UV-C",
+      "Réservoir + alimentation automatique en eau",
+      "Éclairage sous-marin",
+      "By-pass pompe à chaleur",
+      "Porte de meuble avec serrure"
+    ],
+    "placeholder": [
+      "#cfe2ea",
+      "#1c6e8e"
+    ],
+    "photos": [
+      "/products/massidia-1.jpg",
+      "/products/massidia-2.jpg",
+      "/products/massidia-3.jpg",
+      "/products/massidia-4.jpg",
+      "/products/massidia-5.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Massidia"
+          ],
+          [
+            "Nombre de places",
+            "7 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Artitech Acrylic"
+          ],
+          [
+            "Couleur de coque",
+            "Blanche"
+          ],
+          [
+            "Contours",
+            "Noirs"
+          ],
+          [
+            "Structure de base",
+            "Base ABS standard"
+          ]
+        ]
+      },
+      {
+        "groupe": "Dimensions",
+        "items": [
+          [
+            "Longueur",
+            "257 cm"
+          ],
+          [
+            "Largeur",
+            "219 cm"
+          ],
+          [
+            "Hauteur",
+            "90 cm"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Hydrojets",
+            "52 hydrojets"
+          ],
+          [
+            "Massage par air",
+            "10 buses d'air"
+          ],
+          [
+            "Pompe de massage",
+            "1 500 W"
+          ],
+          [
+            "Air blower",
+            "400 W"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Boîtier électronique",
+            "Gecko YE5"
+          ],
+          [
+            "Réchauffeur",
+            "3 000 W"
+          ],
+          [
+            "Clavier principal",
+            "Gecko IN.K506"
+          ],
+          [
+            "Clavier auxiliaire",
+            "Gecko IN.K120"
+          ]
+        ]
+      },
+      {
+        "groupe": "Gestion de l'eau",
+        "items": [
+          [
+            "Réservoir d'eau",
+            "Inclus"
+          ],
+          [
+            "Alimentation automatique en eau",
+            "Incluse"
+          ],
+          [
+            "Désinfection UV",
+            "Incluse"
+          ],
+          [
+            "Filtration",
+            "Filtre inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage sous-marin",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Isolation de cuve",
+            "18 à 20 mm"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ],
+          [
+            "Isolation de la base ABS",
+            "Incluse"
+          ],
+          [
+            "Isolation du meuble",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Équipements complémentaires",
+        "items": [
+          [
+            "Pré-équipement pompe à chaleur",
+            "By-pass inclus"
+          ],
+          [
+            "Logo sur tablier",
+            "Inclus"
+          ],
+          [
+            "Porte de meuble avec serrure",
+            "Incluse"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Blanc nacré",
+        "hex": "#f1f2ef"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Noir",
+        "hex": "#15181b"
+      }
+    ],
+    "stockStatus": "in_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 580
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1230,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ]
+  },
+  {
+    "slug": "vinalo",
+    "name": "Vinalo",
+    "gamme": "Essentiel",
+    "places": 4,
+    "dimensions": {
+      "largeur": 210,
+      "profondeur": 180,
+      "hauteur": 80
+    },
+    "prixIndicatif": 9220,
+    "remisePct": 25,
+    "jets": 25,
+    "consommation": "Isolation renforcée · réchauffeur 2 kW",
+    "accroche": "Le spa compact et efficace : 25 hydrojets, électronique Gecko.",
+    "description": "Le Spa Vinalo est un spa compact et fonctionnel, conçu pour une expérience de détente efficace grâce à ses 25 hydrojets, son électronique Gecko, son éclairage LED au niveau de l’eau et son isolation renforcée. Coque en Aristec Acrylic, base ABS et filtration intégrée : une configuration simple, fiable et orientée confort, pensée pour un usage régulier en extérieur.",
+    "pointsForts": [
+      "Compact, idéal pour les petits espaces",
+      "25 hydrojets, pompe de massage 1 500 W",
+      "Lampe UV-C : 99,9 % des germes et bactéries détruits",
+      "Éclairage LED au niveau de l’eau",
+      "Isolation renforcée, pré-équipement pompe à chaleur",
+      "Se branche sur une prise courant classique"
+    ],
+    "pointsFortsIcons": [
+      "seat",
+      "jets",
+      "germ",
+      "light",
+      "shield",
+      "energy"
+    ],
+    "inclus": [
+      "Couverture Thermique",
+      "Filtre et lampe UV-C",
+      "Éclairage LED ligne d’eau = spot",
+      "By-pass pompe à chaleur"
+    ],
+    "placeholder": [
+      "#cfe2ea",
+      "#1c6e8e"
+    ],
+    "photos": [
+      "/products/vinalo-5.jpg",
+      "/products/vinalo-1.jpg",
+      "/products/vinalo-2.jpg",
+      "/products/vinalo-3.jpg",
+      "/products/vinalo-4.jpg",
+      "/products/vinalo-6.jpg",
+      "/products/vinalo-7.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Vinalo"
+          ],
+          [
+            "Nombre de places",
+            "4 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Aristec Acrylic"
+          ],
+          [
+            "Structure de base",
+            "Base ABS renforcée"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Hydrojets",
+            "25 hydrojets"
+          ],
+          [
+            "Pompe de massage",
+            "1 500 W"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Boîtier électronique",
+            "Gecko YJ3"
+          ],
+          [
+            "Réchauffeur",
+            "2 000 W"
+          ],
+          [
+            "Clavier principal",
+            "Gecko IN.K300"
+          ],
+          [
+            "Clavier auxiliaire",
+            "Gecko IN.K120"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage niveau d’eau",
+            "LED ligne d'eau"
+          ],
+          [
+            "Spot Subaquatique",
+            "Oui"
+          ]
+        ]
+      },
+      {
+        "groupe": "Filtration et traitement de l’eau",
+        "items": [
+          [
+            "Filtre",
+            "30 microns inclus"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ],
+          [
+            "Désinfection UV",
+            "99,9% des virus & bactéries tués"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Isolation de cuve",
+            "18 à 20 mm"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ],
+          [
+            "Isolation de la base ABS",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Équipements complémentaires",
+        "items": [
+          [
+            "Pré-équipement pompe à chaleur",
+            "By-pass inclus"
+          ],
+          [
+            "Trappe accès verrouillée",
+            "Panneau de contrôle température et filtration"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Blanc nacré",
+        "hex": "#f1f2ef"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Noir",
+        "hex": "#15181b"
+      }
+    ],
+    "stockStatus": "in_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 540
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1190,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ],
+    "badgeLabel": "Branchement Prise 16A",
+    "badgeActive": true
+  },
+  {
+    "slug": "passana",
+    "name": "Passana",
+    "gamme": "Prestige",
+    "places": 4,
+    "dimensions": {
+      "largeur": 220,
+      "profondeur": 220,
+      "hauteur": 99
+    },
+    "prixIndicatif": 24480,
+    "remisePct": 25,
+    "jets": 64,
+    "consommation": "Tout inox 316/304 · pompe massage 2 250 W",
+    "accroche": "Le spa d’exception entièrement inox : 64 jets, finition haut de gamme.",
+    "description": "Le Spa Passana est un spa haut de gamme à la finition entièrement inox : cuve en acier inoxydable 316, habillage et structure en acier inoxydable 304. Avec ses dimensions de 220 × 220 × 99 cm, ses 64 jets inox, ses 20 buses d’air et son panneau de commande tactile, il offre une expérience de massage complète dans un écrin durable et contemporain. L’inox 316 garantit une excellente résistance à la corrosion, pour une intégration élégante en extérieur comme en espace bien-être.",
+    "pointsForts": [
+      "Finition 100 % inox (cuve 316, habillage 304)",
+      "64 jets inox + 20 buses d’air",
+      "Pompe de massage puissante 2 250 W",
+      "Lampe UV-C : 99,9 % des germes et bactéries détruits",
+      "Éclairage sous-marin & panneau tactile",
+      "Inox 316 anticorrosion, robuste et durable"
+    ],
+    "pointsFortsIcons": [
+      "sparkles",
+      "jets",
+      "energy",
+      "germ",
+      "light",
+      "shield"
+    ],
+    "inclus": [
+      "Spa Passana 4 places",
+      "Finition inox 316 / 304",
+      "Lampe UV-C",
+      "Éclairage sous-marin",
+      "Panneau de commande tactile"
+    ],
+    "placeholder": [
+      "#c4c9cd",
+      "#5f8fa0"
+    ],
+    "photos": [
+      "/products/passana-2.jpg",
+      "/products/passana-1.jpg",
+      "/products/passana-3.jpg",
+      "/products/passana-4.jpg"
+    ],
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Passana"
+          ],
+          [
+            "Nombre de places",
+            "4 places"
+          ],
+          [
+            "Coque",
+            "Acier inoxydable 316"
+          ],
+          [
+            "Habillage extérieur",
+            "Acier inoxydable 304"
+          ],
+          [
+            "Structure / support",
+            "Acier inoxydable 304"
+          ]
+        ]
+      },
+      {
+        "groupe": "Dimensions",
+        "items": [
+          [
+            "Longueur",
+            "220 cm"
+          ],
+          [
+            "Largeur",
+            "220 cm"
+          ],
+          [
+            "Hauteur",
+            "99 cm"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Jets",
+            "64 jets inox"
+          ],
+          [
+            "Massage par air",
+            "20 buses d’air inox"
+          ],
+          [
+            "Pompe de massage",
+            "2 250 W"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Système de commande",
+        "items": [
+          [
+            "Panneau de commande",
+            "Gecko INK1001"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage sous-marin",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Traitement de l’eau",
+        "items": [
+          [
+            "Désinfection UV-C",
+            "Incluse"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Structure inox",
+        "items": [
+          [
+            "Coque intérieure",
+            "Acier inoxydable 316"
+          ],
+          [
+            "Panneaux extérieurs",
+            "Acier inoxydable 304"
+          ],
+          [
+            "Support / bracket",
+            "Acier inoxydable 304"
+          ]
+        ]
+      }
+    ],
+    "colorsCoque": [
+      {
+        "name": "Acier inoxydable 316",
+        "hex": "#cccccc"
+      }
+    ],
+    "colorsTablier": [
+      {
+        "name": "Acier inoxydable 304",
+        "hex": "#cccccc"
+      }
+    ],
+    "stockStatus": "in_stock",
+    "deliveryFormulas": [
+      {
+        "name": "Livraison",
+        "description": "Transport sécurisé et dépose au plus près de l’emplacement, partout en France.",
+        "price": 540
+      },
+      {
+        "name": "Livraison + installation",
+        "description": "Livraison, mise en place, raccordement et mise en service complète par nos techniciens.",
+        "price": 1190,
+        "recommended": true
+      },
+      {
+        "name": "Sur mesure",
+        "description": "Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.",
+        "price": null
+      }
+    ],
+    "badgeLabel": "Branchement Prise 16A",
+    "badgeActive": true
+  }
+]

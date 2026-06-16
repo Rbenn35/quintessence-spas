@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pastilles couleur — 6 versions</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1115;color:#e8eaed}
+  header{padding:34px 24px 20px;text-align:center;border-bottom:1px solid #23262e}
+  header h1{font-size:24px;font-weight:600}
+  header p{color:#9aa0ab;margin-top:8px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1500px;margin:24px auto;padding:0 22px}
+  @media(max-width:1100px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .cell{background:#16181d;border:1px solid #262a33;border-radius:12px;overflow:hidden}
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #262a33}
+  .bar b{font-size:14px}
+  .bar a{font-size:12px;color:#7fb4ff;text-decoration:none;font-weight:600}
+  .frame{position:relative;height:430px;overflow:hidden;background:#edf4f7}
+  .frame iframe{width:520px;height:560px;border:0;transform:scale(.83);transform-origin:top left}
+</style>
+</head>
+<body>
+<header>
+  <h1>Pastilles couleur — 6 versions</h1>
+  <p>Coque + Tablier, au-dessus du bouton « Demander un devis ». Cliquez les pastilles pour tester, « Ouvrir » pour voir en grand.</p>
+</header>
+<div class="grid">
+  <div class="cell"><div class="bar"><b>V1 · Pastilles rondes</b><a href="v1-pastilles.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v1-pastilles.html"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>V2 · Pastilles + nom</b><a href="v2-nom.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v2-nom.html"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>V3 · Tuiles + libellé</b><a href="v3-tuiles.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v3-tuiles.html"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>V4 · Compact en lignes</b><a href="v4-compact.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v4-compact.html"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>V5 · Pastilles bordées</b><a href="v5-pills.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v5-pills.html"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>V6 · Minimal élégant</b><a href="v6-minimal.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="v6-minimal.html"></iframe></div></div>
+</div>
+</body>
+</html>

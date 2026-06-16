@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Comparateur de templates</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1115;color:#e8eaed}
+  header{padding:36px 28px 22px;text-align:center;border-bottom:1px solid #23262e}
+  header h1{font-size:26px;font-weight:600;letter-spacing:.3px}
+  header p{color:#9aa0ab;margin-top:8px;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1500px;margin:28px auto;padding:0 24px}
+  .cell{background:#16181d;border:1px solid #262a33;border-radius:12px;overflow:hidden}
+  .cell .bar{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid #262a33}
+  .cell .bar b{font-size:15px}
+  .cell .bar span{font-size:12.5px;color:#9aa0ab}
+  .cell .bar a{font-size:12.5px;color:#7fb4ff;text-decoration:none;font-weight:600}
+  .frame{position:relative;height:420px;overflow:hidden;background:#fff}
+  .frame iframe{width:1280px;height:1400px;border:0;transform:scale(.39);transform-origin:top left}
+  @media(max-width:980px){.grid{grid-template-columns:1fr}.frame iframe{transform:scale(.34)}}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Quintessence Spas — 4 directions visuelles</h1>
+    <p>Aperçu des 4 pages d'accueil. Cliquez sur « Ouvrir en plein écran » pour voir chaque template en grand, puis dites-moi votre préférée.</p>
+  </header>
+  <div class="grid">
+    <div class="cell"><div class="bar"><div><b>A · Scandinave épuré</b> <span>— blanc cassé, vert sauge</span></div><a href="template-a-scandinave.html" target="_blank">Ouvrir plein écran →</a></div>
+      <div class="frame"><iframe src="template-a-scandinave.html" scrolling="no"></iframe></div></div>
+    <div class="cell"><div class="bar"><div><b>B · Luxe sombre &amp; or</b> <span>— anthracite, or champagne</span></div><a href="template-b-luxe-sombre.html" target="_blank">Ouvrir plein écran →</a></div>
+      <div class="frame"><iframe src="template-b-luxe-sombre.html" scrolling="no"></iframe></div></div>
+    <div class="cell"><div class="bar"><div><b>C · Terre &amp; wellness</b> <span>— sable, terracotta</span></div><a href="template-c-terre-wellness.html" target="_blank">Ouvrir plein écran →</a></div>
+      <div class="frame"><iframe src="template-c-terre-wellness.html" scrolling="no"></iframe></div></div>
+    <div class="cell"><div class="bar"><div><b>D · Aqua premium</b> <span>— bleu eau, glacier</span></div><a href="template-d-aqua-premium.html" target="_blank">Ouvrir plein écran →</a></div>
+      <div class="frame"><iframe src="template-d-aqua-premium.html" scrolling="no"></iframe></div></div>
+  </div>
+</body>
+</html>

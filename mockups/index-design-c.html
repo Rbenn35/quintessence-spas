@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Design C en 3 coloris</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1115;color:#e8eaed}
+  header{padding:36px 28px 22px;text-align:center;border-bottom:1px solid #23262e}
+  header h1{font-size:26px;font-weight:600}
+  header p{color:#9aa0ab;margin-top:8px;font-size:15px}
+  header a.back{color:#7fb4ff;text-decoration:none;font-size:13px;display:inline-block;margin-top:10px}
+  .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;max-width:1700px;margin:28px auto;padding:0 24px}
+  .cell{background:#16181d;border:1px solid #262a33;border-radius:12px;overflow:hidden}
+  .cell .bar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #262a33;gap:8px}
+  .cell .bar b{font-size:14px}
+  .cell .bar span{font-size:12px;color:#9aa0ab}
+  .cell .bar a{font-size:12px;color:#7fb4ff;text-decoration:none;font-weight:600;white-space:nowrap}
+  .frame{position:relative;height:440px;overflow:hidden;background:#fff}
+  .frame iframe{width:1280px;height:1500px;border:0;transform:scale(.345);transform-origin:top left}
+  @media(max-width:1100px){.grid{grid-template-columns:1fr}.frame iframe{transform:scale(.42)}}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Design C (Fraunces, arrondi, organique) — 3 coloris</h1>
+    <p>Même mise en page, trois ambiances de couleur : palette A, B et D.</p>
+    <a class="back" href="index.html">← Revenir aux 4 templates d'origine</a>
+  </header>
+  <div class="grid">
+    <div class="cell"><div class="bar"><div><b>Couleurs A</b> <span>— vert sauge, bois</span></div><a href="template-ca-design-c-couleurs-a.html" target="_blank">Plein écran →</a></div>
+      <div class="frame"><iframe src="template-ca-design-c-couleurs-a.html" scrolling="no"></iframe></div></div>
+    <div class="cell"><div class="bar"><div><b>Couleurs B</b> <span>— sombre &amp; or</span></div><a href="template-cb-design-c-couleurs-b.html" target="_blank">Plein écran →</a></div>
+      <div class="frame"><iframe src="template-cb-design-c-couleurs-b.html" scrolling="no"></iframe></div></div>
+    <div class="cell"><div class="bar"><div><b>Couleurs D</b> <span>— bleu eau, glacier</span></div><a href="template-cd-design-c-couleurs-d.html" target="_blank">Plein écran →</a></div>
+      <div class="frame"><iframe src="template-cd-design-c-couleurs-d.html" scrolling="no"></iframe></div></div>
+  </div>
+</body>
+</html>

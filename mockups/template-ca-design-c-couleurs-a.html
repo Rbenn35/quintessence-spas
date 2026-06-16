@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Design C · Couleurs A (Scandinave)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#FAF8F5; --cream:#FFFFFF; --ink:#2E3D34; --terra:#5E7059; --terra-dk:#4a5a46;
+    --olive:#7C8B7A; --wood:#C9A77C; --line:#E7E1D8; --muted:#6F7A70; --card:#FFFFFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.14}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-block;padding:15px 30px;border-radius:40px;font-family:'Inter';font-weight:500;font-size:14px;letter-spacing:.3px;transition:.22s}
+  .btn-primary{background:var(--terra);color:#fff}
+  .btn-primary:hover{background:var(--terra-dk)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .eyebrow{font-family:'Inter';font-weight:600;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--olive)}
+
+  .topbar{background:var(--ink);color:#e6ebe4;font-size:12.5px;letter-spacing:.4px}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px}
+  header{position:sticky;top:0;background:rgba(250,248,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+  nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .logo{font-family:'Fraunces';font-size:26px;font-weight:600;letter-spacing:1px}
+  .logo small{display:block;font-family:'Inter';font-size:9px;letter-spacing:4px;color:var(--olive);font-weight:600}
+  .menu{display:flex;gap:32px;font-size:14px;font-weight:400}
+  .menu a:hover{color:var(--terra)}
+
+  .hero{display:grid;grid-template-columns:1fr 1.1fr;gap:54px;align-items:center;padding:76px 0 90px}
+  .hero h1{font-size:60px;margin:18px 0 22px}
+  .hero h1 em{font-style:italic;color:var(--terra)}
+  .hero p{font-size:18px;color:var(--muted);max-width:440px;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .hero-img{height:540px;border-radius:140px 140px 18px 18px;
+    background:linear-gradient(165deg,#d8ddd4,#c9a77c 120%);position:relative;overflow:hidden}
+  .hero-img::after{content:"PHOTO — SPA TERRASSE BOIS, LUMIÈRE NATURELLE";position:absolute;left:24px;bottom:22px;color:#fff;font-size:11px;letter-spacing:1.5px;opacity:.9}
+
+  .trust{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:flex;justify-content:space-between;text-align:center;padding:40px 28px;flex-wrap:wrap;gap:24px}
+  .trust .num{font-family:'Fraunces';font-size:40px;color:var(--terra)}
+  .trust .lbl{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  section.pad{padding:94px 0}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto 54px}
+  .sec-head h2{font-size:46px;margin:14px 0 14px}
+  .sec-head h2 em{font-style:italic;color:var(--terra)}
+  .sec-head p{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:.25s}
+  .card:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(46,61,52,.12)}
+  .card .img{height:230px;background:linear-gradient(165deg,#e6eae3,#cdb79b)}
+  .card .body{padding:26px}
+  .card h3{font-size:27px;margin-bottom:6px}
+  .card .places{font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--olive);margin-bottom:14px;font-weight:600}
+  .card .price{font-size:14px;color:var(--muted)}
+  .card .price b{font-family:'Inter';font-weight:600;color:var(--ink);font-size:16px}
+  .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:13px}
+  .card .row a{color:var(--terra);font-weight:600}
+
+  .guides{background:var(--cream);border-top:1px solid var(--line)}
+  .gcard{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .gcard a{display:block;padding:30px;border:1px solid var(--line);border-radius:20px;background:var(--card);transition:.2s}
+  .gcard a:hover{border-color:var(--terra);transform:translateY(-3px)}
+  .gcard h3{font-size:24px;margin:10px 0 8px}
+  .gcard p{font-size:14px;color:var(--muted)}
+
+  .showroom{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
+  .showroom h2{font-size:48px;margin-bottom:16px}
+  .showroom p{color:#cdd5cd;max-width:520px;margin:0 auto 32px}
+  .showroom .btn-primary{background:var(--wood);color:#2b2418}
+  .showroom .btn-ghost{border-color:#9aa89a;color:#eef1ec}
+
+  footer{background:#22302a;color:#aebaad;font-size:13px;padding:60px 0 40px}
+  footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:40px}
+  footer h4{font-family:'Inter';color:#fff;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+  footer a{display:block;padding:5px 0}footer a:hover{color:var(--wood)}
+  footer .copy{border-top:1px solid #34433b;padding-top:24px;opacity:.75}
+
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--terra);color:#fff;font-family:'Inter';font-size:11px;letter-spacing:1px;padding:8px 14px;border-radius:20px;z-index:50;font-weight:600}
+  @media(max-width:880px){.hero{grid-template-columns:1fr;gap:34px;padding:48px 0}.hero h1{font-size:44px}.hero-img{height:360px;border-radius:60px 60px 16px 16px}.grid,.gcard,footer .cols{grid-template-columns:1fr}.menu{display:none}section.pad{padding:62px 0}}
+</style>
+</head>
+<body>
+  <div class="badge">Design C · Couleurs A (Scandinave)</div>
+
+  <div class="topbar"><div class="wrap">
+    <span>☎ 04 00 00 00 00 — Conseil &amp; devis gratuit</span>
+    <a href="#">3 showrooms en France →</a>
+  </div></div>
+
+  <header><div class="wrap"><nav>
+    <div class="logo">QUINTESSENCE<small>SPAS — FRANCE</small></div>
+    <div class="menu"><a href="#">Les spas</a><a href="#">La marque</a><a href="#">Guides</a><a href="#">Showrooms</a><a href="#">Contact</a></div>
+    <a href="#" class="btn btn-primary">Demander un devis</a>
+  </nav></div></header>
+
+  <div class="wrap"><section class="hero">
+    <div>
+      <span class="eyebrow">Bien-être · Fabriqué pour durer</span>
+      <h1>Votre rituel<br />bien-être, <em>à la maison.</em></h1>
+      <p>Des spas rigides chaleureux, pensés pour le confort et la détente. Une eau parfaite, un massage enveloppant, des matériaux nobles — votre cocon, toute l'année.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">Demander un devis</a>
+        <a href="#" class="btn btn-ghost">Réserver une visite</a>
+      </div>
+    </div>
+    <div class="hero-img"></div>
+  </section></div>
+
+  <div class="trust"><div class="wrap">
+    <div><div class="num">+15 ans</div><div class="lbl">d'expérience</div></div>
+    <div><div class="num">2 400</div><div class="lbl">spas installés</div></div>
+    <div><div class="num">4,9/5</div><div class="lbl">avis clients</div></div>
+    <div><div class="num">5 ans</div><div class="lbl">de garantie</div></div>
+  </div></div>
+
+  <div class="wrap"><section class="pad">
+    <div class="sec-head"><span class="eyebrow">Notre sélection</span><h2>Nos modèles <em>phares</em></h2>
+      <p>Une gamme resserrée de spas rigides, choisis pour leur confort et leur qualité de fabrication. De 2 à 7 places.</p></div>
+    <div class="grid">
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Sérénité 5</h3><div class="places">5 places · 215 × 215 cm</div>
+        <div class="price">À partir de <b>9 900 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Équilibre 6</h3><div class="places">6 places · 230 × 230 cm</div>
+        <div class="price">À partir de <b>12 500 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Plénitude 7</h3><div class="places">7 places · 240 × 240 cm</div>
+        <div class="price">À partir de <b>15 900 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:46px"><a href="#" class="btn btn-ghost">Voir tout le catalogue</a></div>
+  </section></div>
+
+  <div class="guides"><div class="wrap"><section class="pad">
+    <div class="sec-head"><span class="eyebrow">Bien choisir</span><h2>Nos guides <em>d'experts</em></h2>
+      <p>Tout ce qu'il faut savoir avant d'investir dans un spa rigide.</p></div>
+    <div class="gcard">
+      <a href="#"><span class="eyebrow">Guide</span><h3>Guide d'achat du spa rigide</h3><p>Places, dimensions, budget, énergie : choisir sereinement.</p></a>
+      <a href="#"><span class="eyebrow">Comparatif</span><h3>Spa rigide vs gonflable</h3><p>Durabilité, confort, coût réel sur la durée.</p></a>
+      <a href="#"><span class="eyebrow">Pratique</span><h3>Installation &amp; entretien</h3><p>Terrain, eau, hivernage : nos conseils d'installateurs.</p></a>
+    </div>
+  </section></div></div>
+
+  <div class="showroom"><div class="wrap">
+    <span class="eyebrow" style="color:var(--wood)">Showrooms</span>
+    <h2>Venez les essayer</h2>
+    <p>Rien ne remplace l'expérience. Réservez un créneau dans l'un de nos showrooms et testez nos spas en conditions réelles, accompagné d'un conseiller.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-primary">Réserver une visite</a>
+      <a href="#" class="btn btn-ghost">Demander un devis</a>
+    </div>
+  </div></div>
+
+  <footer><div class="wrap">
+    <div class="cols">
+      <div><div class="logo" style="color:#fff">QUINTESSENCE<small>SPAS — FRANCE</small></div>
+        <p style="margin-top:16px;max-width:260px">Spas rigides chaleureux, conçus et installés par des experts passionnés depuis plus de 15 ans.</p></div>
+      <div><h4>Les spas</h4><a href="#">Catalogue</a><a href="#">2 à 4 places</a><a href="#">5 à 7 places</a><a href="#">Accessoires</a></div>
+      <div><h4>Découvrir</h4><a href="#">La marque</a><a href="#">Guides</a><a href="#">Showrooms</a><a href="#">Contact</a></div>
+      <div><h4>Contact</h4><a href="#">04 00 00 00 00</a><a href="#">contact@quintessence-spas.fr</a><a href="#">Demander un devis</a></div>
+    </div>
+    <div class="copy">© 2026 Quintessence Spas — Tous droits réservés · Mentions légales · CGV</div>
+  </div></footer>
+</body>
+</html>

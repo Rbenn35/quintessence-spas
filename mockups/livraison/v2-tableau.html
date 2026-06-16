@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formules — V2 Tableau</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--card:#fff;--ink:#13313d;--terra:#1c6e8e;--line:#dbe7ec;--muted:#557079;--olive:#5f8fa0;--cream:#f7fbfc;--green:#00b67a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.55;padding:46px 20px;display:flex;justify-content:center}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--terra);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  h2{font-family:'Fraunces',serif;font-weight:500}
+  .wrap{max-width:900px;width:100%}
+  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+  h2{font-size:32px;margin-top:8px}
+  .lead{color:var(--muted);margin-top:8px;max-width:560px}
+  .tbl{margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  .row{display:grid;grid-template-columns:1.4fr 2fr auto;gap:18px;align-items:center;padding:22px 26px;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row.head{background:var(--cream);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:13px 26px}
+  .name{font-family:'Fraunces';font-size:20px;display:flex;align-items:center;gap:10px}
+  .name .ic{color:var(--terra)}
+  .reco{background:var(--terra);color:#fff;font-size:10px;font-weight:700;border-radius:20px;padding:3px 8px;margin-left:4px}
+  .inc{font-size:13.5px;color:var(--muted)}
+  .price{font-family:'Fraunces';font-size:24px;text-align:right;white-space:nowrap}
+  @media(max-width:680px){.row{grid-template-columns:1fr;gap:8px}.row.head{display:none}.price{text-align:left}}
+</style>
+</head>
+<body>
+<div class="badge">V2 · Tableau comparatif</div>
+<div class="wrap">
+  <span class="eyebrow">Livraison & installation</span>
+  <h2>Nos formules de livraison &amp; installation</h2>
+  <p class="lead">Comparez les formules et choisissez celle qui vous convient. Partout en France.</p>
+  <div class="tbl">
+    <div class="row head"><span>Formule</span><span>Ce qui est inclus</span><span style="text-align:right">Prix TTC</span></div>
+    <div class="row">
+      <span class="name"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Livraison</span>
+      <span class="inc">Transport sécurisé et dépose au plus près de l'emplacement.</span>
+      <span class="price">540 €</span>
+    </div>
+    <div class="row">
+      <span class="name"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-7 7 2 2 7-7a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg></span>Livraison + installation<span class="reco">Recommandé</span></span>
+      <span class="inc">Livraison, mise en place, raccordement et mise en service complète.</span>
+      <span class="price">1 190 €</span>
+    </div>
+    <div class="row">
+      <span class="name"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg></span>Sur mesure</span>
+      <span class="inc">Accès difficile, étage, grue ou région spécifique : devis adapté.</span>
+      <span class="price">Sur devis</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

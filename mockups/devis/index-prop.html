@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — 4 propositions (style validé)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1115;color:#e8eaed}
+  header{padding:34px 24px 20px;text-align:center;border-bottom:1px solid #23262e}
+  header h1{font-size:24px;font-weight:600}
+  header p{color:#9aa0ab;margin-top:8px;font-size:14px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1320px;margin:24px auto;padding:0 22px}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+  .cell{background:#16181d;border:1px solid #262a33;border-radius:12px;overflow:hidden}
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #262a33}
+  .bar b{font-size:14px}
+  .bar a{font-size:12px;color:#7fb4ff;text-decoration:none;font-weight:600}
+  .frame{position:relative;height:640px;overflow:hidden;background:#fbfdfe}
+  .frame iframe{width:632px;height:1180px;border:0;transform:scale(.63);transform-origin:top left}
+</style>
+</head>
+<body>
+<header>
+  <h1>Devis — 4 propositions dans le style validé</h1>
+  <p>La n°1 est identique à votre capture. Cliquez « Ouvrir » pour voir en grand.</p>
+</header>
+<div class="grid">
+  <div class="cell"><div class="bar"><b>1 · Référence (identique)</b><a href="prop-1-reference.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="prop-1-reference.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>2 · Photo en bandeau</b><a href="prop-2-bandeau.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="prop-2-bandeau.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>3 · Lignes encadrées</b><a href="prop-3-encadre.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="prop-3-encadre.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>4 · Éditorial aéré</b><a href="prop-4-editorial.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="prop-4-editorial.html" scrolling="no"></iframe></div></div>
+</div>
+</body>
+</html>

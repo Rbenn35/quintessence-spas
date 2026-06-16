@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Essais typographiques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Playfair+Display:wght@400;500;600&family=Marcellus&family=Cinzel:wght@400;500;600&family=Forum&family=Inter:wght@300;400;500;600&family=Jost:wght@300;400;500&family=Montserrat:wght@300;400;500;600&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',system-ui,sans-serif;background:#1a1c20;color:#e8eaed;line-height:1.6}
+  header{padding:40px 28px 26px;text-align:center;border-bottom:1px solid #2c2f36}
+  header h1{font-family:'Fraunces',serif;font-size:30px;font-weight:600}
+  header p{color:#9aa0ab;margin-top:10px;max-width:680px;margin-inline:auto;font-size:15px}
+  header a.back{color:#cc8157;text-decoration:none;font-size:13px;display:inline-block;margin-top:12px}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 24px 80px;display:grid;gap:24px}
+
+  .card{background:#fbf7f0;color:#3b2f27;border-radius:16px;overflow:hidden;border:1px solid #2c2f36}
+  .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+    padding:16px 30px;background:#efe7da;border-bottom:1px solid #e4d8c8}
+  .meta h2{font-family:'Inter';font-size:17px;font-weight:600;color:#3b2f27}
+  .meta .note{font-family:'Inter';font-size:13px;color:#6f6358}
+  .meta .reco{font-family:'Inter';font-size:11px;font-weight:600;letter-spacing:.5px;color:#fff;background:#b5663f;border-radius:20px;padding:3px 11px}
+
+  .specimen{padding:34px 30px 40px}
+  /* polices pilotées par carte */
+  .h, .wm, .secTitle{font-family:var(--h)}
+  .b, .eyebrow, .btn{font-family:var(--b)}
+
+  .logo{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .logo svg{height:52px;width:52px;flex-shrink:0}
+  .wm{line-height:1}
+  .wm .top{display:block;font-size:23px;font-weight:500;letter-spacing:.12em;color:#3b2f27}
+  .wm .sub{display:block;margin-top:5px;font-size:13px;font-weight:500;letter-spacing:.45em;color:#b5663f}
+
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#8a8b5c}
+  .h1{font-size:46px;font-weight:500;line-height:1.12;margin:12px 0 6px;color:#3b2f27}
+  .h1 em{font-style:italic;color:#b5663f}
+  .secTitle{font-size:26px;font-weight:500;color:#3b2f27;margin:22px 0 0}
+  .body{font-size:16px;font-weight:300;color:#6f6358;max-width:600px;margin-top:14px;line-height:1.75}
+  .btn{display:inline-block;margin-top:24px;background:#b5663f;color:#fff;font-size:14px;font-weight:500;
+    letter-spacing:.3px;border-radius:40px;padding:13px 28px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Quintessence Spas — Quelle police pour le site ?</h1>
+  <p>Le même échantillon (logo médaillon + titre + texte + bouton) décliné avec 6 couples de polices. Objectif : trouver la typo qui s'accorde le mieux au logo et au positionnement luxe.</p>
+  <a class="back" href="../logos/index-v3.html">← Revenir aux logos</a>
+</header>
+
+<div class="wrap" id="cards"></div>
+
+<script>
+const medallion = `
+  <svg viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="50" fill="none" stroke="#3B2F27" stroke-width="2"/>
+    <circle cx="60" cy="60" r="42" fill="none" stroke="#B8893F" stroke-width="6" stroke-dasharray="1.5 5.2"/>
+    <circle cx="60" cy="60" r="32" fill="none" stroke="#3B2F27" stroke-width="1.5"/>
+    <path d="M38 60 q11 -9 22 0 t22 0" fill="none" stroke="#B5663F" stroke-width="3" stroke-linecap="round"/>
+    <path d="M42 72 q9 -7 18 0 t18 0" fill="none" stroke="#B5663F" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="60" cy="46" r="4" fill="#B5663F"/>
+  </svg>`;
+
+const pairings = [
+  {h:"'Fraunces'", b:"'Inter'", name:"Fraunces + Inter", note:"Serif moderne chaleureux · sans clair", reco:"Actuel"},
+  {h:"'Cormorant Garamond'", b:"'Inter'", name:"Cormorant Garamond + Inter", note:"Serif fin très contrasté · sans clair", reco:"Le plus luxe"},
+  {h:"'Marcellus'", b:"'Mulish'", name:"Marcellus + Mulish", note:"Roman gravé élégant · sans doux", reco:""},
+  {h:"'Playfair Display'", b:"'Montserrat'", name:"Playfair Display + Montserrat", note:"Serif mode classique · sans géométrique", reco:""},
+  {h:"'Cinzel'", b:"'Jost'", name:"Cinzel + Jost", note:"Capitales romaines · sans Art Déco", reco:"Accord logo Déco"},
+  {h:"'Forum'", b:"'Inter'", name:"Forum + Inter", note:"Display antique raffiné · sans clair", reco:""},
+];
+
+document.getElementById('cards').innerHTML = pairings.map(p => `
+  <div class="card" style="--h:${p.h}; --b:${p.b}">
+    <div class="meta">
+      <h2>${p.name}</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <span class="note">${p.note}</span>
+        ${p.reco ? `<span class="reco">${p.reco}</span>` : ``}
+      </div>
+    </div>
+    <div class="specimen">
+      <div class="logo">
+        ${medallion}
+        <span class="wm"><span class="top h">QUINTESSENCE</span><span class="sub h">SPAS</span></span>
+      </div>
+      <span class="eyebrow">Spas rigides premium</span>
+      <h3 class="h1 h">Votre rituel bien-être, <em>à la maison.</em></h3>
+      <p class="body b">Des spas rigides chaleureux, pensés pour le confort et la détente. Une eau parfaite, un massage enveloppant, des matériaux nobles — votre cocon, toute l'année.</p>
+      <div class="secTitle h">Nos modèles phares</div>
+      <a class="btn b" href="#">Demander un devis</a>
+    </div>
+  </div>
+`).join('');
+</script>
+</body>
+</html>

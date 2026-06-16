@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Reglages Claude Code personnels (local)
+.claude/settings.local.json
+
+# Données runtime / personnelles (leads, messages clients) — ne pas versionner
+/data/devis-requests.json
+/data/messages.json

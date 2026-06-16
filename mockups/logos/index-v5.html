@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Logotype lié</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:#1a1c20;color:#e8eaed;line-height:1.6}
+  header{padding:40px 28px 26px;text-align:center;border-bottom:1px solid #2c2f36}
+  header h1{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:700}
+  header p{color:#9aa0ab;margin-top:10px;max-width:700px;margin-inline:auto;font-size:15px}
+  header a.back{color:#cc8157;text-decoration:none;font-size:13px;display:inline-block;margin-top:12px}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 24px 80px;display:grid;gap:24px}
+
+  .concept{background:#202329;border:1px solid #2c2f36;border-radius:16px;overflow:hidden}
+  .concept-head{padding:18px 26px;border-bottom:1px solid #2c2f36;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap}
+  .num{font-family:'Montserrat';font-weight:700;font-size:26px;color:#cc8157;line-height:1;min-width:36px}
+  .concept-head h2{font-family:'Montserrat';font-size:19px;font-weight:600}
+  .concept-head p{color:#9aa0ab;font-size:14px;margin-top:2px;max-width:760px}
+  .reco{margin-top:7px;display:inline-block;font-size:11px;font-weight:600;letter-spacing:.5px;color:#fff;background:#b5663f;border-radius:20px;padding:3px 11px}
+
+  .stages{display:grid;grid-template-columns:1fr 1fr}
+  @media(max-width:760px){.stages{grid-template-columns:1fr}}
+  .stage{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:46px 26px;min-height:200px}
+  .stage.cream{background:#fbf7f0;--logo-ink:#3B2F27;--logo-accent:#B5663F;--logo-gold:#B8893F}
+  .stage.dark{background:#2C231C;--logo-ink:#FBF7F0;--logo-accent:#D08458;--logo-gold:#D8BD83}
+  .stage .label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#b9a98f}
+  .stage.dark .label{color:#7d6f5c}
+  .lockup{height:116px;width:auto;max-width:100%}
+</style>
+</head>
+<body>
+<header>
+  <h1>Quintessence Spas — un seul logotype</h1>
+  <p>6 manières de lier « Quintessence » et « Spas » en une signature unique, avec le médaillon. Police moderne (Montserrat), nom en gras.</p>
+  <a class="back" href="index-v3.html">← Revenir aux symboles</a>
+</header>
+
+<div class="wrap" id="cards"></div>
+
+<script>
+function med(tx, ty, s){
+  return `<g transform="translate(${tx},${ty}) scale(${s})">
+    <circle cx="60" cy="60" r="50" fill="none" stroke="var(--logo-ink)" stroke-width="2"/>
+    <circle cx="60" cy="60" r="42" fill="none" stroke="var(--logo-gold)" stroke-width="6" stroke-dasharray="1.5 5.2"/>
+    <circle cx="60" cy="60" r="32" fill="none" stroke="var(--logo-ink)" stroke-width="1.5"/>
+    <path d="M38 60 q11 -9 22 0 t22 0" fill="none" stroke="var(--logo-accent)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M42 72 q9 -7 18 0 t18 0" fill="none" stroke="var(--logo-accent)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="60" cy="46" r="4" fill="var(--logo-accent)"/>
+  </g>`;
+}
+const F = 'font-family="Montserrat"';
+
+const concepts = [
+  {
+    name:"Pile liée",
+    note:"« SPAS » étiré à la largeur exacte de « QUINTESSENCE », réuni par un filet d'or. Les deux mots forment un bloc indissociable.",
+    reco:"Le plus « bloc logo »",
+    vb:"0 0 470 140",
+    svg: med(6,30,0.74) + `
+      <text x="138" y="64" textLength="300" lengthAdjust="spacing" ${F} font-size="30" font-weight="700" fill="var(--logo-ink)">QUINTESSENCE</text>
+      <line x1="138" y1="80" x2="438" y2="80" stroke="var(--logo-gold)" stroke-width="1.6"/>
+      <text x="138" y="107" textLength="300" lengthAdjust="spacing" ${F} font-size="20" font-weight="600" fill="var(--logo-accent)">SPAS</text>`
+  },
+  {
+    name:"Liaison losange",
+    note:"Une seule ligne : les deux mots se tiennent par un losange d'or central. Continu, fluide, façon maison de couture.",
+    reco:"",
+    vb:"0 0 600 120",
+    svg: med(6,22,0.6) + `
+      <text x="404" y="70" text-anchor="end" ${F} font-size="31" font-weight="700" fill="var(--logo-ink)" letter-spacing="1">QUINTESSENCE</text>
+      <rect x="420" y="55" width="13" height="13" fill="var(--logo-gold)" transform="rotate(45 426.5 61.5)"/>
+      <text x="450" y="70" ${F} font-size="31" font-weight="700" fill="var(--logo-accent)" letter-spacing="2">SPAS</text>`
+  },
+  {
+    name:"Souligné filant",
+    note:"« Quintessence Spas » d'un trait, relié par un souligné qui court sous les deux mots et remonte. Élégant et signé.",
+    reco:"",
+    vb:"0 0 560 140",
+    svg: med(6,26,0.7) + `
+      <text x="140" y="72" ${F} font-size="33" font-weight="600" letter-spacing="0.5"><tspan fill="var(--logo-ink)">Quintessence </tspan><tspan fill="var(--logo-accent)">Spas</tspan></text>
+      <path d="M140 90 C 250 102, 400 103, 500 86" fill="none" stroke="var(--logo-gold)" stroke-width="2.4" stroke-linecap="round"/>`
+  },
+  {
+    name:"Médaillon englobant",
+    note:"Le médaillon, en grand à gauche, embrasse les deux lignes calées à la même largeur : le symbole devient l'agrafe qui unit le nom.",
+    reco:"Le plus « lockup pro »",
+    vb:"0 0 500 150",
+    svg: med(10,18,0.95) + `
+      <line x1="150" y1="40" x2="150" y2="112" stroke="var(--logo-gold)" stroke-width="1.4"/>
+      <text x="172" y="70" textLength="300" lengthAdjust="spacing" ${F} font-size="33" font-weight="700" fill="var(--logo-ink)">QUINTESSENCE</text>
+      <text x="172" y="104" textLength="300" lengthAdjust="spacing" ${F} font-size="20" font-weight="600" fill="var(--logo-accent)">SPAS</text>`
+  },
+  {
+    name:"Cartouche",
+    note:"Médaillon et nom réunis dans un cartouche d'or fin : l'ensemble devient un sceau unique, parfait pour la papeterie et le packaging.",
+    reco:"",
+    vb:"0 0 520 172",
+    svg: `
+      <rect x="18" y="18" width="484" height="136" fill="none" stroke="var(--logo-gold)" stroke-width="1.5"/>
+      ${med(230,26,0.5)}
+      <text x="260" y="120" text-anchor="middle" ${F} font-size="29" font-weight="700" fill="var(--logo-ink)" letter-spacing="1">QUINTESSENCE</text>
+      <text x="260" y="143" text-anchor="middle" ${F} font-size="16" font-weight="600" fill="var(--logo-accent)" letter-spacing="11">SPAS</text>`
+  },
+  {
+    name:"Jointif bicolore",
+    note:"Les deux mots soudés en un seul, sans espace, distingués par la couleur. Ultra-moderne, compact, impossible à dissocier.",
+    reco:"Le plus moderne",
+    vb:"0 0 600 120",
+    svg: med(6,20,0.66) + `
+      <text x="140" y="72" ${F} font-size="34" font-weight="700" letter-spacing="0.5"><tspan fill="var(--logo-ink)">QUINTESSENCE</tspan><tspan fill="var(--logo-accent)">SPAS</tspan></text>`
+  },
+];
+
+document.getElementById('cards').innerHTML = concepts.map((c,i) => `
+  <div class="concept">
+    <div class="concept-head">
+      <span class="num">${i+1}</span>
+      <div>
+        <h2>${c.name}</h2>
+        <p>${c.note}</p>
+        ${c.reco ? `<span class="reco">${c.reco}</span>` : ``}
+      </div>
+    </div>
+    <div class="stages">
+      <div class="stage cream"><svg class="lockup" viewBox="${c.vb}">${c.svg}</svg><span class="label">Fond clair</span></div>
+      <div class="stage dark"><svg class="lockup" viewBox="${c.vb}">${c.svg}</svg><span class="label">Fond sombre</span></div>
+    </div>
+  </div>
+`).join('');
+</script>
+</body>
+</html>

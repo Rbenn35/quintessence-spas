@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quintessence Spas — Template B · Luxe sombre &amp; or</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#14161A; --panel:#1B1E24; --card:#20242B; --ink:#F2EFE9;
+    --gold:#C5A45D; --gold-soft:#d8bd83; --line:#2C313A; --muted:#9aa0ab;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:500;line-height:1.12}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-block;padding:15px 32px;font-family:'Inter';font-weight:500;font-size:13.5px;letter-spacing:.8px;transition:.25s}
+  .btn-primary{background:var(--gold);color:#1a1407}
+  .btn-primary:hover{background:var(--gold-soft)}
+  .btn-ghost{border:1px solid var(--gold);color:var(--gold)}
+  .btn-ghost:hover{background:rgba(197,164,93,.12)}
+  .eyebrow{font-family:'Inter';font-weight:500;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+
+  .topbar{background:#0E1013;color:#bfc4cd;font-size:12px;letter-spacing:1px;border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
+  header{position:sticky;top:0;background:rgba(20,22,26,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+  nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .logo{font-family:'Playfair Display';font-size:26px;font-weight:600;letter-spacing:3px;color:#fff}
+  .logo small{display:block;font-family:'Inter';font-size:9px;letter-spacing:5px;color:var(--gold);font-weight:500}
+  .menu{display:flex;gap:36px;font-size:14px;font-weight:400;color:#d7dae0}
+  .menu a:hover{color:var(--gold)}
+
+  /* hero full bleed */
+  .hero{position:relative;min-height:600px;display:flex;align-items:center;
+    background:radial-gradient(120% 120% at 70% 20%,#2a2f38 0%,#14161A 60%);
+    overflow:hidden}
+  .hero::after{content:"PHOTOGRAPHIE — SPA EN SOIRÉE, EAU FUMANTE";position:absolute;right:28px;bottom:20px;font-size:10px;letter-spacing:2px;color:#5a616c}
+  .hero-inner{max-width:640px}
+  .hero h1{font-size:68px;margin:20px 0 26px}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p{font-size:18px;color:#c3c8d0;max-width:500px;margin-bottom:36px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .glow{position:absolute;right:-120px;top:-60px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(197,164,93,.20),transparent 65%);filter:blur(10px)}
+
+  .trust{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trust .wrap{display:flex;justify-content:space-between;text-align:center;padding:42px 28px;flex-wrap:wrap;gap:24px}
+  .trust .num{font-family:'Playfair Display';font-size:42px;color:var(--gold)}
+  .trust .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+  section.pad{padding:100px 0}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 58px}
+  .sec-head h2{font-size:48px;margin:16px 0 16px}
+  .sec-head h2 em{font-style:italic;color:var(--gold)}
+  .sec-head p{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:var(--card);border:1px solid var(--line);overflow:hidden;transition:.25s}
+  .card:hover{border-color:var(--gold);transform:translateY(-4px)}
+  .card .img{height:240px;background:linear-gradient(160deg,#2a2f38,#191c21);position:relative}
+  .card .img::after{content:"PHOTO";position:absolute;left:18px;bottom:14px;font-size:10px;letter-spacing:2px;color:#525863}
+  .card .body{padding:26px}
+  .card h3{font-size:28px;margin-bottom:6px}
+  .card .places{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .card .price{font-size:14px;color:var(--muted)}
+  .card .price b{font-family:'Inter';font-weight:600;color:var(--ink);font-size:16px}
+  .card .row{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .card .row a{color:var(--gold);font-weight:500}
+
+  .guides{background:var(--panel);border-top:1px solid var(--line)}
+  .gcard{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .gcard a{display:block;padding:32px;border:1px solid var(--line);background:var(--card);transition:.2s}
+  .gcard a:hover{border-color:var(--gold)}
+  .gcard h3{font-size:25px;margin:12px 0 8px}
+  .gcard p{font-size:14px;color:var(--muted)}
+
+  .showroom{text-align:center;padding:110px 0;background:
+    radial-gradient(100% 100% at 50% 0%,#23272f,#14161A 70%);border-top:1px solid var(--line)}
+  .showroom h2{font-size:52px;margin-bottom:18px}
+  .showroom h2 em{font-style:italic;color:var(--gold)}
+  .showroom p{color:var(--muted);max-width:540px;margin:0 auto 34px}
+
+  footer{background:#0E1013;color:#8b919b;font-size:13px;padding:64px 0 40px;border-top:1px solid var(--line)}
+  footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:42px}
+  footer h4{font-family:'Inter';color:#fff;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;font-weight:600}
+  footer a{display:block;padding:5px 0}footer a:hover{color:var(--gold)}
+  footer .copy{border-top:1px solid var(--line);padding-top:24px;opacity:.7}
+
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--gold);color:#1a1407;font-family:'Inter';font-size:11px;letter-spacing:1px;padding:8px 14px;border-radius:20px;z-index:50;font-weight:600}
+  @media(max-width:880px){.hero h1{font-size:46px}.grid,.gcard,footer .cols{grid-template-columns:1fr}.menu{display:none}section.pad{padding:64px 0}}
+</style>
+</head>
+<body>
+  <div class="badge">Template B · Luxe sombre &amp; or</div>
+
+  <div class="topbar"><div class="wrap">
+    <span>☎ 04 00 00 00 00 — Conseil &amp; devis gratuit</span>
+    <a href="#">3 showrooms d'exception →</a>
+  </div></div>
+
+  <header><div class="wrap"><nav>
+    <div class="logo">QUINTESSENCE<small>SPAS — FRANCE</small></div>
+    <div class="menu"><a href="#">Les spas</a><a href="#">La marque</a><a href="#">Guides</a><a href="#">Showrooms</a><a href="#">Contact</a></div>
+    <a href="#" class="btn btn-primary">Demander un devis</a>
+  </nav></div></header>
+
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="wrap"><div class="hero-inner">
+      <span class="eyebrow">Spas rigides d'exception</span>
+      <h1>L'excellence du spa,<br /><em>sur mesure.</em></h1>
+      <p>Une sélection rare de spas rigides haut de gamme. Matériaux nobles, hydromassage d'exception, performance énergétique. Le prestige du bien-être, chez vous.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">Demander un devis</a>
+        <a href="#" class="btn btn-ghost">Réserver une visite privée</a>
+      </div>
+    </div></div>
+  </section>
+
+  <div class="trust"><div class="wrap">
+    <div><div class="num">+15 ans</div><div class="lbl">d'expérience</div></div>
+    <div><div class="num">2 400</div><div class="lbl">spas installés</div></div>
+    <div><div class="num">4,9/5</div><div class="lbl">avis clients</div></div>
+    <div><div class="num">5 ans</div><div class="lbl">de garantie</div></div>
+  </div></div>
+
+  <div class="wrap"><section class="pad">
+    <div class="sec-head"><span class="eyebrow">La collection</span><h2>Nos modèles <em>phares</em></h2>
+      <p>Une gamme resserrée, choisie pour la qualité de fabrication et le raffinement. De 2 à 7 places.</p></div>
+    <div class="grid">
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Sérénité 5</h3><div class="places">5 places · 215 × 215 cm</div>
+        <div class="price">À partir de <b>9 900 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Équilibre 6</h3><div class="places">6 places · 230 × 230 cm</div>
+        <div class="price">À partir de <b>12 500 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+      <div class="card"><div class="img"></div><div class="body">
+        <h3>Plénitude 7</h3><div class="places">7 places · 240 × 240 cm</div>
+        <div class="price">À partir de <b>15 900 €</b> · ou sur devis</div>
+        <div class="row"><span>Financement dispo.</span><a href="#">Découvrir →</a></div></div></div>
+    </div>
+    <div style="text-align:center;margin-top:46px"><a href="#" class="btn btn-ghost">Voir tout le catalogue</a></div>
+  </section></div>
+
+  <div class="guides"><div class="wrap"><section class="pad">
+    <div class="sec-head"><span class="eyebrow">Conseils d'experts</span><h2>Nos <em>guides</em></h2>
+      <p>Tout savoir avant d'investir dans un spa rigide d'exception.</p></div>
+    <div class="gcard">
+      <a href="#"><span class="eyebrow">Guide</span><h3>Guide d'achat du spa rigide</h3><p>Places, dimensions, budget, énergie : choisir sereinement.</p></a>
+      <a href="#"><span class="eyebrow">Comparatif</span><h3>Spa rigide vs gonflable</h3><p>Durabilité, confort, coût réel sur la durée.</p></a>
+      <a href="#"><span class="eyebrow">Pratique</span><h3>Installation &amp; entretien</h3><p>Terrain, eau, hivernage : nos conseils d'installateurs.</p></a>
+    </div>
+  </section></div></div>
+
+  <div class="showroom"><div class="wrap">
+    <span class="eyebrow">Showrooms privés</span>
+    <h2>Venez les <em>essayer</em></h2>
+    <p>Rien ne remplace l'expérience. Réservez une visite privée et testez nos spas en conditions réelles, accompagné d'un conseiller dédié.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="#" class="btn btn-primary">Réserver une visite</a>
+      <a href="#" class="btn btn-ghost">Demander un devis</a>
+    </div>
+  </div></div>
+
+  <footer><div class="wrap">
+    <div class="cols">
+      <div><div class="logo">QUINTESSENCE<small>SPAS — FRANCE</small></div>
+        <p style="margin-top:16px;max-width:260px">Spas rigides d'exception, conçus et installés par des experts passionnés depuis plus de 15 ans.</p></div>
+      <div><h4>Les spas</h4><a href="#">Catalogue</a><a href="#">2 à 4 places</a><a href="#">5 à 7 places</a><a href="#">Accessoires</a></div>
+      <div><h4>Découvrir</h4><a href="#">La marque</a><a href="#">Guides</a><a href="#">Showrooms</a><a href="#">Contact</a></div>
+      <div><h4>Contact</h4><a href="#">04 00 00 00 00</a><a href="#">contact@quintessence-spas.fr</a><a href="#">Demander un devis</a></div>
+    </div>
+    <div class="copy">© 2026 Quintessence Spas — Tous droits réservés · Mentions légales · CGV</div>
+  </div></footer>
+</body>
+</html>

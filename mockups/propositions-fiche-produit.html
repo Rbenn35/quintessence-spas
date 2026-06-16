@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Propositions — Fiche produit Prado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#edf4f7; --cream:#f7fbfc; --card:#fff; --ink:#13313d; --accent:#1c6e8e;
+    --accent-dk:#14566e; --olive:#5f8fa0; --line:#dbe7ec; --muted:#557079; --footer:#0f2932;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;line-height:1.15;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:40px;font-weight:600;font-size:15px;padding:15px 30px;cursor:pointer;border:none;transition:.2s}
+  .btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-dk)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn-wa{background:#25d366;color:#0b3d1f}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--olive)}
+
+  /* badge proposition */
+  .prop{position:relative;border:1.5px dashed var(--accent);border-radius:18px;padding:26px;background:linear-gradient(0deg,rgba(28,110,142,.03),rgba(28,110,142,.03))}
+  .prop>.tag{position:absolute;top:-13px;left:20px;background:var(--accent);color:#fff;font-family:'Inter';font-size:11px;font-weight:700;letter-spacing:.04em;padding:5px 12px;border-radius:30px}
+
+  /* intro banner */
+  .topnote{background:var(--footer);color:#cfe0e6;font-size:13.5px}
+  .topnote .wrap{padding:12px 24px;display:flex;gap:10px;align-items:center;justify-content:center;text-align:center}
+  /* header */
+  header.site{background:rgba(237,244,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+  header.site img{height:58px;width:auto}
+  .nav{display:flex;gap:28px;font-size:14px}@media(max-width:760px){.nav{display:none}}
+
+  .crumb{font-size:13px;color:var(--muted);padding:22px 0 0}
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:26px 0 10px}
+  @media(max-width:880px){.hero{grid-template-columns:1fr}}
+
+  /* gallery */
+  .main-img{aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative;background:#fff}
+  .main-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .vidtag{position:absolute;left:14px;top:14px;background:rgba(19,49,61,.62);color:#fff;font-size:11px;padding:6px 11px;border-radius:30px;backdrop-filter:blur(4px)}
+  .thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto}
+  .thumbs img{height:78px;width:78px;border-radius:12px;object-fit:cover;border:2px solid var(--line);cursor:pointer}
+  .thumbs img.on{border-color:var(--accent)}
+
+  /* buy box */
+  .gamme{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--olive)}
+  .ptitle{font-size:42px;margin-top:8px}
+  .accroche{color:var(--muted);font-size:17px;margin-top:8px}
+  .pricebox{margin-top:18px;border:1px solid var(--line);border-radius:18px;background:var(--cream);padding:22px}
+  .old{font-size:17px;color:var(--muted);text-decoration:line-through}
+  .pct{background:var(--accent);color:#fff;font-size:12px;font-weight:700;border-radius:30px;padding:3px 10px;margin-left:8px}
+  .final{font-family:'Fraunces';font-size:40px;color:var(--accent);margin-top:2px}
+  .save{color:var(--olive);font-weight:600;font-size:14px}
+
+  .stars{color:#e0a93b;letter-spacing:2px}
+  .reassure{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  .reassure div{display:flex;gap:9px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px}
+  .ic{width:20px;height:20px;color:var(--accent);flex:0 0 auto}
+
+  .section{padding:46px 0;border-top:1px solid var(--line)}
+  .section h2{font-size:32px}
+  .lead{color:var(--muted);margin-top:8px;max-width:680px}
+
+  /* included */
+  .incl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  @media(max-width:760px){.incl{grid-template-columns:1fr 1fr}}
+  .incl div{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:400}
+
+  /* reviews */
+  .revhead{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .bignote{font-family:'Fraunces';font-size:54px;color:var(--ink);line-height:1}
+  .revgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  @media(max-width:880px){.revgrid{grid-template-columns:1fr}}
+  .rev{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .rev .ph{height:150px;background-size:cover;background-position:center}
+  .rev .body{padding:16px 18px}
+  .rev .who{display:flex;align-items:center;gap:10px;margin-top:12px}
+  .rev .av{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px}
+
+  /* financing */
+  .fin{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center}
+  @media(max-width:760px){.fin{grid-template-columns:1fr}}
+  .fin select,.fin input[type=range]{width:100%}
+  .fin .res{font-family:'Fraunces';font-size:40px;color:var(--accent)}
+  select{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:15px}
+
+  /* specs accordion */
+  details{border-bottom:1px solid var(--line)}
+  details:last-child{border-bottom:none}
+  summary{cursor:pointer;list-style:none;padding:14px 6px;font-weight:500;font-size:16px;display:flex;justify-content:space-between}
+  summary::-webkit-details-marker{display:none}
+  details[open] summary .pm{transform:rotate(45deg)}
+  .pm{color:var(--accent);font-size:22px;transition:.2s}
+  .specbox{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:6px 16px}
+  .row{display:flex;justify-content:space-between;gap:14px;padding:9px 6px;border-top:1px solid var(--line);font-size:14px}
+  .row:first-child{border-top:none}.row dt{color:var(--muted)}.row dd{font-weight:500}
+
+  /* compare */
+  .ctable{width:100%;border-collapse:collapse;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .ctable th,.ctable td{padding:14px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--line)}
+  .ctable th{background:var(--cream);font-family:'Inter';font-weight:600}
+  .ctable td.hl{color:var(--accent);font-weight:600}
+
+  /* cross sell */
+  .acc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+  @media(max-width:760px){.acc{grid-template-columns:1fr}}
+  .acard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .acard .ph{height:150px;background:linear-gradient(160deg,#cfe2ea,#1c6e8e)}
+  .acard .b{padding:14px 16px}
+
+  /* faq */
+  .faq{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:4px 18px}
+
+  /* callback / whatsapp */
+  .contactrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+
+  /* sticky bar */
+  .sticky{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 24px rgba(19,49,61,.08);z-index:40}
+  .sticky .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px}
+  .sticky .p{font-family:'Fraunces';font-size:24px;color:var(--accent)}
+  .sticky .old{font-size:13px}
+  .legend{position:fixed;right:16px;bottom:96px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;border-radius:30px;padding:8px 14px;z-index:41;box-shadow:0 6px 18px rgba(19,49,61,.2)}
+  svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+
+<div class="topnote"><div class="wrap">
+  ✦ Maquette de propositions — chaque bloc encadré et marqué « ✦ Proposition » est une suggestion d'ajout à la fiche produit. Les avis, vidéos et taux sont des exemples.
+</div></div>
+
+<header class="site"><div class="wrap">
+  <img src="../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" />
+  <nav class="nav"><a>Les spas</a><a>Guides</a><a>La marque</a><a>Contact</a></nav>
+  <button class="btn btn-primary" style="padding:11px 22px;font-size:14px">Demander un devis</button>
+</div></header>
+
+<div class="wrap">
+  <div class="crumb">Accueil / Les spas / Prado</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="main-img">
+        <img id="main" src="../public/products/prado-1.jpg" alt="Spa Prado" onerror="this.src='https://picsum.photos/seed/prado/800'" />
+        <span class="vidtag">✦ Proposition : vidéo / vue 360°</span>
+      </div>
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+
+    <div>
+      <div class="gamme">Gamme AquaLuxe</div>
+      <h1 class="ptitle">Prado</h1>
+      <div class="stars" style="margin-top:6px">★★★★★ <span style="color:var(--muted);font-size:13px">4,9/5 · 38 avis vérifiés <span style="color:var(--accent)">✦</span></span></div>
+      <p class="accroche">Le spa familial 6 places, complet et équilibré.</p>
+
+      <div class="pricebox">
+        <div><span class="old">13 520 €</span><span class="pct">-25 %</span></div>
+        <div class="final">10 140 €</div>
+        <div class="save">Soit 3 380 € d'économie · prix TTC</div>
+
+        <!-- financing -->
+        <div class="prop" style="margin-top:16px;padding:16px">
+          <span class="tag">✦ Proposition</span>
+          <div style="font-weight:600;margin-bottom:6px">Financement</div>
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+            <span>Payez en</span>
+            <select id="dur" onchange="calc()">
+              <option value="10">10 fois</option><option value="20">20 fois</option>
+              <option value="30" selected>30 fois</option><option value="40">40 fois</option>
+            </select>
+            <span>soit</span>
+            <span class="res" id="month" style="font-size:26px">338 €/mois</span>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:6px">Exemple indicatif, sous réserve d'acceptation du dossier.</div>
+        </div>
+
+        <button class="btn btn-primary" style="width:100%;margin-top:16px">Demander mon devis gratuit</button>
+        <div style="text-align:center;font-size:12px;color:var(--muted);margin-top:8px">Gratuit · sans engagement · réponse sous 48 h</div>
+
+        <!-- callback / whatsapp -->
+        <div class="prop" style="margin-top:16px;padding:16px">
+          <span class="tag">✦ Proposition</span>
+          <div class="contactrow" style="margin-top:0">
+            <button class="btn btn-ghost" style="padding:11px 18px;font-size:14px">📞 Être rappelé sous 2 h</button>
+            <button class="btn btn-wa" style="padding:11px 18px;font-size:14px">WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- reassurance -->
+      <div class="prop" style="margin-top:16px">
+        <span class="tag">✦ Proposition (version enrichie)</span>
+        <div class="reassure">
+          <div><svg class="i" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg> Garantie 5 ans</div>
+          <div><svg class="i" viewBox="0 0 24 24"><rect x="3" y="6" width="11" height="9"/><path d="M14 9h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg> Livraison &amp; pose France</div>
+          <div><svg class="i" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Paiement sécurisé</div>
+          <div><svg class="i" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 5v4h-4"/></svg> SAV réactif</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <!-- INCLUDED -->
+  <section class="section"><div class="prop"><span class="tag">✦ Proposition</span>
+    <h2>Ce qui est inclus</h2>
+    <p class="lead">On sait exactement ce qu'on reçoit, sans mauvaise surprise.</p>
+    <div class="incl">
+      <div>✓ Spa Prado 6 places</div>
+      <div>✓ Couverture isotherme</div>
+      <div>✓ 6 appuie-têtes</div>
+      <div>✓ By-pass pompe à chaleur</div>
+      <div>✓ Filtre &amp; lampe UV-C</div>
+      <div>✓ Mise en service par nos équipes</div>
+    </div>
+  </div></section>
+
+  <!-- REVIEWS -->
+  <section class="section"><div class="prop"><span class="tag">✦ Proposition</span>
+    <div class="revhead">
+      <div class="bignote">4,9<span style="font-size:24px;color:var(--muted)">/5</span></div>
+      <div><div class="stars" style="font-size:22px">★★★★★</div><div style="color:var(--muted);font-size:14px">38 avis vérifiés · clients Quintessence Spas</div></div>
+    </div>
+    <div class="revgrid">
+      <div class="rev"><div class="ph" style="background-image:url('../public/products/prado-4.jpg')"></div><div class="body">
+        <div class="stars">★★★★★</div><p style="font-size:14px;margin-top:8px">« Installation nickel en une matinée. Le spa est superbe et l'eau est cristalline. »</p>
+        <div class="who"><div class="av">JM</div><div style="font-size:13px"><b>Jean-Marc</b><br><span style="color:var(--muted)">Aix-en-Provence</span></div></div>
+      </div></div>
+      <div class="rev"><div class="ph" style="background-image:url('../public/products/prado-2.jpg')"></div><div class="body">
+        <div class="stars">★★★★★</div><p style="font-size:14px;margin-top:8px">« Conseil au top avant l'achat, livraison rapide. On l'utilise tous les soirs. »</p>
+        <div class="who"><div class="av">SL</div><div style="font-size:13px"><b>Sophie L.</b><br><span style="color:var(--muted)">Bordeaux</span></div></div>
+      </div></div>
+      <div class="rev"><div class="ph" style="background-image:url('../public/products/prado-6.jpg')"></div><div class="body">
+        <div class="stars">★★★★★</div><p style="font-size:14px;margin-top:8px">« Très bon rapport qualité-prix avec la remise. Massage puissant, on recommande. »</p>
+        <div class="who"><div class="av">TD</div><div style="font-size:13px"><b>Thomas D.</b><br><span style="color:var(--muted)">Lyon</span></div></div>
+      </div></div>
+    </div>
+  </div></section>
+
+  <!-- PRESENTATION + SPECS (existant) -->
+  <section class="section">
+    <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:36px" class="ps">
+      <div>
+        <h2>Présentation</h2>
+        <p class="lead">Le Spa Prado 6 places associe confort, massage par 33 hydrojets, éclairage LED et isolation renforcée. Filtration UV-C qui élimine 99,9 % des germes et bactéries.</p>
+        <h3 style="margin-top:22px;font-size:22px">Livraison &amp; installation</h3>
+        <p class="lead">Livraison, mise en place et mise en service partout en France par nos équipes.</p>
+      </div>
+      <div>
+        <h2>Caractéristiques</h2>
+        <div class="specbox" style="margin-top:14px">
+          <details open><summary>Essentiel <span class="pm">+</span></summary>
+            <dl style="padding-bottom:8px"><div class="row"><dt>Places</dt><dd>6 personnes</dd></div><div class="row"><dt>Jets</dt><dd>33 hydrojets</dd></div><div class="row"><dt>Garantie</dt><dd>5 ans</dd></div></dl>
+          </details>
+          <details><summary>Massage et hydrothérapie <span class="pm">+</span></summary>
+            <dl style="padding-bottom:8px"><div class="row"><dt>Hydrojets</dt><dd>33</dd></div><div class="row"><dt>Pompe principale</dt><dd>1 500 W</dd></div></dl>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARATOR -->
+  <section class="section"><div class="prop"><span class="tag">✦ Proposition</span>
+    <h2>Comparer nos modèles</h2>
+    <p class="lead">Aider le prospect à choisir sans quitter la page.</p>
+    <table class="ctable">
+      <tr><th>Modèle</th><th>Places</th><th>Jets</th><th>Prix remisé</th><th></th></tr>
+      <tr><td>Vassania</td><td>4</td><td>—</td><td>sur devis</td><td><a style="color:var(--accent)">Voir →</a></td></tr>
+      <tr><td class="hl">Prado (ce modèle)</td><td>6</td><td>33</td><td class="hl">10 140 €</td><td></td></tr>
+      <tr><td>Javelino</td><td>6</td><td>—</td><td>7 935 €</td><td><a style="color:var(--accent)">Voir →</a></td></tr>
+    </table>
+  </div></section>
+
+  <!-- FAQ -->
+  <section class="section"><div class="prop"><span class="tag">✦ Proposition</span>
+    <h2>Questions fréquentes</h2>
+    <div class="faq" style="margin-top:18px">
+      <details><summary>Quels sont les délais de livraison ? <span class="pm">+</span></summary><p style="padding:0 6px 14px;color:var(--muted)">En moyenne 4 à 6 semaines, livraison et mise en service comprises.</p></details>
+      <details><summary>Comment se passe l'installation ? <span class="pm">+</span></summary><p style="padding:0 6px 14px;color:var(--muted)">Nos équipes s'occupent de tout. Il suffit d'un support plan et d'une alimentation électrique conforme.</p></details>
+      <details><summary>Peut-on l'utiliser en hiver ? <span class="pm">+</span></summary><p style="padding:0 6px 14px;color:var(--muted)">Oui. L'isolation renforcée permet un usage toute l'année avec une consommation maîtrisée.</p></details>
+      <details><summary>Le financement est-il possible ? <span class="pm">+</span></summary><p style="padding:0 6px 14px;color:var(--muted)">Oui, paiement en plusieurs fois. Demandez une simulation dans votre devis.</p></details>
+    </div>
+  </div></section>
+
+  <!-- CROSS SELL -->
+  <section class="section" style="padding-bottom:60px"><div class="prop"><span class="tag">✦ Proposition</span>
+    <h2>Pour compléter votre spa</h2>
+    <div class="acc">
+      <div class="acard"><div class="ph"></div><div class="b"><b>Couverture premium</b><div style="color:var(--muted);font-size:14px;margin-top:4px">Isolation renforcée</div></div></div>
+      <div class="acard"><div class="ph"></div><div class="b"><b>Escalier bois</b><div style="color:var(--muted);font-size:14px;margin-top:4px">Accès confortable</div></div></div>
+      <div class="acard"><div class="ph"></div><div class="b"><b>Kit traitement de l'eau</b><div style="color:var(--muted);font-size:14px;margin-top:4px">Eau saine toute l'année</div></div></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- STICKY CTA -->
+<div class="legend">✦ = élément proposé</div>
+<div class="sticky"><div class="wrap">
+  <div><span class="old" style="color:var(--muted);text-decoration:line-through;font-size:13px">13 520 €</span> <span class="p">10 140 €</span> <span style="color:var(--olive);font-size:13px;font-weight:600">-25 %</span></div>
+  <button class="btn btn-primary">Demander mon devis gratuit</button>
+</div></div>
+
+<script>
+  const imgs=["prado-1","prado-2","prado-3","prado-4","prado-5","prado-6"].map(n=>"../public/products/"+n+".jpg");
+  const tw=document.getElementById('thumbs'), main=document.getElementById('main');
+  imgs.forEach((src,i)=>{const t=document.createElement('img');t.src=src;t.onerror=()=>t.remove();if(i===0)t.className='on';
+    t.onclick=()=>{main.src=src;[...tw.children].forEach(c=>c.className='');t.className='on';};tw.appendChild(t);});
+  function calc(){const p=10140,d=+document.getElementById('dur').value;document.getElementById('month').textContent=Math.round(p/d)+' €/mois';}
+  calc();
+</script>
+</body>
+</html>

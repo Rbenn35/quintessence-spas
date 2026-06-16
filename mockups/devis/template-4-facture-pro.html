@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — Template 4 · Facture pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--ink:#13313d;--accent:#1c6e8e;--cream:#f7fbfc;--line:#dbe7ec;--muted:#557079}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.55;padding:32px 16px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .doc{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;padding:30px 34px;border-bottom:3px solid var(--accent)}
+  .top img{height:42px}
+  .top .meta{text-align:right;font-size:12.5px;color:var(--muted);line-height:1.7}
+  .top .meta b{color:var(--ink);font-size:15px;font-family:'Fraunces'}
+  .parties{display:flex;justify-content:space-between;padding:22px 34px;font-size:13px;gap:20px;border-bottom:1px solid var(--line)}
+  .parties .l{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .body{padding:8px 34px 30px}
+  table{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px}
+  thead td{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 8px;border-bottom:2px solid var(--ink)}
+  tbody td{padding:12px 8px;border-bottom:1px solid var(--line)}
+  td.r{text-align:right;white-space:nowrap}
+  .old{color:var(--muted);text-decoration:line-through;font-size:12px}
+  .sum{margin-top:16px;margin-left:auto;width:60%;font-size:13.5px}
+  .sum .row{display:flex;justify-content:space-between;padding:7px 0}
+  .sum .t{display:flex;justify-content:space-between;padding:12px 0;border-top:2px solid var(--ink);font-family:'Fraunces';font-size:18px;font-weight:600;margin-top:6px}
+  .cond{margin-top:24px;padding:16px;background:var(--cream);border-radius:10px;font-size:12px;color:var(--muted)}
+  .cta{display:inline-block;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;padding:13px 26px;border-radius:8px;margin-top:20px}
+  .foot{padding:16px 34px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);text-align:center}
+</style>
+</head>
+<body>
+<div class="badge">Template 4 · Facture pro</div>
+<div class="doc">
+  <div class="top">
+    <img src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" />
+    <div class="meta"><b>DEVIS</b><br>N° DEV-2026-0142<br>Date : 10/06/2026<br>Validité : 30 jours</div>
+  </div>
+  <div class="parties">
+    <div><div class="l">Émetteur</div>Quintessence Spas<br>contact@quintessence-spas.fr<br>Vente en ligne — France</div>
+    <div style="text-align:right"><div class="l">Client</div>Marie Durand<br>marie.durand@email.fr<br>33000 Bordeaux</div>
+  </div>
+  <div class="body">
+    <table>
+      <thead><tr><td>Désignation</td><td class="r">Qté</td><td class="r">P.U. TTC</td><td class="r">Total</td></tr></thead>
+      <tbody>
+        <tr><td>Spa Prado 6 places — remise 25 %</td><td class="r">1</td><td class="r"><span class="old">13 520 €</span> 10 140 €</td><td class="r">10 140 €</td></tr>
+        <tr><td>Pack livraison</td><td class="r">1</td><td class="r">540 €</td><td class="r">540 €</td></tr>
+        <tr><td>Pack installation &amp; mise en service</td><td class="r">1</td><td class="r">1 190 €</td><td class="r">1 190 €</td></tr>
+        <tr><td>Couverture isotherme premium</td><td class="r">1</td><td class="r">290 €</td><td class="r">290 €</td></tr>
+      </tbody>
+    </table>
+    <div class="sum">
+      <div class="row"><span>Sous-total</span><span>12 160 €</span></div>
+      <div class="row"><span>Remise appliquée</span><span>− 3 380 €</span></div>
+      <div class="t"><span>Total TTC</span><span>12 160 €</span></div>
+    </div>
+    <div class="cond">Devis gratuit et sans engagement, valable 30 jours. TVA incluse. Livraison et installation assurées par nos équipes partout en France. Un acompte de 30 % confirme la commande.</div>
+    <a class="cta" href="#">Accepter ce devis →</a>
+  </div>
+  <div class="foot">Quintessence Spas · contact@quintessence-spas.fr · Vente en ligne, livraison &amp; installation partout en France</div>
+</div>
+</body>
+</html>

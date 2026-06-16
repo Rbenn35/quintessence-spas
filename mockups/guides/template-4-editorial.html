@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guides — Template 4 · Éditorial minimal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--cream:#f7fbfc;--card:#fff;--ink:#13313d;--accent:#1c6e8e;--line:#dbe7ec;--muted:#557079;--olive:#5f8fa0;--footer:#0f2932}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.1;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px;z-index:50}
+  header{border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px;max-width:1140px}
+  header img{height:54px}nav{display:flex;gap:26px;font-size:14px}nav a.on{color:var(--accent);font-weight:500}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--olive)}
+  .head{padding:70px 0 30px;text-align:center}
+  .head h1{font-size:58px;margin-top:12px}.head p{color:var(--muted);max-width:520px;margin:14px auto 0;font-size:17px}
+  .filters{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:6px 0 10px}
+  .filters .on{color:var(--accent);font-weight:600}
+  .list{padding:24px 0 80px}
+  .post{display:block;padding:34px 0;border-top:1px solid var(--line)}
+  .post:hover h2{color:var(--accent)}
+  .row{display:flex;gap:14px;align-items:center;color:var(--olive);font-size:12px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+  .num{font-family:'Fraunces';font-size:14px;color:var(--accent)}
+  .post h2{font-size:38px;margin:14px 0 10px;font-weight:500}
+  .post h2 em{font-style:italic}
+  .post p{color:var(--muted);max-width:640px;font-size:16px}
+  .more{display:inline-block;margin-top:14px;color:var(--accent);font-weight:600;font-size:14px}
+  footer{background:var(--footer);color:#9fb4bd;font-size:13px;padding:40px 0;text-align:center}
+</style>
+</head>
+<body>
+<div class="badge">Template 4 · Éditorial minimal</div>
+<header><div class="wrap" style="margin:0 auto">
+  <img src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" />
+  <nav><a>Les spas</a><a class="on">Guides</a><a>La marque</a><a>Contact</a></nav>
+</div></header>
+
+<div class="wrap">
+  <div class="head"><span class="eyebrow">Le magazine</span><h1>Guides &amp; conseils</h1><p>Des articles soignés pour choisir, installer et profiter pleinement de votre spa.</p></div>
+  <div class="filters"><span class="on">Tous</span><span>Guide</span><span>Comparatif</span><span>Pratique</span><span>Énergie</span><span>Bien-être</span></div>
+
+  <div class="list">
+    <a class="post"><div class="row"><span class="num">01</span><span>Guide</span><span style="color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400">· 8 min</span></div><h2>Guide d'achat du <em>spa rigide</em></h2><p>Places, dimensions, budget, énergie, installation : la méthode complète pour choisir sereinement, sans mauvaise surprise.</p><span class="more">Lire l'article →</span></a>
+    <a class="post"><div class="row"><span class="num">02</span><span>Comparatif</span><span style="color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400">· 6 min</span></div><h2>Spa rigide ou <em>gonflable</em> ?</h2><p>Durabilité, confort, consommation et coût réel sur la durée : le comparatif honnête pour faire le bon choix.</p><span class="more">Lire l'article →</span></a>
+    <a class="post"><div class="row"><span class="num">03</span><span>Pratique</span><span style="color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400">· 7 min</span></div><h2>Installation &amp; <em>entretien</em></h2><p>Préparer le support, mettre en service, traiter l'eau et hiverner : tous nos conseils d'installateurs.</p><span class="more">Lire l'article →</span></a>
+    <a class="post"><div class="row"><span class="num">04</span><span>Énergie</span><span style="color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400">· 5 min</span></div><h2>Combien <em>consomme</em> un spa ?</h2><p>Estimer et maîtriser le coût d'usage annuel selon l'isolation et le système de chauffage.</p><span class="more">Lire l'article →</span></a>
+    <a class="post"><div class="row"><span class="num">05</span><span>Bien-être</span><span style="color:var(--muted);text-transform:none;letter-spacing:0;font-weight:400">· 4 min</span></div><h2>Les <em>bienfaits</em> du spa</h2><p>Récupération musculaire, sommeil, détente : ce que l'on sait vraiment des effets du spa au quotidien.</p><span class="more">Lire l'article →</span></a>
+  </div>
+</div>
+<footer>© 2026 Quintessence Spas — Guides &amp; conseils</footer>
+</body>
+</html>

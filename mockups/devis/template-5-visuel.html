@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — Template 5 · Visuel produit</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--card:#fff;--ink:#13313d;--accent:#1c6e8e;--cream:#f7fbfc;--line:#dbe7ec;--muted:#557079;--footer:#0f2932}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.6;padding:32px 16px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .mail{max-width:600px;margin:0 auto;background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 12px 44px rgba(19,49,61,.10)}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500}
+  .top{padding:18px 30px;display:flex;justify-content:space-between;align-items:center}
+  .top img{height:38px}.top .r{font-size:11.5px;color:var(--muted)}
+  .visual{position:relative}
+  .visual img{width:100%;height:300px;object-fit:cover;display:block}
+  .price-tag{position:absolute;right:20px;bottom:-28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 20px;box-shadow:0 10px 30px rgba(19,49,61,.14);text-align:right}
+  .price-tag .old{color:var(--muted);text-decoration:line-through;font-size:13px}
+  .price-tag .now{font-family:'Fraunces';font-size:26px;color:var(--accent)}
+  .body{padding:46px 30px 30px}
+  h1{font-size:26px}
+  .lead{color:var(--muted);font-size:14.5px;margin-top:8px}
+  .lines{margin-top:22px;border-top:1px solid var(--line)}
+  .line{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .line .s{color:var(--muted);font-size:12px}
+  .tot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding:18px 22px;background:var(--ink);color:#fff;border-radius:16px}
+  .tot .l{font-size:13px;color:#bcd3da}.tot .v{font-family:'Fraunces';font-size:24px}
+  .cta{display:block;text-align:center;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;padding:16px;border-radius:40px;margin-top:22px}
+  .valid{text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
+  .foot{background:var(--footer);color:#9fb4bd;font-size:12px;padding:20px 30px;text-align:center}
+</style>
+</head>
+<body>
+<div class="badge">Template 5 · Visuel produit</div>
+<div class="mail">
+  <div class="top"><img src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" /><span class="r">Devis DEV-2026-0142</span></div>
+  <div class="visual">
+    <img src="../../public/products/prado-2.jpg" alt="" onerror="this.style.display='none'" />
+    <div class="price-tag"><div class="old">13 520 €</div><div class="now">10 140 €</div></div>
+  </div>
+  <div class="body">
+    <h1>Bonjour Marie, voici votre devis</h1>
+    <p class="lead">Le Spa Prado 6 places, avec votre remise de 25 % et les options d'installation.</p>
+    <div class="lines">
+      <div class="line"><span>Spa Prado 6 places<div class="s">6 places · 33 hydrojets</div></span><span>10 140 €</span></div>
+      <div class="line"><span>Pack livraison</span><span>540 €</span></div>
+      <div class="line"><span>Pack installation &amp; mise en service</span><span>1 190 €</span></div>
+      <div class="line"><span>Couverture isotherme premium</span><span>290 €</span></div>
+    </div>
+    <div class="tot"><div><div class="l">Total TTC · remise 3 380 €</div><div class="v">12 160 €</div></div><span style="font-size:30px">→</span></div>
+    <a class="cta" href="#">Valider mon devis</a>
+    <p class="valid">Offre valable 30 jours · Paiement 100 % sécurisé · Livraison France</p>
+  </div>
+  <div class="foot">Quintessence Spas · contact@quintessence-spas.fr</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — Template 1 · Classique épuré</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--card:#fff;--ink:#13313d;--accent:#1c6e8e;--accent-dk:#14566e;--cream:#f7fbfc;--line:#dbe7ec;--muted:#557079;--olive:#5f8fa0;--footer:#0f2932}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.6;padding:32px 16px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .mail{max-width:600px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;color:var(--ink)}
+  .head{padding:28px 36px;border-bottom:1px solid var(--line);text-align:center}
+  .head img{height:46px}
+  .body{padding:34px 36px}
+  .ref{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  .hi{font-size:15px;margin-top:18px}
+  h1{font-size:28px;margin:6px 0 4px}
+  .lead{color:var(--muted);font-size:14.5px;margin-top:8px}
+  .prod{display:flex;gap:14px;align-items:center;margin-top:24px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--cream)}
+  .prod img{width:84px;height:84px;border-radius:10px;object-fit:cover}
+  .prod .n{font-family:'Fraunces';font-size:20px}
+  .prod .s{font-size:12.5px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
+  td{padding:11px 0;border-bottom:1px solid var(--line)}
+  td.r{text-align:right;white-space:nowrap}
+  .old{color:var(--muted);text-decoration:line-through;font-size:12.5px;margin-right:6px}
+  .save{color:#00b67a;font-weight:600;font-size:13px}
+  .total td{border-bottom:none;border-top:2px solid var(--ink);padding-top:16px;font-size:18px;font-weight:700;font-family:'Fraunces'}
+  .cta{display:block;text-align:center;background:var(--accent);color:#fff;font-weight:600;text-decoration:none;padding:15px;border-radius:40px;margin-top:28px}
+  .valid{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px}
+  .foot{background:var(--footer);color:#9fb4bd;font-size:12px;padding:22px 36px;text-align:center}
+  .foot a{color:#cfe0e6;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="badge">Template 1 · Classique épuré</div>
+<div class="mail">
+  <div class="head"><img src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" /></div>
+  <div class="body">
+    <div class="ref">Devis n° DEV-2026-0142 · 10 juin 2026</div>
+    <p class="hi">Bonjour Marie,</p>
+    <h1>Votre devis personnalisé</h1>
+    <p class="lead">Merci pour votre demande. Voici votre proposition pour le modèle qui vous intéresse, remise incluse.</p>
+
+    <div class="prod">
+      <img src="../../public/products/prado-1.jpg" alt="" onerror="this.style.display='none'" />
+      <div><div class="n">Spa Prado 6 places</div><div class="s">6 places · 33 hydrojets · Gamme AquaLuxe</div></div>
+    </div>
+
+    <table>
+      <tr><td>Spa Prado 6 places <span class="save">(-25 %)</span></td><td class="r"><span class="old">13 520 €</span>10 140 €</td></tr>
+      <tr><td>Pack livraison</td><td class="r">540 €</td></tr>
+      <tr><td>Pack installation &amp; mise en service</td><td class="r">1 190 €</td></tr>
+      <tr><td>Couverture isotherme premium</td><td class="r">290 €</td></tr>
+      <tr class="total"><td>Total TTC</td><td class="r">12 160 €</td></tr>
+    </table>
+
+    <a class="cta" href="#">Valider mon devis →</a>
+    <p class="valid">Offre valable 30 jours · Soit 3 380 € d'économie · Paiement sécurisé</p>
+  </div>
+  <div class="foot">Quintessence Spas · <a href="#">contact@quintessence-spas.fr</a><br>Vente en ligne · Livraison &amp; installation partout en France</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — Proposition 3 (lignes encadrées)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--page:#fbfdfe;--ink:#13313d;--dark:#1b2a37;--accent:#2f86a3;--teal:#7fb6cf;--muted:#5d7681;--line:#e7eef1;--cream:#f5f9fb}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--page);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.65;padding:36px 16px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .mail{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;padding:44px 48px 36px;box-shadow:0 6px 30px rgba(19,49,61,.06)}
+  h1{font-family:'Fraunces',serif;font-weight:500}
+  .logo{height:46px;display:block;margin:0 auto 28px}
+  .eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);text-align:center}
+  h1{font-size:34px;text-align:center;line-height:1.25;margin-top:12px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lead{color:var(--muted);font-size:15px;margin-top:20px;text-align:center;max-width:440px;margin-left:auto;margin-right:auto}
+  .prod{display:flex;gap:14px;align-items:center;margin-top:26px;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--cream)}
+  .prod img{width:80px;height:80px;border-radius:10px;object-fit:cover}
+  .prod .n{font-family:'Fraunces';font-size:20px}.prod .s{font-size:12.5px;color:var(--muted)}
+  .card{margin-top:18px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .card .h{display:flex;justify-content:space-between;padding:12px 18px;background:var(--cream);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  .line{display:flex;justify-content:space-between;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15px}
+  .line:last-child{border-bottom:none}
+  .line .sub{font-size:12.5px;color:var(--muted)}
+  .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-right:10px}
+  .total{display:flex;align-items:stretch;margin-top:18px;background:var(--dark);color:#fff;border-radius:8px;overflow:hidden}
+  .total .l{flex:1;padding:20px 24px;font-family:'Fraunces';font-size:18px}
+  .total .l b{font-weight:600}.total .l .r{color:var(--teal)}
+  .total .v{display:flex;align-items:center;padding:20px 26px;font-family:'Fraunces';font-size:22px;border-left:1px solid rgba(255,255,255,.14)}
+  .cta{display:block;text-align:center;background:var(--dark);color:#fff;font-weight:600;text-decoration:none;padding:18px;border-radius:40px;margin-top:16px;letter-spacing:.06em;font-size:14px}
+  .meta{text-align:center;font-size:12.5px;color:var(--muted);margin-top:22px;line-height:1.95}
+</style>
+</head>
+<body>
+<div class="badge">Proposition 3 · lignes encadrées</div>
+<div class="mail">
+  <img class="logo" src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" />
+  <div class="eyebrow">Devis personnalisé</div>
+  <h1>Bonjour Marie,<br>votre <em>Prado</em> vous attend</h1>
+  <p class="lead">Nous avons le plaisir de vous adresser votre proposition exclusive, remise privilège incluse.</p>
+  <div class="prod">
+    <img src="../../public/products/prado-1.jpg" alt="" onerror="this.style.display='none'" />
+    <div><div class="n">Spa Prado 6 places</div><div class="s">Gamme AquaLuxe · 33 hydrojets · Gecko YJ3</div></div>
+  </div>
+  <div class="card">
+    <div class="h"><span>Devis DEV-2026-0142 · 10 juin 2026</span><span>Montant</span></div>
+    <div class="line"><span>Spa Prado 6 places<div class="sub">6 places · 33 hydrojets</div></span><span><span class="old">13 520 €</span>10 140 €</span></div>
+    <div class="line"><span>Pack livraison</span><span>540 €</span></div>
+    <div class="line"><span>Pack installation &amp; mise en service</span><span>1 190 €</span></div>
+    <div class="line"><span>Couverture isotherme premium</span><span>290 €</span></div>
+  </div>
+  <div class="total"><div class="l"><b>Total TTC</b> <span class="r">· remise 3 380 €</span></div><div class="v">12 160 €</div></div>
+  <a class="cta" href="#">VALIDER MON DEVIS</a>
+  <p class="meta">Paiement 100 % sécurisé · Livraison &amp; installation partout en France<br>Offre valable 30 jours · Soit 3 380 € d'économie<br>contact@quintessence-spas.fr</p>
+</div>
+</body>
+</html>

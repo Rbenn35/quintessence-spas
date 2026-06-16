@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — 6 mix (template 3 × 6)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#0f1115;color:#e8eaed}
+  header{padding:34px 24px 20px;text-align:center;border-bottom:1px solid #23262e}
+  header h1{font-size:24px;font-weight:600}
+  header p{color:#9aa0ab;margin-top:8px;font-size:14px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1700px;margin:24px auto;padding:0 22px}
+  @media(max-width:1200px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .cell{background:#16181d;border:1px solid #262a33;border-radius:12px;overflow:hidden}
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border-bottom:1px solid #262a33}
+  .bar b{font-size:14px}
+  .bar a{font-size:12px;color:#7fb4ff;text-decoration:none;font-weight:600}
+  .frame{position:relative;height:580px;overflow:hidden;background:#07171c}
+  .frame iframe{width:620px;height:1160px;border:0;transform:scale(.64);transform-origin:top left}
+</style>
+</head>
+<body>
+<header>
+  <h1>Devis — 6 déclinaisons « sombre + épuré » (mix 3 × 6)</h1>
+  <p>Croisement du premium sombre et du minimaliste typographique. Cliquez « Ouvrir » pour voir en grand.</p>
+</header>
+<div class="grid">
+  <div class="cell"><div class="bar"><b>Mix 1 · Dark minimal</b><a href="mix-1-dark-minimal.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-1-dark-minimal.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>Mix 2 · En-tête sombre</b><a href="mix-2-dark-header.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-2-dark-header.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>Mix 3 · Bicolore</b><a href="mix-3-bicolore.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-3-bicolore.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>Mix 4 · Dark editorial</b><a href="mix-4-dark-editorial.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-4-dark-editorial.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>Mix 5 · Clair + total sombre</b><a href="mix-5-blanc-total-sombre.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-5-blanc-total-sombre.html" scrolling="no"></iframe></div></div>
+  <div class="cell"><div class="bar"><b>Mix 6 · Dark médaillon</b><a href="mix-6-dark-medaillon.html" target="_blank">Ouvrir ↗</a></div><div class="frame"><iframe src="mix-6-dark-medaillon.html" scrolling="no"></iframe></div></div>
+</div>
+</body>
+</html>

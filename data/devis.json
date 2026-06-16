@@ -1,0 +1,54 @@
+{
+  "template": "prop-3",
+  "subject": "Votre devis personnalisé pour votre Spa {modele_court}",
+  "title": "Bonjour {prenom},\nvotre *{modele_court}* vous attend",
+  "validityDays": 10,
+  "delayMinutes": 40,
+  "extraRemisePct": 5,
+  "intro": "Merci {prenom} pour votre demande. Voici votre proposition pour le {modele}, soit {prix_total} TTC, avec {economie} d'économie. Offre valable {validite} jours.",
+  "lines": [
+    {
+      "id": "liv-std",
+      "type": "livraison",
+      "label": "Pack livraison",
+      "price": 540,
+      "active": true,
+      "description": "Livraison sur toute la France par camion semi-remorque 35T, déchargement au hayon et transpalette."
+    },
+    {
+      "id": "inst-std",
+      "type": "installation",
+      "label": "Pack installation & mise en service",
+      "price": 1190,
+      "active": false
+    },
+    {
+      "id": "acc-couverture",
+      "type": "accessoire",
+      "label": "Couverture thermique",
+      "price": 490,
+      "active": true,
+      "offered": true
+    },
+    {
+      "id": "acc-escalier",
+      "type": "accessoire",
+      "label": "Escalier bois",
+      "price": 190,
+      "active": false
+    },
+    {
+      "id": "acc-eau",
+      "type": "accessoire",
+      "label": "Kit traitement de l'eau O'Pure",
+      "price": 120,
+      "active": true,
+      "offered": true,
+      "description": "Traitement naturel et hypoallergénique, sans produit chimique dans l'eau."
+    }
+  ],
+  "genericDelayMinutes": 12,
+  "genericSubject": "{prenom}, parlons de votre projet de spa",
+  "genericTitle": "Bonjour {prenom},\nparlons de votre *projet*",
+  "genericBody": "Merci pour votre demande ! Pour vous proposer le spa le plus adapté et un devis au plus juste, pourriez-vous nous en dire un peu plus ?\n- Combien de personnes profiteront du spa ?\n- Plutôt détente, massage ou nage ?\n- Avez-vous un emplacement prévu (terrasse, jardin, intérieur) ?\n- Une idée du budget envisagé ?\nRépondez simplement à cet e-mail : nous reviendrons vers vous avec une proposition personnalisée."
+}

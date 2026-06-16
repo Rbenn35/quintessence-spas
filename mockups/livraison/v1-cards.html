@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Formules — V1 Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--card:#fff;--ink:#13313d;--terra:#1c6e8e;--terra-dk:#155a76;--line:#dbe7ec;--muted:#557079;--olive:#5f8fa0;--cream:#f7fbfc;--green:#00b67a}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.55;padding:46px 20px;display:flex;justify-content:center}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--terra);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  h2,h3{font-family:'Fraunces',serif;font-weight:500}
+  .wrap{max-width:980px;width:100%}
+  .eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--olive)}
+  h2{font-size:32px;margin-top:8px}
+  .lead{color:var(--muted);margin-top:8px;max-width:560px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}}
+  .c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;position:relative;display:flex;flex-direction:column}
+  .c.reco{border-color:var(--terra);box-shadow:0 14px 36px rgba(28,110,142,.12)}
+  .tag{position:absolute;top:-11px;left:24px;background:var(--terra);color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:20px;padding:4px 11px}
+  .ic{width:42px;height:42px;border-radius:11px;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--terra)}
+  h3{font-size:21px;margin-top:14px}
+  .desc{color:var(--muted);font-size:13.5px;margin-top:6px;flex:1}
+  ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+  li{display:flex;gap:8px;font-size:13px;color:var(--ink)}
+  li svg{color:var(--green);flex:0 0 auto;margin-top:2px}
+  .price{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between}
+  .price .v{font-family:'Fraunces';font-size:26px}.price small{color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="badge">V1 · Cards</div>
+<div class="wrap">
+  <span class="eyebrow">Livraison & installation</span>
+  <h2>Nos formules de livraison &amp; installation</h2>
+  <p class="lead">Choisissez la formule adaptée à votre projet. Nos équipes interviennent partout en France.</p>
+  <div class="grid">
+    <div class="c">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Livraison</h3>
+      <p class="desc">Livraison à votre domicile et dépose au plus près de l'emplacement prévu.</p>
+      <ul>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Transport sécurisé</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Partout en France</li>
+      </ul>
+      <div class="price"><span class="v">540 €</span><small>TTC</small></div>
+    </div>
+    <div class="c reco">
+      <span class="tag">Recommandé</span>
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4l-7 7 2 2 7-7a4 4 0 0 0 5.4-5.4l-2.3 2.3-2-2z"/></svg></div>
+      <h3>Livraison + installation</h3>
+      <p class="desc">Livraison, mise en place, raccordement et mise en service complète par nos techniciens.</p>
+      <ul>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mise en place &amp; raccordement</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Mise en service &amp; démo</li>
+      </ul>
+      <div class="price"><span class="v">1 190 €</span><small>TTC</small></div>
+    </div>
+    <div class="c">
+      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg></div>
+      <h3>Sur mesure</h3>
+      <p class="desc">Accès difficile, étage, grue ou région spécifique : nous établissons un devis adapté.</p>
+      <ul>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Étude de l'accès</li>
+        <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Solution levage</li>
+      </ul>
+      <div class="price"><span class="v">Sur devis</span><small>&nbsp;</small></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

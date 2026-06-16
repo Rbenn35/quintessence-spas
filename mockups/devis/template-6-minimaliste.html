@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Devis — Template 6 · Minimaliste</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#f7fbfc;--ink:#13313d;--accent:#1c6e8e;--line:#e2ebee;--muted:#557079}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;line-height:1.7;padding:40px 16px}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .mail{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:6px;padding:48px 44px}
+  h1{font-family:'Fraunces',serif;font-weight:500}
+  .logo{height:38px;display:block;margin:0 auto 36px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);text-align:center}
+  h1{font-size:32px;text-align:center;margin:10px 0 0}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lead{text-align:center;color:var(--muted);font-size:14.5px;margin-top:14px;max-width:400px;margin-left:auto;margin-right:auto}
+  .rule{height:1px;background:var(--line);margin:36px 0}
+  .line{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;font-size:15px}
+  .line .lbl{color:var(--ink)}
+  .line .sub{font-size:12px;color:var(--muted)}
+  .old{color:var(--muted);text-decoration:line-through;font-size:13px;margin-right:8px}
+  .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:18px;border-top:1px solid var(--ink)}
+  .total .lbl{font-family:'Fraunces';font-size:17px}
+  .total .v{font-family:'Fraunces';font-size:26px}
+  .cta{display:block;text-align:center;border:1.5px solid var(--ink);color:var(--ink);font-weight:500;text-decoration:none;padding:15px;border-radius:2px;margin-top:34px;letter-spacing:.04em;font-size:14px;transition:.2s}
+  .cta:hover{background:var(--ink);color:#fff}
+  .meta{text-align:center;font-size:12px;color:var(--muted);margin-top:24px;line-height:1.8}
+</style>
+</head>
+<body>
+<div class="badge">Template 6 · Minimaliste</div>
+<div class="mail">
+  <img class="logo" src="../../public/brand/logo.png" alt="Quintessence Spas" onerror="this.style.display='none'" />
+  <div class="eyebrow">Devis personnalisé</div>
+  <h1>Bonjour Marie,<br>votre <em>Prado</em> vous attend</h1>
+  <p class="lead">Merci pour votre demande. Voici votre proposition, remise de 25 % déjà appliquée.</p>
+
+  <div class="rule"></div>
+
+  <div class="line"><span class="lbl">Spa Prado 6 places<div class="sub">6 places · 33 hydrojets</div></span><span><span class="old">13 520 €</span>10 140 €</span></div>
+  <div class="line"><span class="lbl">Pack livraison</span><span>540 €</span></div>
+  <div class="line"><span class="lbl">Pack installation &amp; mise en service</span><span>1 190 €</span></div>
+  <div class="line"><span class="lbl">Couverture isotherme premium</span><span>290 €</span></div>
+
+  <div class="total"><span class="lbl">Total TTC</span><span class="v">12 160 €</span></div>
+
+  <a class="cta" href="#">VALIDER MON DEVIS</a>
+  <p class="meta">Offre valable 30 jours · Soit 3 380 € d'économie<br>Paiement sécurisé · Livraison &amp; installation partout en France<br>contact@quintessence-spas.fr</p>
+</div>
+</body>
+</html>

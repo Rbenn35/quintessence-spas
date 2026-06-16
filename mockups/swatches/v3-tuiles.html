@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pastilles — V3</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#edf4f7;--card:#fff;--ink:#13313d;--terra:#1c6e8e;--terra-dk:#155a76;--line:#dbe7ec;--muted:#557079;--olive:#5f8fa0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink);font-weight:300;padding:40px 16px;display:flex;justify-content:center}
+  .badge{position:fixed;left:16px;bottom:16px;background:var(--terra);color:#fff;font-size:12px;font-weight:600;padding:7px 14px;border-radius:20px}
+  .card{max-width:430px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+  .group{margin-bottom:22px}
+  .lbl{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--olive);margin-bottom:12px}
+  .row{display:flex;gap:14px;flex-wrap:wrap}
+  .opt{cursor:pointer;text-align:center;width:58px}
+  .tile{width:58px;height:46px;border-radius:12px;border:1px solid rgba(0,0,0,.1);outline:2px solid transparent;outline-offset:2px;transition:.15s}
+  .opt[aria-checked="true"] .tile{outline-color:var(--terra)}
+  .cap{display:block;margin-top:6px;font-size:11px;color:var(--muted);line-height:1.3}
+  .opt[aria-checked="true"] .cap{color:var(--ink);font-weight:500}
+  .cta{display:block;width:100%;text-align:center;background:var(--terra);color:#fff;font-weight:600;border:none;border-radius:40px;padding:15px;font-size:15px;margin-top:6px;cursor:pointer}
+  .cta:hover{background:var(--terra-dk)}
+</style>
+</head>
+<body>
+<div class="badge">V3 · Tuiles + libellé</div>
+<div class="card">
+  <div class="group" data-group>
+    <div class="lbl">Couleur de coque</div>
+    <div class="row">
+      <div class="opt" aria-checked="true"><span class="tile" style="background:#f1f2ef"></span><span class="cap">Blanc nacré</span></div>
+      <div class="opt"><span class="tile" style="background:#c7cbce"></span><span class="cap">Gris perle</span></div>
+      <div class="opt"><span class="tile" style="background:#e7e1d7"></span><span class="cap">Marbre</span></div>
+      <div class="opt"><span class="tile" style="background:#cfe2ea"></span><span class="cap">Bleu glacier</span></div>
+      <div class="opt"><span class="tile" style="background:#ddd1bd"></span><span class="cap">Sable</span></div>
+    </div>
+  </div>
+  <div class="group" data-group>
+    <div class="lbl">Tablier</div>
+    <div class="row">
+      <div class="opt" aria-checked="true"><span class="tile" style="background:#2c3034"></span><span class="cap">Anthracite</span></div>
+      <div class="opt"><span class="tile" style="background:#15181b"></span><span class="cap">Noir</span></div>
+      <div class="opt"><span class="tile" style="background:#5a4632"></span><span class="cap">Brun</span></div>
+      <div class="opt"><span class="tile" style="background:#6b7177"></span><span class="cap">Gris</span></div>
+      <div class="opt"><span class="tile" style="background:#8a7d6d"></span><span class="cap">Taupe</span></div>
+    </div>
+  </div>
+  <button class="cta">Demander un devis</button>
+</div>
+<script>
+  document.querySelectorAll('[data-group]').forEach(g=>{
+    g.querySelectorAll('.opt').forEach(s=>s.addEventListener('click',()=>{
+      g.querySelectorAll('.opt').forEach(x=>x.setAttribute('aria-checked','false'));
+      s.setAttribute('aria-checked','true');
+    }));
+  });
+</script>
+</body>
+</html>

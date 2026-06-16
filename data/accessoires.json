@@ -1,0 +1,26 @@
+[
+  {
+    "id": "acc-couverture",
+    "name": "Couverture isotherme premium",
+    "description": "Limite les pertes de chaleur et protège l'eau.",
+    "price": 490,
+    "image": "/products/1781105013331-couverture-spa-quintessence-spas.png",
+    "active": true
+  },
+  {
+    "id": "acc-escalier",
+    "name": "Escalier pour Spa Noir",
+    "description": "Accès confortable et sécurisé au spa.",
+    "price": 190,
+    "image": "/products/1781111313747-marche-spa-quintessence-spas.png",
+    "active": true
+  },
+  {
+    "id": "acc-eau",
+    "name": "Kit traitement de l'eau O'Pure",
+    "description": "Tout le nécessaire pour une eau naturelle toute l'année sans produit chimique.",
+    "price": 120,
+    "image": "/products/1781110860464-kit-o-pure.png",
+    "active": true
+  }
+]

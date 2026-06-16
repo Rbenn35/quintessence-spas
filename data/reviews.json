@@ -1,0 +1,26 @@
+[
+  {
+    "id": "seed-1",
+    "author": "Jean-Marc",
+    "city": "Aix-en-Provence",
+    "rating": 5,
+    "text": "Installation nickel en une matinée. Le spa est superbe et l'eau est cristalline.",
+    "published": true
+  },
+  {
+    "id": "seed-2",
+    "author": "Sophie L.",
+    "city": "Bordeaux",
+    "rating": 5,
+    "text": "Conseil au top avant l'achat, livraison rapide. On l'utilise tous les soirs.",
+    "published": true
+  },
+  {
+    "id": "seed-3",
+    "author": "Thomas D.",
+    "city": "Lyon",
+    "rating": 5,
+    "text": "Très bon rapport qualité-prix avec la remise. Massage puissant, je recommande.",
+    "published": true
+  }
+]
