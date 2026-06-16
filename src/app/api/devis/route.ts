@@ -54,6 +54,9 @@ export async function POST(request: Request) {
     getAllDevisRequests(),
   ]);
 
+  // URL absolue du site (pour les images du devis dans l'e-mail).
+  const baseUrl = new URL(request.url).origin;
+
   // Résolution du produit : slug, sinon libellé « Nom N places ».
   // Pas de repli : si rien ne correspond, la demande est GÉNÉRIQUE.
   const product =
@@ -85,6 +88,7 @@ export async function POST(request: Request) {
       settings,
       ref: "",
       dateLabel,
+      baseUrl,
     });
     const sendAt = new Date(
       now.getTime() + config.genericDelayMinutes * 60_000,
@@ -130,6 +134,7 @@ export async function POST(request: Request) {
     settings,
     ref,
     dateLabel,
+    baseUrl,
   });
 
   const sendAt = new Date(

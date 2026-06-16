@@ -114,19 +114,30 @@ ${
     intro,
   )}</p>
 
-  <div style="display:flex;gap:14px;align-items:center;margin-top:26px;padding:14px;border:1px solid ${C.line};border-radius:14px;background:${C.cream}">
-    <img src="${d.productImage}" alt="" style="width:80px;height:80px;border-radius:10px;object-fit:cover" />
-    <div><div style="font-family:${serif};font-size:20px">${esc(
-      d.productName,
-    )}</div><div style="font-size:12.5px;color:${C.muted}">${esc(
-      d.productSpecs,
-    )}</div></div>
-  </div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;margin-top:26px;border:1px solid ${C.line};border-radius:14px;background:${C.cream}">
+    <tr>
+      ${
+        d.productImage
+          ? `<td width="94" style="padding:14px 0 14px 14px;vertical-align:middle"><img src="${d.productImage}" alt="" width="80" height="80" style="width:80px;height:80px;border-radius:10px;object-fit:cover;display:block" /></td>`
+          : ""
+      }
+      <td style="padding:14px;vertical-align:middle"><div style="font-family:${serif};font-size:20px;color:${C.ink}">${esc(
+        d.productName,
+      )}</div><div style="font-size:12.5px;color:${C.muted}">${esc(
+        d.productSpecs,
+      )}</div></td>
+    </tr>
+  </table>
 
   <div style="margin-top:18px;border:1px solid ${C.line};border-radius:14px;overflow:hidden">
-    <div style="display:flex;justify-content:space-between;padding:12px 18px;background:${C.cream};font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${C.muted};border-bottom:1px solid ${C.line}">
-      <span>Devis ${esc(d.ref)} · ${esc(d.dateLabel)}</span><span>Montant</span>
-    </div>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;background:${C.cream};border-bottom:1px solid ${C.line}">
+      <tr>
+        <td style="padding:12px 18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${C.muted}">Devis ${esc(
+          d.ref,
+        )} · ${esc(d.dateLabel)}</td>
+        <td align="right" style="padding:12px 18px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:${C.muted};text-align:right">Montant</td>
+      </tr>
+    </table>
     <table style="width:100%;border-collapse:collapse"><tbody>${lines}</tbody></table>
   </div>
 
