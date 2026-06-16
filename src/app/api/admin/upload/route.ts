@@ -29,8 +29,9 @@ export async function POST(request: Request) {
     .replace(/-+/g, "-");
   const name = `${Date.now()}-${safe}`;
 
-  // Production : Vercel Blob (stockage persistant).
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
+  // Production : Vercel Blob (stockage persistant). Jeton statique
+  // (BLOB_READ_WRITE_TOKEN) ou store connecté via OIDC (BLOB_STORE_ID).
+  if (process.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_STORE_ID) {
     const blob = await put(`products/${name}`, file, {
       access: "public",
       addRandomSuffix: false,
