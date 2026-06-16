@@ -14,8 +14,11 @@ import path from "path";
  * fallback, donc le site affiche le vrai catalogue dès le premier déploiement.
  */
 const DATA_DIR = path.join(process.cwd(), "data");
-const useRedis =
-  !!process.env.KV_REST_API_URL && !!process.env.KV_REST_API_TOKEN;
+// Compatible avec les deux conventions de nommage (Vercel KV / Upstash Marketplace).
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN =
+  process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const useRedis = !!KV_URL && !!KV_TOKEN;
 
 type RedisLike = {
   get<T>(key: string): Promise<T | null>;
@@ -27,8 +30,8 @@ async function redis(): Promise<RedisLike> {
   if (!_redis) {
     const { Redis } = await import("@upstash/redis");
     _redis = new Redis({
-      url: process.env.KV_REST_API_URL as string,
-      token: process.env.KV_REST_API_TOKEN as string,
+      url: KV_URL as string,
+      token: KV_TOKEN as string,
     }) as unknown as RedisLike;
   }
   return _redis;
