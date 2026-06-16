@@ -1,6 +1,3 @@
-import fs from "fs/promises";
-import fssync from "fs";
-import path from "path";
 import { seedSpas, gammes as defaultGammes, type Spa } from "./spas";
 import { seedArticles, type Article } from "./articles";
 import { seedReviews, type Review } from "./reviews";
@@ -9,45 +6,48 @@ import type { ContactMessage } from "./messages";
 import { defaultDevisConfig, type DevisConfig } from "./devis";
 import type { DevisRequest } from "./devis-requests";
 import { seedAccessoires, type Accessoire } from "./accessoires";
+import { storeRead, storeWrite } from "./kv";
 
 /**
- * Store de contenu (back-office). Les produits sont stockés dans data/spas.json,
- * éditable via l'admin. À la première lecture, le fichier est initialisé à
- * partir des données « seed ».
+ * Store de contenu (back-office). Persistance via la couche `kv` :
+ * base de données en production (Vercel), fichiers /data en local.
  *
- * ⚠️ En production serverless, l'écriture fichier n'est pas persistante :
- * brancher une base de données + stockage d'images au déploiement.
+ * Le contenu commité dans /data est importé ici comme valeur initiale :
+ * ainsi, sur un déploiement neuf (base vide), le site affiche le vrai
+ * catalogue avant toute édition admin. Données runtime (messages, demandes de
+ * devis) : valeur initiale vide, non versionnées.
  */
-const DATA_DIR = path.join(process.cwd(), "data");
-const SPAS_FILE = path.join(DATA_DIR, "spas.json");
+import spasContent from "../../data/spas.json";
+import articlesContent from "../../data/articles.json";
+import reviewsContent from "../../data/reviews.json";
+import accessoiresContent from "../../data/accessoires.json";
+import gammesContent from "../../data/gammes.json";
+import settingsContent from "../../data/settings.json";
+import devisContent from "../../data/devis.json";
 
-async function ensureFile(): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) {
-    await fs.mkdir(DATA_DIR, { recursive: true });
-  }
-  if (!fssync.existsSync(SPAS_FILE)) {
-    await fs.writeFile(SPAS_FILE, JSON.stringify(seedSpas, null, 2), "utf8");
-  }
-}
+const SPAS_SEED = (spasContent as unknown as Spa[]) ?? seedSpas;
+const ARTICLES_SEED = (articlesContent as unknown as Article[]) ?? seedArticles;
+const REVIEWS_SEED = (reviewsContent as unknown as Review[]) ?? seedReviews;
+const ACCESSOIRES_SEED =
+  (accessoiresContent as unknown as Accessoire[]) ?? seedAccessoires;
+const GAMMES_SEED = (gammesContent as unknown as string[]) ?? [
+  ...defaultGammes,
+];
+const SETTINGS_SEED = settingsContent as unknown as Partial<SiteSettings>;
+const DEVIS_SEED = devisContent as unknown as Partial<DevisConfig>;
+
+/* -------------------------------- Spas ------------------------------------ */
 
 export async function getAllSpas(): Promise<Spa[]> {
-  await ensureFile();
-  try {
-    const raw = await fs.readFile(SPAS_FILE, "utf8");
-    return JSON.parse(raw) as Spa[];
-  } catch {
-    return seedSpas;
-  }
+  return storeRead<Spa[]>("spas", SPAS_SEED);
 }
 
 export async function getSpaBySlug(slug: string): Promise<Spa | undefined> {
-  const all = await getAllSpas();
-  return all.find((s) => s.slug === slug);
+  return (await getAllSpas()).find((s) => s.slug === slug);
 }
 
 export async function saveAllSpas(spas: Spa[]): Promise<void> {
-  await ensureFile();
-  await fs.writeFile(SPAS_FILE, JSON.stringify(spas, null, 2), "utf8");
+  await storeWrite("spas", spas);
 }
 
 export async function upsertSpa(spa: Spa): Promise<void> {
@@ -110,26 +110,8 @@ export async function bulkPatchSpas(
 
 /* ----------------------------- Articles (blog) ---------------------------- */
 
-const ARTICLES_FILE = path.join(DATA_DIR, "articles.json");
-
-async function ensureArticles(): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  if (!fssync.existsSync(ARTICLES_FILE)) {
-    await fs.writeFile(
-      ARTICLES_FILE,
-      JSON.stringify(seedArticles, null, 2),
-      "utf8",
-    );
-  }
-}
-
 export async function getAllArticles(): Promise<Article[]> {
-  await ensureArticles();
-  try {
-    return JSON.parse(await fs.readFile(ARTICLES_FILE, "utf8")) as Article[];
-  } catch {
-    return seedArticles;
-  }
+  return storeRead<Article[]>("articles", ARTICLES_SEED);
 }
 
 export async function getArticleBySlug(
@@ -139,8 +121,7 @@ export async function getArticleBySlug(
 }
 
 export async function saveAllArticles(articles: Article[]): Promise<void> {
-  await ensureArticles();
-  await fs.writeFile(ARTICLES_FILE, JSON.stringify(articles, null, 2), "utf8");
+  await storeWrite("articles", articles);
 }
 
 export async function upsertArticle(article: Article): Promise<void> {
@@ -158,22 +139,8 @@ export async function deleteArticle(slug: string): Promise<void> {
 
 /* ------------------------------- Avis clients ----------------------------- */
 
-const REVIEWS_FILE = path.join(DATA_DIR, "reviews.json");
-
-async function ensureReviews(): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  if (!fssync.existsSync(REVIEWS_FILE)) {
-    await fs.writeFile(REVIEWS_FILE, JSON.stringify(seedReviews, null, 2), "utf8");
-  }
-}
-
 export async function getAllReviews(): Promise<Review[]> {
-  await ensureReviews();
-  try {
-    return JSON.parse(await fs.readFile(REVIEWS_FILE, "utf8")) as Review[];
-  } catch {
-    return seedReviews;
-  }
+  return storeRead<Review[]>("reviews", REVIEWS_SEED);
 }
 
 /** Avis affichés sur une fiche : globaux + ceux du modèle, publiés. */
@@ -185,8 +152,7 @@ export async function getReviewsForProduct(slug: string): Promise<Review[]> {
 }
 
 export async function saveAllReviews(reviews: Review[]): Promise<void> {
-  await ensureReviews();
-  await fs.writeFile(REVIEWS_FILE, JSON.stringify(reviews, null, 2), "utf8");
+  await storeWrite("reviews", reviews);
 }
 
 export async function upsertReview(review: Review): Promise<void> {
@@ -204,47 +170,27 @@ export async function deleteReview(id: string): Promise<void> {
 
 /* ----------------------------- Réglages du site --------------------------- */
 
-const SETTINGS_FILE = path.join(DATA_DIR, "settings.json");
-
 export async function getSettings(): Promise<SiteSettings> {
-  if (!fssync.existsSync(SETTINGS_FILE)) return defaultSettings;
-  try {
-    const raw = JSON.parse(
-      await fs.readFile(SETTINGS_FILE, "utf8"),
-    ) as Partial<SiteSettings>;
-    return {
-      ...defaultSettings,
-      ...raw,
-      stats: { ...defaultSettings.stats, ...(raw.stats ?? {}) },
-    };
-  } catch {
-    return defaultSettings;
-  }
+  const raw = await storeRead<Partial<SiteSettings>>("settings", SETTINGS_SEED);
+  return {
+    ...defaultSettings,
+    ...raw,
+    stats: { ...defaultSettings.stats, ...(raw.stats ?? {}) },
+  };
 }
 
 export async function saveSettings(settings: SiteSettings): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(SETTINGS_FILE, JSON.stringify(settings, null, 2), "utf8");
+  await storeWrite("settings", settings);
 }
 
 /* --------------------------- Messages de contact -------------------------- */
 
-const MESSAGES_FILE = path.join(DATA_DIR, "messages.json");
-
 export async function getAllMessages(): Promise<ContactMessage[]> {
-  if (!fssync.existsSync(MESSAGES_FILE)) return [];
-  try {
-    return JSON.parse(
-      await fs.readFile(MESSAGES_FILE, "utf8"),
-    ) as ContactMessage[];
-  } catch {
-    return [];
-  }
+  return storeRead<ContactMessage[]>("messages", []);
 }
 
 async function saveAllMessages(messages: ContactMessage[]): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(MESSAGES_FILE, JSON.stringify(messages, null, 2), "utf8");
+  await storeWrite("messages", messages);
 }
 
 export async function addMessage(message: ContactMessage): Promise<void> {
@@ -267,53 +213,34 @@ export async function setMessageRead(id: string, read: boolean): Promise<void> {
   }
 }
 
+/** Nombre de messages non lus (pour le badge de notification admin). */
+export async function getUnreadMessageCount(): Promise<number> {
+  return (await getAllMessages()).filter((m) => !m.read).length;
+}
+
 /* ----------------------------- Config du devis ---------------------------- */
 
-const DEVIS_FILE = path.join(DATA_DIR, "devis.json");
-
 export async function getDevisConfig(): Promise<DevisConfig> {
-  if (!fssync.existsSync(DEVIS_FILE)) return defaultDevisConfig;
-  try {
-    const raw = JSON.parse(
-      await fs.readFile(DEVIS_FILE, "utf8"),
-    ) as Partial<DevisConfig>;
-    return {
-      ...defaultDevisConfig,
-      ...raw,
-      lines: raw.lines ?? defaultDevisConfig.lines,
-    };
-  } catch {
-    return defaultDevisConfig;
-  }
+  const raw = await storeRead<Partial<DevisConfig>>("devis", DEVIS_SEED);
+  return {
+    ...defaultDevisConfig,
+    ...raw,
+    lines: raw.lines ?? defaultDevisConfig.lines,
+  };
 }
 
 export async function saveDevisConfig(config: DevisConfig): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(DEVIS_FILE, JSON.stringify(config, null, 2), "utf8");
+  await storeWrite("devis", config);
 }
 
 /* --------------------------- Demandes de devis ---------------------------- */
 
-const DEVIS_REQUESTS_FILE = path.join(DATA_DIR, "devis-requests.json");
-
 export async function getAllDevisRequests(): Promise<DevisRequest[]> {
-  if (!fssync.existsSync(DEVIS_REQUESTS_FILE)) return [];
-  try {
-    return JSON.parse(
-      await fs.readFile(DEVIS_REQUESTS_FILE, "utf8"),
-    ) as DevisRequest[];
-  } catch {
-    return [];
-  }
+  return storeRead<DevisRequest[]>("devis-requests", []);
 }
 
 async function saveAllDevisRequests(requests: DevisRequest[]): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  await fs.writeFile(
-    DEVIS_REQUESTS_FILE,
-    JSON.stringify(requests, null, 2),
-    "utf8",
-  );
+  await storeWrite("devis-requests", requests);
 }
 
 export async function getDevisRequest(
@@ -347,28 +274,8 @@ export async function deleteDevisRequest(id: string): Promise<void> {
 
 /* ----------------------- Accessoires (complémentaires) -------------------- */
 
-const ACCESSOIRES_FILE = path.join(DATA_DIR, "accessoires.json");
-
-async function ensureAccessoires(): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
-  if (!fssync.existsSync(ACCESSOIRES_FILE)) {
-    await fs.writeFile(
-      ACCESSOIRES_FILE,
-      JSON.stringify(seedAccessoires, null, 2),
-      "utf8",
-    );
-  }
-}
-
 export async function getAllAccessoires(): Promise<Accessoire[]> {
-  await ensureAccessoires();
-  try {
-    return JSON.parse(
-      await fs.readFile(ACCESSOIRES_FILE, "utf8"),
-    ) as Accessoire[];
-  } catch {
-    return seedAccessoires;
-  }
+  return storeRead<Accessoire[]>("accessoires", ACCESSOIRES_SEED);
 }
 
 export async function getAccessoireById(
@@ -378,8 +285,7 @@ export async function getAccessoireById(
 }
 
 async function saveAllAccessoires(items: Accessoire[]): Promise<void> {
-  await ensureAccessoires();
-  await fs.writeFile(ACCESSOIRES_FILE, JSON.stringify(items, null, 2), "utf8");
+  await storeWrite("accessoires", items);
 }
 
 export async function upsertAccessoire(item: Accessoire): Promise<void> {
@@ -397,20 +303,12 @@ export async function deleteAccessoire(id: string): Promise<void> {
 
 /* ------------------------------ Gammes / catégories ----------------------- */
 
-const GAMMES_FILE = path.join(DATA_DIR, "gammes.json");
-
 export async function getGammes(): Promise<string[]> {
-  if (!fssync.existsSync(GAMMES_FILE)) return [...defaultGammes];
-  try {
-    const list = JSON.parse(await fs.readFile(GAMMES_FILE, "utf8")) as string[];
-    return Array.isArray(list) && list.length ? list : [...defaultGammes];
-  } catch {
-    return [...defaultGammes];
-  }
+  const list = await storeRead<string[]>("gammes", GAMMES_SEED);
+  return Array.isArray(list) && list.length ? list : [...defaultGammes];
 }
 
 export async function saveGammes(gammes: string[]): Promise<void> {
-  if (!fssync.existsSync(DATA_DIR)) await fs.mkdir(DATA_DIR, { recursive: true });
   const clean = gammes.map((g) => g.trim()).filter(Boolean);
-  await fs.writeFile(GAMMES_FILE, JSON.stringify(clean, null, 2), "utf8");
+  await storeWrite("gammes", clean);
 }
