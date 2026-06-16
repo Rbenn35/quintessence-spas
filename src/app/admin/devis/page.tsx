@@ -1,43 +1,40 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
-import { getDevisConfig } from "@/lib/store";
-import { DevisConfigEditor } from "./DevisConfigEditor";
+import { getAllDevisRequests } from "@/lib/store";
+import { DevisTabs } from "./DevisTabs";
+import { DevisBrowser } from "./DevisBrowser";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminDevis() {
   if (!(await isAdmin())) redirect("/admin/login");
-  const config = await getDevisConfig();
+  const requests = await getAllDevisRequests();
+
+  // Tri : « à envoyer » d'abord (par échéance), puis les autres (plus récents).
+  const sorted = [...requests].sort((a, b) => {
+    const ap = a.status === "pending";
+    const bp = b.status === "pending";
+    if (ap && !bp) return -1;
+    if (bp && !ap) return 1;
+    if (ap && bp) return a.sendAt.localeCompare(b.sendAt);
+    return b.createdAt.localeCompare(a.createdAt);
+  });
+  const pending = requests.filter((r) => r.status === "pending").length;
 
   return (
-    <div className="mx-auto max-w-3xl px-6 py-12">
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-3xl">Devis</h1>
-        <div className="flex flex-wrap gap-2">
-          <Link
-            href="/admin/devis/demandes"
-            className="rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:bg-cream"
-          >
-            Demandes (file d&apos;envoi)
-          </Link>
-          <Link
-            href="/admin/devis/apercu"
-            target="_blank"
-            className="rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:bg-cream"
-          >
-            Aperçu du devis ↗
-          </Link>
-          <Link
-            href="/admin/devis/apercu-info"
-            target="_blank"
-            className="rounded-full border border-line px-5 py-2.5 text-sm font-medium hover:bg-cream"
-          >
-            Aperçu e-mail générique ↗
-          </Link>
-        </div>
+    <div className="mx-auto max-w-4xl px-6 py-12">
+      <h1 className="text-3xl">Devis</h1>
+      <p className="mt-1 text-sm text-muted">
+        {requests.length} devis au total · {pending} à envoyer
+      </p>
+
+      <div className="mt-5">
+        <DevisTabs />
       </div>
-      <DevisConfigEditor initial={config} />
+
+      <div className="mt-6">
+        <DevisBrowser requests={sorted} />
+      </div>
     </div>
   );
 }
