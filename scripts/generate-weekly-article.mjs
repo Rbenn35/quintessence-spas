@@ -49,6 +49,7 @@ Optimisation SEO ET GEO (réponses citables par les LLM) :
 - Données chiffrées réalistes (marges 25-40 %, prix 8 000-15 000 € TTC, réponse candidature sous 48 h).
 - Maillage interne : au moins un lien vers ${SITE_URL}/revendeur et un vers ${SITE_URL}/spas.
 - 800 à 1100 mots. Pas d'invention de certifications ou récompenses.
+- Le champ "title" est le titre éditorial SEUL : n'y ajoute PAS le nom de la marque ("Quintessence Spas") ni de séparateur ("|", "·", "—") — le site ajoute déjà la marque automatiquement.
 Réponds UNIQUEMENT avec un objet JSON valide (sans balises Markdown), au format :
 {"title":"...","meta_desc":"... (max 155 car.)","excerpt":"...","content_html":"<h2>...</h2><p>...</p>... (corps en HTML, SANS la FAQ, SANS le titre H1, balises autorisées: h2,h3,p,ul,ol,li,strong,em,a)","faq":[{"q":"...","a":"..."}]}`;
 
@@ -117,14 +118,19 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans balises Markdown), au format
 // 3) Publication sur le site via l'endpoint sécurisé.
 async function publish(t, art) {
   const words = String(art.content_html).replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
+  // Filet de sécurité : retire un éventuel "… | Quintessence Spas" en fin de titre
+  // (le site ajoute déjà la marque automatiquement).
+  const title = String(art.title)
+    .replace(/\s*[|·–—-]\s*Quintessence\s*Spas\s*$/i, "")
+    .trim();
   const payload = {
     slug: t.slug,
-    title: art.title,
+    title,
     category: "Revendeur",
     excerpt: art.excerpt,
     content: art.content_html,
     faq: Array.isArray(art.faq) ? art.faq : [],
-    metaTitle: art.title,
+    metaTitle: title,
     metaDescription: art.meta_desc,
     readMin: Math.max(3, Math.round(words / 200)),
     cover: "/products/lucerne-installe.jpg",
