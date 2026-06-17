@@ -30,10 +30,20 @@ export type IconName =
   | "waves"
   | "seat"
   | "energy"
-  | "star";
+  | "star"
+  | "plug"
+  | "tag"
+  | "percent"
+  | "gift"
+  | "fire";
 
 /** Toutes les icônes disponibles (palette du back-office), avec leur libellé. */
 export const ICON_LIST: { name: IconName; label: string }[] = [
+  { name: "plug", label: "Prise / branchement" },
+  { name: "tag", label: "Étiquette / badge" },
+  { name: "percent", label: "Remise %" },
+  { name: "gift", label: "Offert / cadeau" },
+  { name: "fire", label: "Déstockage / promo" },
   { name: "check", label: "Coche" },
   { name: "places", label: "Places" },
   { name: "jets", label: "Jets / hydro" },
@@ -283,6 +293,52 @@ export function FeatureIcon({
       return (
         <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
           <path d="M12 3l2.6 5.6L20.5 9.4l-4.3 4.1 1.1 6L12 16.9 6.7 19.5l1.1-6-4.3-4.1 5.9-.8z" {...stroke} />
+        </svg>
+      );
+    case "plug":
+      return (
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path d="M12 22v-5" {...stroke} />
+          <path d="M9 8V2" {...stroke} />
+          <path d="M15 8V2" {...stroke} />
+          <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" {...stroke} />
+        </svg>
+      );
+    case "tag":
+      return (
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path
+            d="M3 12.6V4.8A1.8 1.8 0 0 1 4.8 3h7.8l8 8a1.8 1.8 0 0 1 0 2.5l-6.3 6.3a1.8 1.8 0 0 1-2.5 0l-8-8A1.8 1.8 0 0 1 3 12.6Z"
+            {...stroke}
+          />
+          <circle cx="7.6" cy="7.6" r="1.2" fill="currentColor" />
+        </svg>
+      );
+    case "percent":
+      return (
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path d="M5 19 19 5" {...stroke} />
+          <circle cx="7.2" cy="7.2" r="2.3" {...stroke} />
+          <circle cx="16.8" cy="16.8" r="2.3" {...stroke} />
+        </svg>
+      );
+    case "gift":
+      return (
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path d="M20 12v8H4v-8" {...stroke} />
+          <rect x="2.5" y="8" width="19" height="4" rx="1" {...stroke} />
+          <path d="M12 8v12" {...stroke} />
+          <path d="M12 8C12 5 10.6 3.5 9 3.5S7 5.6 8.6 6.8 12 8 12 8Z" {...stroke} />
+          <path d="M12 8c0-3 1.4-4.5 3-4.5S17 5.6 15.4 6.8 12 8 12 8Z" {...stroke} />
+        </svg>
+      );
+    case "fire":
+      return (
+        <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+          <path
+            d="M12 3c1.2 3-1.8 4.2-1.8 7a1.8 1.8 0 0 0 3.6 0c0-.9.4-1.5 1-2 .9 1.9 2.2 3 2.2 5a5 5 0 0 1-10 0c0-4 3.8-6 5-10Z"
+            {...stroke}
+          />
         </svg>
       );
     default:

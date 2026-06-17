@@ -13,7 +13,6 @@ import { DevisCTA } from "@/components/DevisCTA";
 import { TrustStars } from "@/components/TrustStars";
 import { ColorSelector } from "@/components/ColorSelector";
 import { StockBadge } from "@/components/StockBadge";
-import { PlugIcon } from "@/components/PlugIcon";
 import { FicheTechniqueButton } from "@/components/FicheTechniqueButton";
 import { DeliveryFormulas } from "@/components/DeliveryFormulas";
 import { JsonLd } from "@/components/JsonLd";
@@ -262,7 +261,10 @@ export default async function SpaPage({
               <Eyebrow>Gamme {spa.gamme}</Eyebrow>
               {badge && (
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-terra px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white">
-                  <PlugIcon className="h-3.5 w-3.5 shrink-0" />
+                  <FeatureIcon
+                    name={(spa.badgeIcon as IconName) || "plug"}
+                    className="h-3.5 w-3.5 shrink-0"
+                  />
                   {badge}
                 </span>
               )}

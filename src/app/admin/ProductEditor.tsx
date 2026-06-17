@@ -16,7 +16,12 @@ import {
   type CaracFamily,
 } from "./CaracteristiquesEditor";
 import { PointsFortsEditor, type PointFortItem } from "./PointsFortsEditor";
-import { iconForFeature, type IconName } from "@/components/FeatureIcon";
+import {
+  FeatureIcon,
+  ICON_LIST,
+  iconForFeature,
+  type IconName,
+} from "@/components/FeatureIcon";
 
 function cleanColors(colors: SpaColor[]): SpaColor[] {
   return colors
@@ -204,6 +209,9 @@ export function ProductEditor({
   });
   const [badgeLabel, setBadgeLabel] = useState(initial.badgeLabel ?? "");
   const [badgeActive, setBadgeActive] = useState(!!initial.badgeActive);
+  const [badgeIcon, setBadgeIcon] = useState<IconName>(
+    (initial.badgeIcon as IconName) || "plug",
+  );
   const [formulas, setFormulas] = useState<DeliveryFormula[]>(
     initial.deliveryFormulas ?? [],
   );
@@ -278,7 +286,9 @@ export function ProductEditor({
       },
       prixIndicatif: prix.trim() === "" ? null : Number(prix),
       ...(prixPromo.trim() ? { prixPromo: Number(prixPromo) } : {}),
-      ...(badgeLabel.trim() ? { badgeLabel: badgeLabel.trim() } : {}),
+      ...(badgeLabel.trim()
+        ? { badgeLabel: badgeLabel.trim(), badgeIcon }
+        : {}),
       ...(badgeActive ? { badgeActive: true } : {}),
       jets: Number(jets) || 0,
       consommation: conso,
@@ -466,16 +476,49 @@ export function ProductEditor({
             />
             Afficher un badge personnalisé sur ce produit
           </label>
+          <div className="mt-3 flex items-center gap-2">
+            <span
+              className="inline-flex items-center gap-1.5 rounded-full bg-terra px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white"
+              title="Aperçu du badge"
+            >
+              <FeatureIcon name={badgeIcon} className="h-3.5 w-3.5 shrink-0" />
+              {badgeLabel.trim() || "Badge"}
+            </span>
+          </div>
           <input
             className={`mt-3 ${input}`}
             value={badgeLabel}
             placeholder="Texte du badge (ex. Nouveauté, Coup de cœur, Déstockage)"
             onChange={(e) => setBadgeLabel(e.target.value)}
           />
-          <p className="mt-1 text-xs text-muted">
+
+          {/* Choix de l'icône du badge */}
+          <p className="mt-3 text-xs font-medium text-ink">Icône du badge</p>
+          <div className="mt-1.5 grid grid-cols-8 gap-1.5 rounded-xl border border-line bg-cream/50 p-2 sm:grid-cols-11">
+            {ICON_LIST.map((ic) => {
+              const active = ic.name === badgeIcon;
+              return (
+                <button
+                  key={ic.name}
+                  type="button"
+                  title={ic.label}
+                  onClick={() => setBadgeIcon(ic.name)}
+                  className={`flex h-9 w-9 items-center justify-center rounded-lg border transition ${
+                    active
+                      ? "border-terra bg-terra/10 text-terra"
+                      : "border-transparent text-ink hover:bg-card"
+                  }`}
+                >
+                  <FeatureIcon name={ic.name} className="h-5 w-5" />
+                </button>
+              );
+            })}
+          </div>
+
+          <p className="mt-2 text-xs text-muted">
             Le badge n&apos;apparaît que s&apos;il est activé et qu&apos;un texte
             est renseigné. Il s&apos;affiche sur la vignette du catalogue et la
-            fiche produit.
+            fiche produit. L&apos;icône par défaut est la prise de courant.
           </p>
         </div>
 

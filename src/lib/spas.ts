@@ -38,6 +38,8 @@ export interface Spa {
   badgeLabel?: string;
   /** Affiche le badge personnalisé sur la carte et la fiche produit. */
   badgeActive?: boolean;
+  /** Icône du badge (nom dans la palette FeatureIcon). Défaut : « plug » (prise). */
+  badgeIcon?: string;
   /** Prix de la livraison seule (€ TTC). */
   livraison?: number;
   /** Prix livraison + installation (€ TTC). */

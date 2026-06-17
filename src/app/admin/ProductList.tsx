@@ -10,7 +10,7 @@ import {
   remiseEffectivePct,
   badgePersonnalise,
 } from "@/lib/spas";
-import { PlugIcon } from "@/components/PlugIcon";
+import { FeatureIcon, type IconName } from "@/components/FeatureIcon";
 
 const fieldInput =
   "w-full rounded-xl border border-line bg-card px-3 py-2 text-sm outline-none focus-visible:border-terra";
@@ -240,7 +240,10 @@ export function ProductList({ spas }: { spas: Spa[] }) {
                     <span className="truncate">{s.name}</span>
                     {badge && (
                       <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-terra px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
-                        <PlugIcon className="h-3 w-3 shrink-0" />
+                        <FeatureIcon
+                          name={(s.badgeIcon as IconName) || "plug"}
+                          className="h-3 w-3 shrink-0"
+                        />
                         {badge}
                       </span>
                     )}

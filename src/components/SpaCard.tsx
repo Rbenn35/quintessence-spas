@@ -10,7 +10,7 @@ import {
 import type { Rating } from "@/lib/reviews";
 import { Placeholder } from "@/components/Placeholder";
 import { TrustStars } from "@/components/TrustStars";
-import { PlugIcon } from "@/components/PlugIcon";
+import { FeatureIcon, type IconName } from "@/components/FeatureIcon";
 
 export function SpaCard({ spa, rating }: { spa: Spa; rating?: Rating }) {
   const prixFinal = prixApresRemise(spa);
@@ -26,7 +26,10 @@ export function SpaCard({ spa, rating }: { spa: Spa; rating?: Rating }) {
       >
         {badge && (
           <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full bg-terra px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-white shadow-sm">
-            <PlugIcon className="h-3.5 w-3.5 shrink-0" />
+            <FeatureIcon
+              name={(spa.badgeIcon as IconName) || "plug"}
+              className="h-3.5 w-3.5 shrink-0"
+            />
             {badge}
           </span>
         )}

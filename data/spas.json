@@ -1283,5 +1283,199 @@
     ],
     "badgeLabel": "Branchement Prise 16A",
     "badgeActive": true
+  },
+  {
+    "slug": "cali-3",
+    "name": "Cali",
+    "gamme": "AquaLuxe",
+    "places": 3,
+    "dimensions": {
+      "largeur": 210,
+      "profondeur": 165,
+      "hauteur": 78
+    },
+    "prixIndicatif": null,
+    "jets": 47,
+    "consommation": "Réchauffeur 3 kW · isolation renforcée",
+    "accroche": "Le spa compact 3 places, ultra-équipé pour les petits espaces.",
+    "description": "Le Spa Cali 3 places est un spa rigide compact et haut de gamme, pensé pour offrir une expérience de relaxation complète dans un format réduit de 210 × 165 × 78 cm. Il s'intègre facilement sur une terrasse, dans un jardin ou un espace bien-être privé. Sa coque en acrylique Aristech USA et sa structure en acier inoxydable lui assurent robustesse et durabilité. Côté massage, le Cali réunit 47 hydrojets alimentés par une pompe de 2 250 W, complétés par 12 buses d'air (blower 400 W) pour un massage à la fois puissant et enveloppant. L'électronique Gecko IN.K500 et le réchauffeur de 3 000 W pilotent le chauffage, la filtration, le massage et l'éclairage. L'ambiance est soignée avec 11 LED et 3 fontaines lumineuses, tandis que le confort est complété par un système audio Bluetooth à 2 haut-parleurs pop-up, l'aromathérapie, un ice bucket et 3 appuie-têtes pop-up. La filtration dédiée et la lampe UV maintiennent une eau saine, et l'isolation renforcée de la coque, du tablier et de la base ABS optimise les performances thermiques pour un usage toute l'année. Couverture incluse.",
+    "pointsForts": [
+      "3 places compactes, format 210 × 165 cm",
+      "47 hydrojets et 12 buses d'air, pompe de massage 2 250 W",
+      "Électronique Gecko IN.K500, réchauffeur 3 000 W",
+      "Audio Bluetooth, aromathérapie et ice bucket intégrés",
+      "11 LED et 3 fontaines lumineuses",
+      "Lampe UV, isolation renforcée, couverture incluse"
+    ],
+    "placeholder": [
+      "#cfe2ea",
+      "#1c6e8e"
+    ],
+    "photos": [
+      "/products/cali-1.jpg",
+      "/products/cali-2.jpg",
+      "/products/cali-3.jpg",
+      "/products/cali-4.jpg",
+      "/products/cali-5.jpg",
+      "/products/cali-6.jpg"
+    ],
+    "stockStatus": "in_stock",
+    "caracteristiques": [
+      {
+        "groupe": "Général",
+        "items": [
+          [
+            "Modèle",
+            "Spa Cali"
+          ],
+          [
+            "Nombre de places",
+            "3 places"
+          ],
+          [
+            "Revêtement de coque",
+            "Acrylique Aristech USA"
+          ],
+          [
+            "Structure",
+            "Acier inoxydable"
+          ],
+          [
+            "Base",
+            "Base ABS"
+          ],
+          [
+            "Appuie-têtes",
+            "3 appuie-têtes pop-up"
+          ],
+          [
+            "Conditionnement",
+            "Flat packing"
+          ]
+        ]
+      },
+      {
+        "groupe": "Massage et hydrothérapie",
+        "items": [
+          [
+            "Nombre total de jets",
+            "47 hydrojets"
+          ],
+          [
+            "Pompe de massage",
+            "1 pompe 2 250 W"
+          ],
+          [
+            "Massage par air",
+            "12 buses d'air"
+          ],
+          [
+            "Air blower",
+            "400 W"
+          ],
+          [
+            "Pompe de filtration",
+            "250 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Électronique et chauffage",
+        "items": [
+          [
+            "Clavier de commande",
+            "Gecko IN.K500"
+          ],
+          [
+            "Boîtier électronique",
+            "Gecko YE3"
+          ],
+          [
+            "Réchauffeur",
+            "3 000 W"
+          ]
+        ]
+      },
+      {
+        "groupe": "Éclairage et ambiance",
+        "items": [
+          [
+            "Éclairage LED",
+            "11 LED"
+          ],
+          [
+            "Fontaine LED",
+            "3 fontaines lumineuses"
+          ]
+        ]
+      },
+      {
+        "groupe": "Confort et équipements",
+        "items": [
+          [
+            "Appuie-têtes pop-up",
+            "3 pièces"
+          ],
+          [
+            "Système audio Bluetooth",
+            "Inclus"
+          ],
+          [
+            "Haut-parleurs pop-up",
+            "2 pièces"
+          ],
+          [
+            "Aromathérapie",
+            "Incluse"
+          ],
+          [
+            "Ice bucket",
+            "Inclus"
+          ]
+        ]
+      },
+      {
+        "groupe": "Filtration et traitement de l'eau",
+        "items": [
+          [
+            "Pompe de filtration",
+            "250 W"
+          ],
+          [
+            "Filtre",
+            "Inclus"
+          ],
+          [
+            "Lampe UV",
+            "Incluse"
+          ]
+        ]
+      },
+      {
+        "groupe": "Isolation",
+        "items": [
+          [
+            "Isolation de coque",
+            "Incluse"
+          ],
+          [
+            "Isolation du tablier",
+            "Incluse"
+          ],
+          [
+            "Isolation de la base ABS",
+            "Incluse"
+          ]
+        ]
+      }
+    ],
+    "inclus": [
+      "Spa Cali 3 places",
+      "3 appuie-têtes pop-up",
+      "Couverture thermique",
+      "Filtre et lampe UV",
+      "Système audio Bluetooth (2 haut-parleurs pop-up)",
+      "Ice bucket"
+    ]
   }
 ]
