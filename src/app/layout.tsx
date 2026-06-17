@@ -4,7 +4,9 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SiteChrome } from "@/components/SiteChrome";
+import { JsonLd } from "@/components/JsonLd";
 import { site } from "@/lib/site";
+import { organizationSchema, websiteSchema } from "@/lib/seo";
 import { getSettings } from "@/lib/store";
 
 const fraunces = Fraunces({
@@ -35,13 +37,23 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description: settings.description,
       url: site.url,
+      images: [
+        {
+          url: "/products/lucerne-installe.jpg",
+          width: 1200,
+          height: 630,
+          alt: `${settings.name} · spa rigide premium installé`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: settings.description,
+      images: ["/products/lucerne-installe.jpg"],
     },
     alternates: { canonical: "/" },
+    icons: { apple: "/brand/apple-touch-icon.png" },
   };
 }
 
@@ -55,6 +67,8 @@ export default async function RootLayout({
       className={`${fraunces.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
+        <JsonLd data={organizationSchema()} />
+        <JsonLd data={websiteSchema()} />
         <SiteChrome
           header={<Header email={settings.email} />}
           footer={<Footer />}

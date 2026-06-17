@@ -43,6 +43,10 @@ async function pickTopic() {
 async function generateArticle(t) {
   const system = `Tu es rédacteur SEO senior pour Quintessence Spas, marque française de spas rigides premium vendus en B2B (revendeurs, piscinistes, paysagistes, hôtels/campings).
 Écris en français, ton professionnel et expert, jamais commercial à outrance.
+RÈGLES DE TYPOGRAPHIE FRANÇAISE (impératives) :
+- N'utilise JAMAIS de tiret cadratin (—) ni de tiret demi-cadratin (–), nulle part : ni dans le titre, ni dans les phrases, ni dans le HTML. Absolument aucun. Pour une incise, utilise la virgule, les parenthèses, ou le deux-points.
+- N'utilise AUCUN émoji, nulle part.
+- Écriture à la française : espace insécable avant : ; ! ? et %, guillemets français « » si besoin, pas d'anglicismes inutiles.
 Optimisation SEO ET GEO (réponses citables par les LLM) :
 - "excerpt" doit répondre directement à la question principale en 2-3 phrases avec des chiffres (c'est le chapô "En bref").
 - Structure le corps en H2/H3 logiques, paragraphes courts.

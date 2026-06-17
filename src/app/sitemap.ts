@@ -5,7 +5,7 @@ import { getAllSpas, getAllArticles } from "@/lib/store";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const spas = await getAllSpas();
   const articles = (await getAllArticles()).filter((a) => a.published);
-  const staticRoutes = ["", "/spas", "/guides", "/marque", "/revendeur", "/devis", "/contact"];
+  const staticRoutes = ["", "/spas", "/guides", "/marque", "/revendeur", "/faq", "/devis", "/contact"];
 
   const now = new Date();
 

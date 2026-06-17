@@ -175,6 +175,32 @@ export default async function HomePage() {
         </Container>
       </div>
 
+      {/* FOURNISSEUR B2B (SEO) */}
+      <Container>
+        <section className="py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <Eyebrow>Professionnels du spa</Eyebrow>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Un fournisseur de spas rigides pour les professionnels
+            </h2>
+            <p className="mt-5 text-muted">
+              Vous êtes pisciniste, paysagiste ou revendeur et cherchez un
+              fournisseur de spas fiable ? Quintessence Spas distribue ses spas
+              rigides premium aux professionnels partout en France, avec des
+              tarifs grossistes, un stock disponible et un accompagnement
+              complet. Marges attractives, formation produit et livraison sur
+              tout le territoire : développez votre activité avec une gamme qui
+              valorise votre offre.
+            </p>
+            <div className="mt-7">
+              <Button href="/revendeur" variant="ghost">
+                Découvrir le programme revendeur
+              </Button>
+            </div>
+          </div>
+        </section>
+      </Container>
+
       <RevendeurCTA />
 
       {/* GUIDES SEO */}

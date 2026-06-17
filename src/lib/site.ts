@@ -10,7 +10,7 @@ export const site = {
   tagline: "Spas rigides premium · France",
   description:
     "Spas rigides haut de gamme, vendus en ligne et livrés partout en France. Demandez votre devis gratuit en quelques clics.",
-  url: "https://quintessencespas.com",
+  url: "https://www.quintessencespas.com",
   locale: "fr_FR",
   // PLACEHOLDER · email réel (contact uniquement par email)
   email: "contact@quintessencespas.com",

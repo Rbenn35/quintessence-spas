@@ -88,15 +88,20 @@ export default function MarquePage() {
                 Un interlocuteur, du premier conseil au dernier entretien
               </h2>
               <p className="mt-4 text-muted">
-                Choisir Quintessence, c'est confier son projet à une équipe qui
-                maîtrise toute la chaîne : sélection des modèles, conseil
-                personnalisé, livraison, installation, mise en service et
-                service après-vente. Vous n'êtes jamais seul face à votre spa.
+                Choisir Quintessence Spas, c'est confier son projet à une équipe
+                qui maîtrise toute la chaîne de valeur : sélection rigoureuse des
+                modèles, conseil personnalisé selon votre usage, livraison,
+                installation, mise en service et service après-vente. Du premier
+                échange au dernier entretien, vous gardez le même interlocuteur,
+                qui connaît votre spa et votre installation.
               </p>
               <p className="mt-4 text-muted">
-                Cette page présentera bientôt notre histoire, nos
-                certifications et les coulisses de notre savoir-faire. Le contenu
-                définitif sera intégré avec vos textes et vos photos.
+                Cet engagement vaut aussi pour les professionnels que nous
+                fournissons partout en France. Revendeurs, piscinistes et
+                paysagistes s'appuient sur notre stock, notre logistique et notre
+                accompagnement pour proposer à leurs clients des spas rigides
+                premium en toute sérénité. La même exigence de qualité et de
+                suivi, que vous soyez particulier ou partenaire revendeur.
               </p>
             </div>
             <div className="relative h-72 w-full overflow-hidden rounded-2xl lg:h-96">

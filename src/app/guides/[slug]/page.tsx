@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { DevisCTA } from "@/components/DevisCTA";
 import { getAllArticles, getArticleBySlug } from "@/lib/store";
 import { site } from "@/lib/site";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -72,10 +73,17 @@ export default async function ArticlePage({
     },
   };
 
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Accueil", url: "/" },
+    { name: "Guides", url: "/guides" },
+    { name: a.title, url: `/guides/${a.slug}` },
+  ]);
+
   return (
     <>
       <JsonLd data={articleJsonLd} />
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
+      <JsonLd data={breadcrumbJsonLd} />
 
       <Container>
         <article className="py-12 sm:py-16">

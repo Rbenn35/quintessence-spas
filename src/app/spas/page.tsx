@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeading";
 import { DevisCTA } from "@/components/DevisCTA";
+import { JsonLd } from "@/components/JsonLd";
 import { CatalogueClient } from "./CatalogueClient";
 import { type Gamme } from "@/lib/spas";
 import { getAllSpas, getAllReviews, getGammes } from "@/lib/store";
 import { statsForProduct, type Rating } from "@/lib/reviews";
+import { site } from "@/lib/site";
+import { breadcrumbSchema } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -33,8 +36,28 @@ export default async function CataloguePage({
   const initialGamme: GammeFilter =
     sp.gamme && gammes.includes(sp.gamme) ? (sp.gamme as Gamme) : "Toutes";
 
+  // Liste structurée des modèles (aide les moteurs à lister le catalogue).
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Catalogue des spas rigides Quintessence Spas",
+    numberOfItems: spas.length,
+    itemListElement: spas.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${site.url}/spas/${s.slug}`,
+      name: s.name,
+    })),
+  };
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Accueil", url: "/" },
+    { name: "Les spas", url: "/spas" },
+  ]);
+
   return (
     <>
+      <JsonLd data={itemListJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
       <Container>
         <section className="py-14 sm:py-20">
           <Eyebrow>Catalogue</Eyebrow>

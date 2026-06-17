@@ -33,6 +33,7 @@ import {
   getAllAccessoires,
 } from "@/lib/store";
 import { reviewStats, statsForProduct, initiales } from "@/lib/reviews";
+import { breadcrumbSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -82,6 +83,9 @@ export default async function SpaPage({
       ? spa.prixIndicatif - (prixFinal ?? 0)
       : 0;
 
+  // Note agrégée (avis) pour les étoiles dans les résultats de recherche.
+  const productRating = statsForProduct(allReviews, spa.slug);
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -91,6 +95,17 @@ export default async function SpaPage({
     category: `Spa rigide ${spa.gamme}`,
     ...(spa.photos?.length
       ? { image: spa.photos.map((p) => `${site.url}${p}`) }
+      : {}),
+    ...(productRating.count > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: productRating.avg.toFixed(1),
+            reviewCount: productRating.count,
+            bestRating: "5",
+            worstRating: "1",
+          },
+        }
       : {}),
     ...(prixFinal !== null
       ? {
@@ -104,6 +119,12 @@ export default async function SpaPage({
         }
       : {}),
   };
+
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Accueil", url: "/" },
+    { name: "Les spas", url: "/spas" },
+    { name: spa.name, url: `/spas/${spa.slug}` },
+  ]);
 
   const dims = `${spa.dimensions.largeur} × ${spa.dimensions.profondeur} × ${spa.dimensions.hauteur} cm`;
   const aDetails = !!(spa.caracteristiques && spa.caracteristiques.length);
@@ -193,6 +214,7 @@ export default async function SpaPage({
     <>
       <JsonLd data={productJsonLd} />
       <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
 
       <Container>
         {/* Fil d'Ariane */}

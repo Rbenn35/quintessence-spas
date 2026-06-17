@@ -25,6 +25,7 @@ export async function Footer() {
           label: "Installation & entretien",
           href: "/guides/installation-entretien-spa",
         },
+        { label: "Questions fréquentes", href: "/faq" },
       ],
     },
     {
@@ -70,10 +71,6 @@ export async function Footer() {
           © {new Date().getFullYear()} {settings.name} · Tous droits réservés ·{" "}
           <Link href="/mentions-legales" className="hover:text-[#cfe0e6]">
             Mentions légales
-          </Link>{" "}
-          ·{" "}
-          <Link href="/cgv" className="hover:text-[#cfe0e6]">
-            CGV
           </Link>
         </div>
       </Container>

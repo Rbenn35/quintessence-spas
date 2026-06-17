@@ -4,20 +4,34 @@ import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Eyebrow, SectionHeading } from "@/components/SectionHeading";
 import { RevendeurForm } from "@/components/RevendeurForm";
+import { JsonLd } from "@/components/JsonLd";
 import { getAllSpas } from "@/lib/store";
 import { site } from "@/lib/site";
+import { breadcrumbSchema, orgRef } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Devenir revendeur de spas | Quintessence Spas",
+  // Le titre du site ajoute déjà « · Quintessence Spas » via le template.
+  title: "Devenir revendeur de spas rigides, fournisseur en France",
   description:
-    "Pisciniste, paysagiste ou revendeur : distribuez les spas rigides premium Quintessence. Marges attractives, stock en France, accompagnement complet. Candidature en ligne.",
+    "Quintessence Spas, fournisseur et grossiste de spas rigides premium en France. Pisciniste, paysagiste ou distributeur : marges 25 à 40 %, stock en France, livraison et accompagnement complet. Réponse sous 48 h.",
+  keywords: [
+    "fournisseur de spas",
+    "fournisseur spa rigide",
+    "grossiste spa",
+    "distributeur spa France",
+    "devenir revendeur spa",
+    "revendeur spa rigide",
+    "tarifs professionnels spa",
+    "spa pour pisciniste",
+    "spa pour paysagiste",
+  ],
   alternates: { canonical: "/revendeur" },
   openGraph: {
-    title: "Devenir revendeur — Quintessence Spas",
+    title: "Devenir revendeur de spas rigides · Quintessence Spas",
     description:
-      "Distribuez une gamme de spas rigides premium. Marges, stock France, accompagnement.",
+      "Fournisseur français de spas rigides premium pour revendeurs, piscinistes et paysagistes. Marges attractives, stock France, accompagnement.",
     url: `${site.url}/revendeur`,
   },
 };
@@ -30,6 +44,44 @@ const cibles = [
   "Revendeurs de spas",
   "Magasins bien-être",
   "Constructeurs",
+];
+
+const etapes = [
+  [
+    "Vous candidatez",
+    "Remplissez le formulaire en ligne avec votre société, votre activité et votre projet. Aucun engagement à ce stade.",
+  ],
+  [
+    "Nous étudions ensemble",
+    "Réponse sous 48 h ouvrées : nous échangeons sur vos besoins et vous transmettons nos conditions et tarifs professionnels.",
+  ],
+  [
+    "Vous démarrez la revente",
+    "Formation produit, supports marketing et premier stock : vous vendez nos spas rigides en toute confiance.",
+  ],
+];
+
+const faqRevendeur = [
+  {
+    q: "Comment devenir revendeur de spas Quintessence ?",
+    a: "Remplissez le formulaire de candidature en ligne en précisant votre société, votre activité et votre projet. Nous répondons à chaque demande sous 48 heures ouvrées pour étudier ensemble un partenariat de distribution et vous communiquer nos tarifs professionnels.",
+  },
+  {
+    q: "Quelle marge un revendeur réalise-t-il sur un spa rigide ?",
+    a: "Les marges de revente sur un spa rigide premium se situent généralement entre 25 et 40 % selon le modèle, le volume commandé et votre positionnement. Nos conditions grossistes sont construites pour préserver votre rentabilité.",
+  },
+  {
+    q: "Faut-il déjà vendre des spas pour devenir revendeur ?",
+    a: "Non. Nous travaillons avec des piscinistes, des paysagistes, des magasins bien-être et des acteurs de l'hôtellerie de plein air qui ajoutent le spa rigide à leur offre. Notre formation produit vous permet de démarrer même sans expérience préalable du spa.",
+  },
+  {
+    q: "Les spas sont-ils en stock et livrés en France ?",
+    a: "Oui. Nous maintenons un stock en France et assurons la livraison 35 tonnes partout sur le territoire (hayon et transpalette). La disponibilité réduit vos délais et sécurise vos ventes.",
+  },
+  {
+    q: "Quel accompagnement pour un nouveau distributeur ?",
+    a: "Formation produit, support technique, conseil commercial, catalogues, visuels et fiches techniques prêts à l'emploi pour votre site et votre point de vente. Nous restons disponibles après le démarrage, SAV et garantie compris.",
+  },
 ];
 
 const avantages = [
@@ -65,8 +117,41 @@ export default async function RevendeurPage() {
     .filter((g): g is { src: string; name: string } => Boolean(g.src))
     .slice(0, 6);
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Programme revendeur de spas rigides Quintessence",
+    serviceType: "Distribution et fourniture de spas rigides premium",
+    provider: orgRef,
+    areaServed: { "@type": "Country", name: "France" },
+    audience: {
+      "@type": "BusinessAudience",
+      name: "Revendeurs, piscinistes, paysagistes, hôtellerie de plein air",
+    },
+    description:
+      "Quintessence Spas fournit des spas rigides premium aux professionnels en France : marges attractives, stock et livraison France, formation et accompagnement complet.",
+    url: `${site.url}/revendeur`,
+  };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqRevendeur.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+  const breadcrumbJsonLd = breadcrumbSchema([
+    { name: "Accueil", url: "/" },
+    { name: "Devenir revendeur", url: "/revendeur" },
+  ]);
+
   return (
     <>
+      <JsonLd data={serviceJsonLd} />
+      <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbJsonLd} />
+
       {/* HERO PLEIN ÉCRAN */}
       <section className="relative flex min-h-[600px] items-center py-24 text-center text-white">
         <Image
@@ -132,9 +217,53 @@ export default async function RevendeurPage() {
         </div>
       </section>
 
-      {/* AVANTAGES */}
+      {/* INTRODUCTION ÉDITORIALE (SEO) */}
       <Container>
         <section className="py-20">
+          <div className="mx-auto max-w-3xl">
+            <Eyebrow>Votre fournisseur de spas</Eyebrow>
+            <h2 className="mt-3 text-3xl sm:text-4xl">
+              Quintessence Spas, fournisseur de spas rigides premium en France
+            </h2>
+            <div className="mt-6 space-y-4 text-muted">
+              <p>
+                Vous cherchez un nouveau fournisseur de spas pour développer
+                votre activité ? Quintessence Spas est un grossiste et
+                distributeur français de spas rigides haut de gamme, dédié aux
+                professionnels : revendeurs de spas, piscinistes, paysagistes,
+                magasins bien-être et acteurs de l'hôtellerie de plein air.
+              </p>
+              <p>
+                Nous proposons une gamme complète de spas rigides, de 2 à 8
+                places, sélectionnés pour leur qualité de fabrication, leur
+                confort et leur performance énergétique. Avec des tarifs
+                professionnels clairs, des marges comprises entre 25 et 40 % et
+                un stock disponible en France, vous bénéficiez d'un partenaire
+                fiable, de la commande au service après-vente.
+              </p>
+              <p>
+                Que vous souhaitiez ajouter le spa à votre offre existante ou
+                ouvrir un nouveau rayon dans votre showroom, notre équipe vous
+                accompagne à chaque étape : formation produit, supports
+                marketing, conseil commercial et livraison partout en France.
+                Découvrez aussi notre{" "}
+                <Link href="/spas" className="text-terra underline">
+                  catalogue de spas rigides
+                </Link>{" "}
+                et nos{" "}
+                <Link href="/faq" className="text-terra underline">
+                  questions fréquentes revendeurs
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
+      </Container>
+
+      {/* AVANTAGES */}
+      <Container>
+        <section className="pb-20">
           <SectionHeading
             eyebrow="Pourquoi nous rejoindre"
             title={
@@ -197,6 +326,63 @@ export default async function RevendeurPage() {
           </Container>
         </div>
       )}
+
+      {/* COMMENT DEVENIR REVENDEUR */}
+      <Container>
+        <section className="py-20">
+          <SectionHeading
+            eyebrow="Comment ça marche"
+            title={
+              <>
+                Devenir revendeur en{" "}
+                <em className="italic text-terra">3 étapes</em>
+              </>
+            }
+            intro="Un parcours simple et sans engagement pour démarrer la distribution."
+          />
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {etapes.map(([titre, texte], i) => (
+              <div key={titre} className="rounded-2xl border border-line bg-card p-7">
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-terra font-serif text-lg text-white">
+                  {i + 1}
+                </div>
+                <h3 className="mt-4 text-xl">{titre}</h3>
+                <p className="mt-2 text-sm text-muted">{texte}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </Container>
+
+      {/* FAQ REVENDEUR */}
+      <div className="border-y border-line bg-cream">
+        <Container>
+          <section className="py-20">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="text-center text-3xl sm:text-4xl">
+                Questions fréquentes des revendeurs
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-center text-muted">
+                Tout ce qu'un futur distributeur de spas souhaite savoir avant
+                de se lancer.
+              </p>
+              <div className="mt-10 divide-y divide-line rounded-2xl border border-line bg-card">
+                {faqRevendeur.map((item) => (
+                  <details key={item.q} className="group p-5">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium marker:hidden">
+                      {item.q}
+                      <span className="text-2xl leading-none text-terra transition-transform group-open:rotate-45">
+                        +
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-muted">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        </Container>
+      </div>
 
       {/* FORMULAIRE (section sombre) */}
       <section id="candidature" className="scroll-mt-20 bg-footer py-20 text-white">
