@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { addMessage } from "@/lib/store";
 import { sendMail, CONTACT_EMAIL } from "@/lib/email";
+import { formatPrenom, formatNom, formatPhone } from "@/lib/format";
 
 /**
  * Candidature « Devenir revendeur » (B2B).
@@ -50,7 +51,9 @@ export async function POST(request: Request) {
 
   const societe = data.societe.trim();
   const activite = (data.activite || "Non précisé").trim();
-  const telephone = (data.telephone || "").trim();
+  data.prenom = formatPrenom(data.prenom || "");
+  data.nom = formatNom(data.nom || "");
+  const telephone = formatPhone(data.telephone || "");
   const siteweb = (data.siteweb || "").trim();
 
   const details = [

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formatPrenom, formatNom, formatPhone } from "@/lib/format";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -119,6 +120,9 @@ export function RevendeurForm() {
             name="prenom"
             autoComplete="given-name"
             required
+            onBlur={(e) => {
+              e.currentTarget.value = formatPrenom(e.currentTarget.value);
+            }}
             className={`mt-1.5 ${inputClass}`}
           />
         </div>
@@ -131,6 +135,9 @@ export function RevendeurForm() {
             name="nom"
             autoComplete="family-name"
             required
+            onBlur={(e) => {
+              e.currentTarget.value = formatNom(e.currentTarget.value);
+            }}
             className={`mt-1.5 ${inputClass}`}
           />
         </div>
@@ -159,6 +166,9 @@ export function RevendeurForm() {
             name="telephone"
             type="tel"
             autoComplete="tel"
+            onBlur={(e) => {
+              e.currentTarget.value = formatPhone(e.currentTarget.value);
+            }}
             className={`mt-1.5 ${inputClass}`}
           />
         </div>

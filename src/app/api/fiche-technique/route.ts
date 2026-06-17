@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { addMessage, getSpaBySlug } from "@/lib/store";
 import { sendMail, CONTACT_EMAIL } from "@/lib/email";
+import { formatPrenom, formatNom } from "@/lib/format";
 
 /**
  * Demande de fiche technique : capte le lead (prénom, nom, e-mail) dans le
@@ -52,11 +53,14 @@ export async function POST(request: Request) {
     );
   }
 
+  data.prenom = formatPrenom(data.prenom || "");
+  data.nom = formatNom(data.nom || "");
+
   const modele = `${spa.name} ${spa.places} places`;
   await addMessage({
     id: `f-${Date.now()}-${Math.round(Math.random() * 1000)}`,
-    prenom: data.prenom.trim(),
-    nom: data.nom.trim(),
+    prenom: data.prenom,
+    nom: data.nom,
     email: data.email.trim(),
     sujet: `Téléchargement fiche technique — ${modele}`,
     message: `Demande de fiche technique du ${modele} (téléchargement PDF depuis la fiche produit).`,

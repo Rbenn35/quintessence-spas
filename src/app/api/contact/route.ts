@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { addMessage } from "@/lib/store";
 import { sendMail, CONTACT_EMAIL } from "@/lib/email";
+import { formatPrenom, formatNom } from "@/lib/format";
 
 /**
  * Réception des messages du formulaire de contact.
@@ -45,6 +46,9 @@ export async function POST(request: Request) {
       { status: 422 },
     );
   }
+
+  data.prenom = formatPrenom(data.prenom);
+  data.nom = formatNom(data.nom);
 
   // Stockage dans le back-office.
   await addMessage({

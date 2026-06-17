@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formatPrenom, formatNom } from "@/lib/format";
 
 const field =
   "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm outline-none focus-visible:border-terra";
@@ -117,6 +118,7 @@ export function FicheTechniqueButton({
                     placeholder="Prénom"
                     value={prenom}
                     onChange={(e) => setPrenom(e.target.value)}
+                    onBlur={(e) => setPrenom(formatPrenom(e.target.value))}
                     className={field}
                   />
                   <input
@@ -124,6 +126,7 @@ export function FicheTechniqueButton({
                     placeholder="Nom"
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
+                    onBlur={(e) => setNom(formatNom(e.target.value))}
                     className={field}
                   />
                 </div>
