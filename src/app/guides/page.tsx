@@ -71,23 +71,22 @@ export default async function GuidesIndex() {
             </div>
           </Link>
 
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             {side.map((a) => (
               <Link
                 key={a.slug}
                 href={`/guides/${a.slug}`}
-                className="group flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-card transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(19,49,61,0.10)]"
+                className="group flex flex-1 items-center gap-4 overflow-hidden rounded-2xl border border-line bg-card p-3 transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(19,49,61,0.10)]"
               >
                 <div
-                  className="h-32 w-full bg-cover bg-center"
+                  className="h-20 w-24 shrink-0 rounded-xl bg-cover bg-center"
                   style={{ backgroundImage: cover(a.tint, a.cover) }}
                 />
-                <div className="p-5">
+                <div className="min-w-0 py-0.5">
                   <span className={chip}>{a.category}</span>
-                  <h3 className="mt-2 text-xl group-hover:text-terra">
+                  <h3 className="mt-1.5 line-clamp-2 text-base leading-snug group-hover:text-terra">
                     {a.title}
                   </h3>
-                  <p className="mt-1.5 text-sm text-muted">{a.excerpt}</p>
                 </div>
               </Link>
             ))}
