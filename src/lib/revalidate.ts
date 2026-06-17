@@ -1,21 +1,28 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 /**
- * Revalidation à la demande des pages publiques (ISR).
- * Appelée après une écriture admin pour que les changements apparaissent
- * immédiatement, tout en gardant les pages en cache CDN le reste du temps.
+ * Revalidation à la demande après une écriture admin.
+ * - revalidateTag : vide le cache de données (unstable_cache du store).
+ * - revalidatePath : vide le rendu mis en cache des pages (ISR).
+ * Les deux sont nécessaires : les changements apparaissent alors immédiatement,
+ * tout en gardant les pages en cache CDN le reste du temps.
  */
 
-/** Catalogue : accueil, liste des spas et toutes les fiches produit. */
+/** Catalogue : produits, avis, accessoires, gammes → accueil, /spas, fiches. */
 export function revalidateCatalogue(): void {
+  revalidateTag("spas");
+  revalidateTag("reviews");
+  revalidateTag("accessoires");
+  revalidateTag("gammes");
   revalidatePath("/");
   revalidatePath("/spas");
   revalidatePath("/spas/[slug]", "page");
   revalidatePath("/revendeur");
 }
 
-/** Guides : index + toutes les pages d'articles + accueil. */
+/** Guides : articles → index + pages d'articles + accueil. */
 export function revalidateGuides(): void {
+  revalidateTag("articles");
   revalidatePath("/");
   revalidatePath("/guides");
   revalidatePath("/guides/[slug]", "page");
@@ -23,5 +30,6 @@ export function revalidateGuides(): void {
 
 /** Réglages globaux (en-tête, pied de page, métadonnées) : tout le site. */
 export function revalidateSite(): void {
+  revalidateTag("settings");
   revalidatePath("/", "layout");
 }

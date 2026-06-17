@@ -7,6 +7,15 @@ import { defaultDevisConfig, type DevisConfig } from "./devis";
 import type { DevisRequest } from "./devis-requests";
 import { seedAccessoires, type Accessoire } from "./accessoires";
 import { storeRead, storeWrite } from "./kv";
+import { unstable_cache } from "next/cache";
+
+/**
+ * Lectures publiques mises en cache (unstable_cache) : indispensable car la
+ * base Upstash utilise `fetch` en mode no-store, ce qui rendrait sinon toutes
+ * les pages dynamiques (pas de cache CDN). Le cache est invalidé par tag lors
+ * des écritures admin (voir src/lib/revalidate.ts). Les fonctions d'écriture
+ * lisent en DIRECT (readX) pour ne jamais écrire à partir d'un cache périmé.
+ */
 
 /**
  * Store de contenu (back-office). Persistance via la couche `kv` :
@@ -38,9 +47,12 @@ const DEVIS_SEED = devisContent as unknown as Partial<DevisConfig>;
 
 /* -------------------------------- Spas ------------------------------------ */
 
-export async function getAllSpas(): Promise<Spa[]> {
-  return storeRead<Spa[]>("spas", SPAS_SEED);
-}
+const readSpas = () => storeRead<Spa[]>("spas", SPAS_SEED);
+
+export const getAllSpas = unstable_cache(readSpas, ["spas"], {
+  revalidate: 600,
+  tags: ["spas"],
+});
 
 export async function getSpaBySlug(slug: string): Promise<Spa | undefined> {
   return (await getAllSpas()).find((s) => s.slug === slug);
@@ -51,7 +63,7 @@ export async function saveAllSpas(spas: Spa[]): Promise<void> {
 }
 
 export async function upsertSpa(spa: Spa): Promise<void> {
-  const all = await getAllSpas();
+  const all = await readSpas();
   const idx = all.findIndex((s) => s.slug === spa.slug);
   if (idx >= 0) all[idx] = spa;
   else all.unshift(spa);
@@ -59,7 +71,7 @@ export async function upsertSpa(spa: Spa): Promise<void> {
 }
 
 export async function deleteSpa(slug: string): Promise<void> {
-  const all = await getAllSpas();
+  const all = await readSpas();
   await saveAllSpas(all.filter((s) => s.slug !== slug));
 }
 
@@ -81,7 +93,7 @@ export async function bulkPatchSpas(
   patch: SpaBulkPatch,
 ): Promise<number> {
   const targets = new Set(slugs);
-  const all = await getAllSpas();
+  const all = await readSpas();
   let count = 0;
   const next = all.map((s) => {
     if (!targets.has(s.slug)) return s;
@@ -110,9 +122,12 @@ export async function bulkPatchSpas(
 
 /* ----------------------------- Articles (blog) ---------------------------- */
 
-export async function getAllArticles(): Promise<Article[]> {
-  return storeRead<Article[]>("articles", ARTICLES_SEED);
-}
+const readArticles = () => storeRead<Article[]>("articles", ARTICLES_SEED);
+
+export const getAllArticles = unstable_cache(readArticles, ["articles"], {
+  revalidate: 600,
+  tags: ["articles"],
+});
 
 export async function getArticleBySlug(
   slug: string,
@@ -125,7 +140,7 @@ export async function saveAllArticles(articles: Article[]): Promise<void> {
 }
 
 export async function upsertArticle(article: Article): Promise<void> {
-  const all = await getAllArticles();
+  const all = await readArticles();
   const idx = all.findIndex((a) => a.slug === article.slug);
   if (idx >= 0) all[idx] = article;
   else all.unshift(article);
@@ -133,15 +148,18 @@ export async function upsertArticle(article: Article): Promise<void> {
 }
 
 export async function deleteArticle(slug: string): Promise<void> {
-  const all = await getAllArticles();
+  const all = await readArticles();
   await saveAllArticles(all.filter((a) => a.slug !== slug));
 }
 
 /* ------------------------------- Avis clients ----------------------------- */
 
-export async function getAllReviews(): Promise<Review[]> {
-  return storeRead<Review[]>("reviews", REVIEWS_SEED);
-}
+const readReviews = () => storeRead<Review[]>("reviews", REVIEWS_SEED);
+
+export const getAllReviews = unstable_cache(readReviews, ["reviews"], {
+  revalidate: 600,
+  tags: ["reviews"],
+});
 
 /** Avis affichés sur une fiche : globaux + ceux du modèle, publiés. */
 export async function getReviewsForProduct(slug: string): Promise<Review[]> {
@@ -156,7 +174,7 @@ export async function saveAllReviews(reviews: Review[]): Promise<void> {
 }
 
 export async function upsertReview(review: Review): Promise<void> {
-  const all = await getAllReviews();
+  const all = await readReviews();
   const idx = all.findIndex((r) => r.id === review.id);
   if (idx >= 0) all[idx] = review;
   else all.unshift(review);
@@ -164,14 +182,14 @@ export async function upsertReview(review: Review): Promise<void> {
 }
 
 export async function deleteReview(id: string): Promise<void> {
-  const all = await getAllReviews();
+  const all = await readReviews();
   await saveAllReviews(all.filter((r) => r.id !== id));
 }
 
 /** Supprime plusieurs avis d'un coup. Renvoie le nombre supprimé. */
 export async function deleteReviews(ids: string[]): Promise<number> {
   const target = new Set(ids);
-  const all = await getAllReviews();
+  const all = await readReviews();
   const next = all.filter((r) => !target.has(r.id));
   await saveAllReviews(next);
   return all.length - next.length;
@@ -183,7 +201,7 @@ export async function setReviewsPublished(
   published: boolean,
 ): Promise<number> {
   const target = new Set(ids);
-  const all = await getAllReviews();
+  const all = await readReviews();
   let count = 0;
   const next = all.map((r) => {
     if (!target.has(r.id)) return r;
@@ -196,14 +214,19 @@ export async function setReviewsPublished(
 
 /* ----------------------------- Réglages du site --------------------------- */
 
-export async function getSettings(): Promise<SiteSettings> {
+const readSettings = async (): Promise<SiteSettings> => {
   const raw = await storeRead<Partial<SiteSettings>>("settings", SETTINGS_SEED);
   return {
     ...defaultSettings,
     ...raw,
     stats: { ...defaultSettings.stats, ...(raw.stats ?? {}) },
   };
-}
+};
+
+export const getSettings = unstable_cache(readSettings, ["settings"], {
+  revalidate: 600,
+  tags: ["settings"],
+});
 
 export async function saveSettings(settings: SiteSettings): Promise<void> {
   await storeWrite("settings", settings);
@@ -300,9 +323,14 @@ export async function deleteDevisRequest(id: string): Promise<void> {
 
 /* ----------------------- Accessoires (complémentaires) -------------------- */
 
-export async function getAllAccessoires(): Promise<Accessoire[]> {
-  return storeRead<Accessoire[]>("accessoires", ACCESSOIRES_SEED);
-}
+const readAccessoires = () =>
+  storeRead<Accessoire[]>("accessoires", ACCESSOIRES_SEED);
+
+export const getAllAccessoires = unstable_cache(
+  readAccessoires,
+  ["accessoires"],
+  { revalidate: 600, tags: ["accessoires"] },
+);
 
 export async function getAccessoireById(
   id: string,
@@ -315,7 +343,7 @@ async function saveAllAccessoires(items: Accessoire[]): Promise<void> {
 }
 
 export async function upsertAccessoire(item: Accessoire): Promise<void> {
-  const all = await getAllAccessoires();
+  const all = await readAccessoires();
   const idx = all.findIndex((a) => a.id === item.id);
   if (idx >= 0) all[idx] = item;
   else all.push(item);
@@ -323,16 +351,21 @@ export async function upsertAccessoire(item: Accessoire): Promise<void> {
 }
 
 export async function deleteAccessoire(id: string): Promise<void> {
-  const all = await getAllAccessoires();
+  const all = await readAccessoires();
   await saveAllAccessoires(all.filter((a) => a.id !== id));
 }
 
 /* ------------------------------ Gammes / catégories ----------------------- */
 
-export async function getGammes(): Promise<string[]> {
+const readGammes = async (): Promise<string[]> => {
   const list = await storeRead<string[]>("gammes", GAMMES_SEED);
   return Array.isArray(list) && list.length ? list : [...defaultGammes];
-}
+};
+
+export const getGammes = unstable_cache(readGammes, ["gammes"], {
+  revalidate: 600,
+  tags: ["gammes"],
+});
 
 export async function saveGammes(gammes: string[]): Promise<void> {
   const clean = gammes.map((g) => g.trim()).filter(Boolean);
