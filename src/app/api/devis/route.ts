@@ -135,6 +135,8 @@ export async function POST(request: Request) {
     ref,
     dateLabel,
     baseUrl,
+    // Bouton « Valider mon devis » → page de signature électronique.
+    ctaUrl: `${baseUrl}/devis/${id}/signer`,
   });
 
   const sendAt = new Date(

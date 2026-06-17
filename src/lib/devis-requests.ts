@@ -29,4 +29,26 @@ export interface DevisRequest {
   lines?: DevisLine[];
   /** Nombre de fois où le devis a été renvoyé (après modification). */
   resendCount?: number;
+
+  /* ----- Signature électronique (validation par le client) ----- */
+  signed?: boolean;
+  /** Date/heure ISO de la signature. */
+  signedAt?: string;
+  /** Adresse IP du signataire (preuve). */
+  signerIp?: string;
+  /** Nom saisi par le signataire. */
+  signerName?: string;
+  /** Image de la signature (PNG base64 data URL). */
+  signatureDataUrl?: string;
+  /** Coordonnées de facturation saisies. */
+  billing?: DevisAddress;
+  /** Coordonnées de livraison si différentes de la facturation. */
+  delivery?: DevisAddress;
+}
+
+export interface DevisAddress {
+  address: string;
+  cp: string;
+  city: string;
+  phone?: string;
 }

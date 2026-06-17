@@ -86,6 +86,11 @@ export function DevisRequestsList({
                   >
                     {sent ? "Envoyé" : cancelled ? "Annulé" : "À envoyer"}
                   </span>
+                  {r.signed && (
+                    <span className="rounded-full bg-[#00917f] px-2.5 py-0.5 text-xs font-semibold text-white">
+                      ✓ Signé
+                    </span>
+                  )}
                 </div>
                 <div className="mt-1 text-xs text-muted">
                   {r.type === "info"
@@ -113,6 +118,15 @@ export function DevisRequestsList({
                     className="rounded-lg border border-line px-3 py-1.5 hover:bg-cream"
                   >
                     Modifier &amp; renvoyer
+                  </a>
+                )}
+                {r.signed && (
+                  <a
+                    href={`/devis/${r.id}/valide`}
+                    target="_blank"
+                    className="rounded-lg border border-[#00917f]/40 px-3 py-1.5 font-medium text-[#00917f] hover:bg-[#00917f]/5"
+                  >
+                    Devis signé
                   </a>
                 )}
                 {r.status === "pending" ? (

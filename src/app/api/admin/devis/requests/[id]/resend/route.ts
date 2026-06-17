@@ -103,6 +103,7 @@ export async function POST(
     ref: req.ref,
     dateLabel,
     baseUrl,
+    ctaUrl: `${baseUrl}/devis/${id}/signer`,
   });
 
   // Aperçu seulement : on renvoie l'HTML sans enregistrer ni envoyer.
