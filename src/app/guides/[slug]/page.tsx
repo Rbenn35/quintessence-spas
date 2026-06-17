@@ -53,8 +53,28 @@ export default async function ArticlePage({
         }
       : null;
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: a.title,
+    description: a.metaDescription || a.excerpt,
+    inLanguage: "fr-FR",
+    mainEntityOfPage: `${site.url}/guides/${a.slug}`,
+    ...(a.cover ? { image: `${site.url}${a.cover}` } : {}),
+    author: { "@type": "Organization", name: site.name },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/brand/logo.png`,
+      },
+    },
+  };
+
   return (
     <>
+      <JsonLd data={articleJsonLd} />
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
 
       <Container>
