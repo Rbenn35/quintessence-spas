@@ -1,0 +1,27 @@
+name: Article SEO hebdomadaire
+
+# Génère et publie 1 article B2B chaque lundi à 8h (heure de Paris)
+# directement sur le site Quintessence Spas (endpoint /api/articles/publish).
+on:
+  schedule:
+    - cron: "0 6 * * 1" # 06:00 UTC ≈ 08:00 Europe/Paris
+  workflow_dispatch: {} # bouton "Run workflow" pour un lancement manuel
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Générer et publier l'article
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PUBLISH_SECRET: ${{ secrets.PUBLISH_SECRET }}
+          SITE_URL: https://www.quintessencespas.com
+        run: node scripts/generate-weekly-article.mjs
