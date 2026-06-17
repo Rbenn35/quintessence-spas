@@ -25,6 +25,7 @@ export const site = {
     { label: "Les spas", href: "/spas" },
     { label: "Guides", href: "/guides" },
     { label: "La marque", href: "/marque" },
+    { label: "Devenir revendeur", href: "/revendeur" },
     { label: "Contact", href: "/contact" },
   ],
 } as const;

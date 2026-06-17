@@ -5,7 +5,7 @@ import { getAllSpas, getAllArticles } from "@/lib/store";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const spas = await getAllSpas();
   const articles = (await getAllArticles()).filter((a) => a.published);
-  const staticRoutes = ["", "/spas", "/guides", "/marque", "/devis", "/contact"];
+  const staticRoutes = ["", "/spas", "/guides", "/marque", "/revendeur", "/devis", "/contact"];
 
   const now = new Date();
 
@@ -13,7 +13,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${site.url}${path}`,
     lastModified: now,
     changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path === "/spas" || path === "/devis" ? 0.9 : 0.7,
+    priority:
+      path === ""
+        ? 1
+        : path === "/spas" || path === "/devis" || path === "/revendeur"
+          ? 0.9
+          : 0.7,
   }));
 
   const spaPages: MetadataRoute.Sitemap = spas.map((s) => ({

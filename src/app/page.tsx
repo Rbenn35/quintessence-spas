@@ -5,6 +5,7 @@ import { Eyebrow, SectionHeading } from "@/components/SectionHeading";
 import { TrustBar } from "@/components/TrustBar";
 import { SpaCard } from "@/components/SpaCard";
 import { DevisCTA } from "@/components/DevisCTA";
+import { RevendeurCTA } from "@/components/RevendeurCTA";
 import Image from "next/image";
 import { HeroVassania } from "@/components/HeroVassania";
 import { getAllSpas, getAllReviews } from "@/lib/store";
@@ -39,6 +40,26 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* BANDEAU PRO (B2B) */}
+      <div className="bg-footer text-white">
+        <Container>
+          <Link
+            href="/revendeur"
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2.5 text-center text-sm"
+          >
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">
+              Professionnels
+            </span>
+            <span className="text-white/90">
+              Pisciniste, paysagiste ou revendeur ? Distribuez nos spas premium.
+            </span>
+            <span className="font-semibold underline underline-offset-2">
+              Devenir revendeur →
+            </span>
+          </Link>
+        </Container>
+      </div>
+
       {/* HERO */}
       <Container>
         <section className="grid items-center gap-10 py-12 sm:py-20 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
@@ -61,6 +82,15 @@ export default async function HomePage() {
                 Voir le catalogue
               </Button>
             </div>
+            <p className="mt-4 text-sm text-muted">
+              Vous êtes professionnel ?{" "}
+              <Link
+                href="/revendeur"
+                className="font-semibold text-terra underline-offset-2 hover:underline"
+              >
+                Devenez revendeur de spas →
+              </Link>
+            </p>
           </div>
 
           <HeroVassania className="h-80 w-full lg:h-[520px]" />
@@ -144,6 +174,8 @@ export default async function HomePage() {
           </section>
         </Container>
       </div>
+
+      <RevendeurCTA />
 
       {/* GUIDES SEO */}
       <Container>
