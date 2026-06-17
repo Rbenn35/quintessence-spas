@@ -55,9 +55,9 @@ export default async function ValideDevisPage({
   const data = buildDevisDocData(req, spa, config, settings);
 
   return (
-    <div className="devis-print min-h-screen bg-bg py-10 print:bg-white print:py-0">
+    <div className="devis-print min-h-screen bg-bg py-10 print:py-8">
       <PrintButton />
-      <div className="mx-auto max-w-3xl px-4 print:px-0">
+      <div className="mx-auto max-w-3xl px-4 print:px-6">
         <DevisDocument
           devisRef={req.ref}
           dateLabel={fmtDate(req.createdAt)}

@@ -30,7 +30,7 @@ export function DevisDocument({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-3xl rounded-2xl bg-white p-7 shadow-[0_10px_40px_rgba(19,49,61,0.08)] print:rounded-none print:shadow-none sm:p-12">
+    <div className="mx-auto max-w-3xl rounded-2xl bg-white p-7 shadow-[0_10px_40px_rgba(19,49,61,0.08)] print:shadow-none sm:p-12">
       {/* En-tête : logo + mentions légales / réf */}
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-5">
         <div>

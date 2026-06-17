@@ -196,14 +196,19 @@
   footer {
     display: none !important;
   }
-  /* Fond blanc plein page (html + body) : pas de bande de couleur résiduelle. */
+  /* Couleur de fond du devis sur TOUTE la page (html + body + conteneur),
+     y compris jusqu'aux bords (marges @page nulles). */
   html,
-  body {
-    background: #fff !important;
-  }
-  /* Le conteneur du devis ne doit jamais peindre une couleur de fond. */
+  body,
   .devis-print {
-    background: #fff !important;
+    background: var(--color-bg) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .devis-print {
     min-height: 0 !important;
+  }
+  @page {
+    margin: 0;
   }
 }
