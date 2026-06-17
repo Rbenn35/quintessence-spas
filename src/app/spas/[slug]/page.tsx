@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeading";
@@ -544,8 +545,28 @@ export default async function SpaPage({
                             current ? "text-terra" : ""
                           }`}
                         >
-                          {c.name}
-                          {current && " (ce modèle)"}
+                          <div className="flex items-center gap-3">
+                            {c.photos?.[0] ? (
+                              <Image
+                                src={c.photos[0]}
+                                alt={`Spa ${c.name}`}
+                                width={48}
+                                height={48}
+                                className="h-12 w-12 shrink-0 rounded-lg object-cover"
+                              />
+                            ) : (
+                              <span
+                                className="h-12 w-12 shrink-0 rounded-lg"
+                                style={{
+                                  background: `linear-gradient(150deg, ${c.placeholder[0]}, ${c.placeholder[1]})`,
+                                }}
+                              />
+                            )}
+                            <span>
+                              {c.name}
+                              {current && " (ce modèle)"}
+                            </span>
+                          </div>
                         </td>
                         <td className="px-5 py-3">{c.places}</td>
                         <td className="px-5 py-3">{c.jets}</td>
