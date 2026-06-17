@@ -50,7 +50,7 @@ export default async function GuidesIndex() {
         </p>
 
         {/* À la une + colonne de droite */}
-        <div className="mt-10 grid gap-6 lg:grid-cols-[1.5fr_1fr]">
+        <div className="mt-10 grid gap-6 lg:grid-cols-[2.2fr_1fr]">
           <Link
             href={`/guides/${featured.slug}`}
             className="group relative flex min-h-[340px] items-end overflow-hidden rounded-[22px] bg-cover bg-center p-8 text-white lg:min-h-[420px]"
