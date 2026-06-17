@@ -126,6 +126,7 @@ export function buildDevis(o: BuildDevisOpts): BuiltDevis {
     productName: modeleLabel,
     productSpecs: `Gamme ${p.gamme} · ${p.jets} hydrojets`,
     productImage: p.photos?.[0] ? `${base}${p.photos[0]}` : "",
+    productUrl: `${base || "https://www.quintessencespas.com"}/spas/${p.slug}`,
     ref: o.ref,
     dateLabel: o.dateLabel,
     validityDays: o.config.validityDays,

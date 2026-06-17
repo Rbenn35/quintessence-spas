@@ -24,6 +24,8 @@ export interface DevisData {
   productName: string;
   productSpecs: string;
   productImage: string;
+  /** Lien vers la fiche produit (photo + nom cliquables dans l'e-mail). */
+  productUrl: string;
   ref: string;
   dateLabel: string;
   validityDays: number;
@@ -118,12 +120,12 @@ ${
     <tr>
       ${
         d.productImage
-          ? `<td width="94" style="padding:14px 0 14px 14px;vertical-align:middle"><img src="${d.productImage}" alt="" width="80" height="80" style="width:80px;height:80px;border-radius:10px;object-fit:cover;display:block" /></td>`
+          ? `<td width="94" style="padding:14px 0 14px 14px;vertical-align:middle"><a href="${d.productUrl}" target="_blank" style="text-decoration:none"><img src="${d.productImage}" alt="${esc(d.productName)}" width="80" height="80" style="width:80px;height:80px;border-radius:10px;object-fit:cover;display:block;border:0" /></a></td>`
           : ""
       }
-      <td style="padding:14px;vertical-align:middle"><div style="font-family:${serif};font-size:20px;color:${C.ink}">${esc(
+      <td style="padding:14px;vertical-align:middle"><a href="${d.productUrl}" target="_blank" style="text-decoration:none"><div style="font-family:${serif};font-size:20px;color:${C.ink}">${esc(
         d.productName,
-      )}</div><div style="font-size:12.5px;color:${C.muted}">${esc(
+      )}</div></a><div style="font-size:12.5px;color:${C.muted}">${esc(
         d.productSpecs,
       )}</div></td>
     </tr>
