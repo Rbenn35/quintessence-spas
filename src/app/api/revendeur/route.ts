@@ -12,6 +12,7 @@ interface Payload {
   email?: string;
   telephone?: string;
   societe?: string;
+  siteweb?: string;
   activite?: string;
   message?: string;
 }
@@ -50,10 +51,12 @@ export async function POST(request: Request) {
   const societe = data.societe.trim();
   const activite = (data.activite || "Non précisé").trim();
   const telephone = (data.telephone || "").trim();
+  const siteweb = (data.siteweb || "").trim();
 
   const details = [
     `Société : ${societe}`,
     `Activité : ${activite}`,
+    siteweb ? `Site internet : ${siteweb}` : null,
     telephone ? `Téléphone : ${telephone}` : null,
     "",
     data.message?.trim() || "(aucun message)",
@@ -78,7 +81,7 @@ export async function POST(request: Request) {
       replyTo: data.email.trim(),
       subject: `Nouvelle candidature revendeur — ${esc(societe)}`,
       html: `<p><strong>${esc(data.prenom.trim())} ${esc(data.nom.trim())}</strong> — ${esc(societe)} (${esc(activite)})</p>
-<p>E-mail : ${esc(data.email.trim())}${telephone ? ` · Tél : ${esc(telephone)}` : ""}</p>
+<p>E-mail : ${esc(data.email.trim())}${telephone ? ` · Tél : ${esc(telephone)}` : ""}${siteweb ? ` · Site : ${esc(siteweb)}` : ""}</p>
 <p>${esc(data.message?.trim() || "(aucun message)").replace(/\n/g, "<br>")}</p>`,
     });
   }

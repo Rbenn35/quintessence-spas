@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Revendeur — C · Split conversion</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><style>*{margin:0;padding:0;box-sizing:border-box}img{display:block;max-width:100%}a{text-decoration:none;color:inherit}
+:root{--terra:#1c6e8e;--terra-d:#14566e;--ink:#13313d;--cream:#f7fbfc;--muted:#557079;--line:#dbe7ec;--footer:#0f2932;--gold:#b8893f}
+body{font-family:'Inter',sans-serif;color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.1}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.btn{display:inline-block;border-radius:40px;padding:15px 30px;font-weight:600;font-size:15px;cursor:pointer}
+.btn-terra{background:var(--terra);color:#fff}
+.btn-light{background:#fff;color:var(--terra)}
+.btn-ghost{border:1.5px solid currentColor}
+.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--terra)}
+label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+input,textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px;outline:none}
+input:focus,textarea:focus{border-color:var(--terra)}
+.grid2{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.formgrid{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+.formgrid .full{grid-column:1/-1}
+  header{background:#fff;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+  header img{height:32px}header nav a{margin-left:22px;font-size:14px;color:var(--muted)}
+  .hero{background:var(--cream);border-bottom:1px solid var(--line)}
+  .hero .wrap{display:grid;grid-template-columns:1fr 480px;gap:50px;padding:60px 28px;align-items:start}
+  .hero h1{font-size:46px}
+  .hero p{color:var(--muted);font-size:17px;margin-top:16px;max-width:480px}
+  .ul{margin-top:24px;display:grid;gap:12px}
+  .ul div{display:flex;gap:12px;align-items:flex-start;font-size:15px}.ul .b{color:var(--terra);font-weight:700}
+  .formcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px;box-shadow:0 20px 50px rgba(19,49,61,.08)}
+  .formcard h3{font-size:24px}.formcard .formgrid{margin-top:18px}
+  .sec{padding:70px 0}.sec h2{font-size:34px;text-align:center}
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+  .gal img{aspect-ratio:4/3;object-fit:cover;border-radius:14px;width:100%}
+  .pro{background:var(--ink);color:#fff}
+  .pro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;padding:64px 28px}
+  .pro img{border-radius:18px;aspect-ratio:4/3;object-fit:cover;width:100%}
+  .pro h2{font-size:32px}.pro p{color:#cfe0e6;margin-top:14px}
+  footer{background:var(--footer);color:#9fc0cc;text-align:center;padding:30px;font-size:13px}</style></head><body>
+  <header><div class="wrap"><img src="http://localhost:3000/brand/logo.png" alt="Quintessence Spas"><nav><a>Avantages</a><a>La gamme</a><a>Contact</a></nav></div></header>
+  <section class="hero"><div class="wrap">
+    <div><span class="eyebrow">Devenir revendeur · B2B</span>
+      <h1>Votre nouveau rayon spas premium commence ici</h1>
+      <p>Fournisseur de spas rigides haut de gamme pour piscinistes, paysagistes et revendeurs. Une gamme qui valorise votre showroom, un partenaire qui assure derrière.</p>
+      <div class="ul"><div><span class="b">✓</span><span>Marges pro & remises par volume</span></div><div><span class="b">✓</span><span>Stock et livraison partout en France</span></div><div><span class="b">✓</span><span>Formation et supports marketing fournis</span></div><div><span class="b">✓</span><span>SAV réactif et garantie constructeur</span></div></div></div>
+    <div class="formcard" id="form"><h3>Candidature revendeur</h3>
+  <div class="formgrid">
+    <div><label>Société / enseigne *</label><input placeholder="Ex. Piscines & Jardins Martin"></div>
+    <div><label>Site internet</label><input placeholder="https://votre-site.fr"></div>
+    <div><label>Prénom *</label><input></div>
+    <div><label>Nom *</label><input></div>
+    <div><label>E-mail professionnel *</label><input type="email"></div>
+    <div><label>Téléphone</label><input type="tel"></div>
+    <div class="full"><label>Votre activité</label>
+      <select style="width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px">
+        <option>Pisciniste</option><option>Paysagiste</option><option>Revendeur de spas</option><option>Magasin bien-être</option><option>Autre</option>
+      </select></div>
+    <div class="full"><label>Votre projet (optionnel)</label><textarea rows="3" placeholder="Zone, volume envisagé, showroom…"></textarea></div>
+  </div><button class="btn btn-terra" style="width:100%;margin-top:20px;border:0">Recevoir nos tarifs pro</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;text-align:center">Réservé aux professionnels · réponse sous 48 h</p></div>
+  </div></section>
+  <section class="sec"><div class="wrap"><h2>Une gamme prête à vendre</h2><div class="gal"><img src="http://localhost:3000/products/prado-1.jpg" alt="Spa"><img src="http://localhost:3000/products/vassania-1.jpg" alt="Spa"><img src="http://localhost:3000/products/massidia-1.jpg" alt="Spa"></div></div></section>
+  <div class="pro"><div class="wrap"><div><span class="eyebrow" style="color:var(--gold)">Notre savoir-faire</span><h2 style="margin-top:12px">15 ans d'expertise du spa rigide</h2><p>Sélection rigoureuse, logistique 35T maîtrisée, équipes formées et SAV France. Vous vendez, on sécurise toute la chaîne.</p></div><img src="http://localhost:3000/brand/conseil-showroom.jpg" alt="Conseil en showroom"></div></div>
+  <footer>Quintessence Spas — Spas rigides premium · France · contact@quintessencespas.com</footer></body></html>

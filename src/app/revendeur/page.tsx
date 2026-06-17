@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Eyebrow, SectionHeading } from "@/components/SectionHeading";
 import { RevendeurForm } from "@/components/RevendeurForm";
+import { getAllSpas } from "@/lib/store";
 import { site } from "@/lib/site";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Devenir revendeur de spas | Quintessence Spas",
@@ -18,139 +22,200 @@ export const metadata: Metadata = {
   },
 };
 
-const avantages = [
-  {
-    titre: "Marges attractives",
-    texte:
-      "Des conditions professionnelles claires et des remises par volume, pensées pour votre rentabilité.",
-  },
-  {
-    titre: "Gamme premium prête à vendre",
-    texte:
-      "Des spas rigides haut de gamme, fiables et différenciants, avec fiches techniques et visuels fournis.",
-  },
-  {
-    titre: "Stock & livraison en France",
-    texte:
-      "Disponibilité maîtrisée et livraison partout en France (camion 35T, hayon et transpalette).",
-  },
-  {
-    titre: "Accompagnement & formation",
-    texte:
-      "Formation produit, support technique et conseil commercial pour démarrer vite et bien.",
-  },
-  {
-    titre: "Supports marketing",
-    texte:
-      "Catalogues, visuels, fiches techniques et argumentaires pour équiper votre showroom et votre site.",
-  },
-  {
-    titre: "SAV & garantie",
-    texte:
-      "Garantie constructeur et SAV réactif : vous vendez en confiance, on assure le suivi.",
-  },
-];
+const HERO_IMG = "/products/lucerne-installe.jpg";
 
 const cibles = [
   "Piscinistes",
   "Paysagistes",
   "Revendeurs de spas",
-  "Magasins spa & bien-être",
-  "Constructeurs & promoteurs",
+  "Magasins bien-être",
+  "Constructeurs",
 ];
 
-export default function RevendeurPage() {
+const avantages = [
+  [
+    "Marges attractives",
+    "Conditions pro claires et remises par volume, pensées pour votre rentabilité.",
+  ],
+  [
+    "Gamme premium différenciante",
+    "Des spas rigides haut de gamme, fiables, qui valorisent votre showroom.",
+  ],
+  [
+    "Stock & livraison France",
+    "Disponibilité maîtrisée, livraison 35T partout en France (hayon + transpalette).",
+  ],
+  [
+    "Accompagnement & formation",
+    "Formation produit, support technique et conseil commercial pour démarrer vite.",
+  ],
+  [
+    "Supports marketing",
+    "Catalogues, visuels et fiches techniques prêts pour votre site et votre point de vente.",
+  ],
+  [
+    "SAV & garantie",
+    "Garantie constructeur et SAV réactif : vous vendez en confiance.",
+  ],
+];
+
+export default async function RevendeurPage() {
+  const gallery = (await getAllSpas())
+    .map((s) => ({ src: s.photos?.[0], name: s.name }))
+    .filter((g): g is { src: string; name: string } => Boolean(g.src))
+    .slice(0, 6);
+
   return (
     <>
-      {/* HERO */}
-      <Container>
-        <section className="py-14 text-center sm:py-20">
-          <Eyebrow>Programme revendeurs · B2B</Eyebrow>
-          <h1 className="mx-auto mt-4 max-w-3xl text-4xl leading-[1.1] sm:text-6xl">
-            Devenez revendeur de{" "}
-            <em className="italic text-terra">spas premium</em>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted">
-            Quintessence Spas est votre <strong>fournisseur de spas rigides
-            haut de gamme</strong>. Piscinistes, paysagistes, revendeurs :
-            enrichissez votre offre avec une gamme différenciante et un partenaire
-            fiable, de la commande au SAV.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3.5">
-            <a
-              href="#candidature"
-              className="inline-flex items-center justify-center rounded-full bg-terra px-9 py-4 text-base font-medium text-white transition-colors hover:bg-terra-dark"
-            >
-              Devenir revendeur
-            </a>
-            <Link
-              href="/spas"
-              className="inline-flex items-center justify-center rounded-full border-[1.5px] border-ink px-9 py-4 text-base font-medium text-ink transition-colors hover:bg-ink hover:text-cream"
-            >
-              Voir la gamme
-            </Link>
-          </div>
-
-          <div className="mt-10 flex flex-wrap justify-center gap-2">
-            {cibles.map((c) => (
-              <span
-                key={c}
-                className="rounded-full border border-line bg-card px-4 py-2 text-sm text-muted"
+      {/* HERO PLEIN ÉCRAN */}
+      <section className="relative flex min-h-[600px] items-center py-24 text-center text-white">
+        <Image
+          src={HERO_IMG}
+          alt="Spa rigide Quintessence installé sur une terrasse"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(15,41,50,.55) 0%, rgba(15,41,50,.78) 100%)",
+          }}
+        />
+        <div className="relative z-10 w-full">
+          <Container>
+            <Image
+              src="/brand/logo-hero-white.png"
+              alt="Quintessence Spas"
+              width={220}
+              height={58}
+              className="mx-auto h-10 w-auto"
+            />
+            <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+              Programme revendeurs · B2B
+            </p>
+            <h1 className="mx-auto mt-4 max-w-4xl text-4xl leading-[1.1] sm:text-6xl">
+              Distribuez des spas premium qui font la différence
+            </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
+              Devenez revendeur Quintessence Spas : une gamme rigide haut de
+              gamme, des marges attractives et un partenaire fiable, de la
+              commande au SAV.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3.5">
+              <a
+                href="#candidature"
+                className="inline-flex items-center justify-center rounded-full bg-white px-9 py-4 text-base font-semibold text-terra transition-colors hover:bg-cream"
               >
-                {c}
-              </span>
+                Devenir revendeur
+              </a>
+              <a
+                href="#candidature"
+                className="inline-flex items-center justify-center rounded-full border-[1.5px] border-white/80 px-9 py-4 text-base font-medium text-white transition-colors hover:bg-white hover:text-terra"
+              >
+                Demander nos tarifs pro
+              </a>
+            </div>
+            <div className="mt-10 flex flex-wrap justify-center gap-2.5">
+              {cibles.map((c) => (
+                <span
+                  key={c}
+                  className="rounded-full border border-white/40 px-4 py-2 text-sm"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+          </Container>
+        </div>
+      </section>
+
+      {/* AVANTAGES */}
+      <Container>
+        <section className="py-20">
+          <SectionHeading
+            eyebrow="Pourquoi nous rejoindre"
+            title={
+              <>
+                Un partenariat <em className="italic text-terra">gagnant</em>
+              </>
+            }
+            intro="Un partenariat pensé pour votre rentabilité et votre image."
+          />
+          <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {avantages.map(([titre, texte], i) => (
+              <div key={titre}>
+                <div className="font-serif text-3xl text-terra">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <h3 className="mt-2 text-xl">{titre}</h3>
+                <p className="mt-2 text-sm text-muted">{texte}</p>
+              </div>
             ))}
           </div>
         </section>
       </Container>
 
-      {/* AVANTAGES */}
-      <div className="border-y border-line bg-cream">
-        <Container>
-          <section className="py-20">
-            <SectionHeading
-              eyebrow="Pourquoi nous rejoindre"
-              title={
-                <>
-                  Un partenariat <em className="italic text-terra">gagnant</em>
-                </>
-              }
-              intro="Tout ce qu'il faut pour vendre des spas premium sereinement et avec marge."
-            />
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {avantages.map((a) => (
-                <div
-                  key={a.titre}
-                  className="rounded-2xl border border-line bg-card p-7"
+      {/* GAMME / PHOTOS */}
+      {gallery.length > 0 && (
+        <div className="border-y border-line bg-cream">
+          <Container>
+            <section className="py-20">
+              <h2 className="text-center text-3xl sm:text-4xl">
+                Une gamme complète, de 2 à 8 places
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-center text-muted">
+                Des modèles différenciants qui valorisent votre showroom.
+              </p>
+              <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                {gallery.map((g) => (
+                  <div
+                    key={g.src}
+                    className="relative aspect-[3/4] overflow-hidden rounded-xl bg-line"
+                  >
+                    <Image
+                      src={g.src}
+                      alt={`Spa ${g.name} de Quintessence Spas`}
+                      fill
+                      sizes="(max-width: 768px) 50vw, 16vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+              <div className="mt-10 text-center">
+                <Link
+                  href="/spas"
+                  className="inline-flex items-center justify-center rounded-full border-[1.5px] border-ink px-7 py-3 text-sm font-medium text-ink transition-colors hover:bg-ink hover:text-cream"
                 >
-                  <h3 className="text-xl">{a.titre}</h3>
-                  <p className="mt-2 text-sm text-muted">{a.texte}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        </Container>
-      </div>
+                  Voir tout le catalogue
+                </Link>
+              </div>
+            </section>
+          </Container>
+        </div>
+      )}
 
-      {/* FORMULAIRE */}
-      <Container>
-        <section id="candidature" className="scroll-mt-24 py-20">
-          <div className="mx-auto max-w-2xl">
-            <SectionHeading
-              eyebrow="Candidature"
-              title={
-                <>
-                  Rejoignez le <em className="italic text-terra">réseau</em>
-                </>
-              }
-              intro="Remplissez ce formulaire : notre équipe revendeurs revient vers vous sous 48 h ouvrées avec nos conditions et tarifs professionnels."
-            />
-            <div className="mt-10">
-              <RevendeurForm />
-            </div>
+      {/* FORMULAIRE (section sombre) */}
+      <section id="candidature" className="scroll-mt-20 bg-footer py-20 text-white">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <Eyebrow className="text-gold">Candidature</Eyebrow>
+            <h2 className="mt-3 text-4xl text-white sm:text-5xl">
+              Rejoignez le réseau
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
+              Réponse sous 48 h ouvrées avec nos conditions et tarifs
+              professionnels.
+            </p>
           </div>
-        </section>
-      </Container>
+          <div className="mx-auto mt-10 max-w-2xl rounded-3xl bg-white p-8 text-ink shadow-2xl sm:p-10">
+            <RevendeurForm />
+          </div>
+        </Container>
+      </section>
     </>
   );
 }

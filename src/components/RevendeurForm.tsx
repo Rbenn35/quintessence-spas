@@ -74,26 +74,39 @@ export function RevendeurForm() {
           />
         </div>
         <div>
-          <label className={labelClass} htmlFor="activite">
-            Votre activité
+          <label className={labelClass} htmlFor="siteweb">
+            Site internet
           </label>
-          <select
-            id="activite"
-            name="activite"
-            required
-            defaultValue=""
+          <input
+            id="siteweb"
+            name="siteweb"
+            type="url"
+            placeholder="https://votre-site.fr"
             className={`mt-1.5 ${inputClass}`}
-          >
-            <option value="" disabled>
-              Sélectionnez…
-            </option>
-            {ACTIVITES.map((a) => (
-              <option key={a} value={a}>
-                {a}
-              </option>
-            ))}
-          </select>
+          />
         </div>
+      </div>
+
+      <div>
+        <label className={labelClass} htmlFor="activite">
+          Votre activité
+        </label>
+        <select
+          id="activite"
+          name="activite"
+          required
+          defaultValue=""
+          className={`mt-1.5 ${inputClass}`}
+        >
+          <option value="" disabled>
+            Sélectionnez…
+          </option>
+          {ACTIVITES.map((a) => (
+            <option key={a} value={a}>
+              {a}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
