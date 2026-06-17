@@ -469,11 +469,11 @@ export default async function SpaPage({
                 Note de {avgStr}/5 · {count} avis · clients Quintessence Spas
               </span>
             </div>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
+            <div className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 [scrollbar-width:thin]">
               {reviews.map((r) => (
                 <figure
                   key={r.id}
-                  className="flex flex-col rounded-2xl border border-line bg-card p-5"
+                  className="flex w-[300px] shrink-0 snap-start flex-col rounded-2xl border border-line bg-card p-5"
                 >
                   <TrustStars rating={r.rating} size="md" />
                   <p className="mt-3 flex-1 text-sm">{r.text}</p>
