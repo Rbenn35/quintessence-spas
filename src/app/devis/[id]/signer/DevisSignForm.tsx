@@ -2,15 +2,106 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { formatPhone, phoneDigits, isValidPhone } from "@/lib/format";
 
 const INPUT =
   "w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none focus-visible:border-terra";
 
-function SignaturePad({
-  onChange,
+type Addr = { address: string; cp: string; city: string };
+
+/* ------------------------------------------------------------------ */
+/*  Autocomplétion d'adresse — Base Adresse Nationale (data.gouv.fr)   */
+/* ------------------------------------------------------------------ */
+type BanFeature = {
+  properties: {
+    id: string;
+    label: string;
+    name: string;
+    postcode: string;
+    city: string;
+  };
+};
+
+function AddressAutocomplete({
+  selected,
+  onSelect,
 }: {
-  onChange: (dataUrl: string | null) => void;
+  selected: Addr;
+  onSelect: (a: Addr) => void;
 }) {
+  const [q, setQ] = useState("");
+  const [results, setResults] = useState<BanFeature[]>([]);
+  const [open, setOpen] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function search(v: string) {
+    setQ(v);
+    onSelect({ address: "", cp: "", city: "" }); // invalide tant que non choisi dans la liste
+    if (timer.current) clearTimeout(timer.current);
+    if (v.trim().length < 3) {
+      setResults([]);
+      setOpen(false);
+      return;
+    }
+    timer.current = setTimeout(async () => {
+      try {
+        const r = await fetch(
+          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(v)}&limit=5`,
+        );
+        const d = await r.json();
+        setResults(d.features || []);
+        setOpen(true);
+      } catch {
+        setResults([]);
+      }
+    }, 250);
+  }
+
+  function pick(f: BanFeature) {
+    const p = f.properties;
+    setQ(p.label);
+    setOpen(false);
+    setResults([]);
+    onSelect({ address: p.name, cp: p.postcode, city: p.city });
+  }
+
+  return (
+    <div className="relative">
+      <input
+        className={INPUT}
+        placeholder="Saisissez votre adresse puis choisissez dans la liste"
+        value={q}
+        onChange={(e) => search(e.target.value)}
+        autoComplete="off"
+      />
+      {open && results.length > 0 && (
+        <ul className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-line bg-white shadow-lg">
+          {results.map((f) => (
+            <li key={f.properties.id}>
+              <button
+                type="button"
+                onClick={() => pick(f)}
+                className="block w-full px-3 py-2 text-left text-sm hover:bg-cream"
+              >
+                {f.properties.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      {selected.address && (
+        <p className="mt-1 text-xs text-[#00917f]">
+          ✓ {selected.address}, {selected.cp} {selected.city}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Pad de signature                                                   */
+/* ------------------------------------------------------------------ */
+function SignaturePad({ onChange }: { onChange: (d: string | null) => void }) {
   const ref = useRef<HTMLCanvasElement | null>(null);
   const drawing = useRef(false);
   const [has, setHas] = useState(false);
@@ -85,6 +176,7 @@ function SignaturePad({
   );
 }
 
+/* ------------------------------------------------------------------ */
 export function DevisSignForm({
   requestId,
   defaultName,
@@ -94,14 +186,10 @@ export function DevisSignForm({
 }) {
   const router = useRouter();
   const [name, setName] = useState(defaultName);
-  const [address, setAddress] = useState("");
-  const [cp, setCp] = useState("");
-  const [city, setCity] = useState("");
+  const [billing, setBilling] = useState<Addr>({ address: "", cp: "", city: "" });
   const [phone, setPhone] = useState("");
   const [diff, setDiff] = useState(false);
-  const [dAddress, setDAddress] = useState("");
-  const [dCp, setDCp] = useState("");
-  const [dCity, setDCity] = useState("");
+  const [delivery, setDelivery] = useState<Addr>({ address: "", cp: "", city: "" });
   const [sig, setSig] = useState<string | null>(null);
   const [accept, setAccept] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -110,9 +198,12 @@ export function DevisSignForm({
   async function submit() {
     setErr("");
     if (!name.trim()) return setErr("Indiquez le nom du signataire.");
-    if (!address.trim() || !cp.trim() || !city.trim())
-      return setErr("Complétez votre adresse de facturation.");
-    if (!phone.trim()) return setErr("Indiquez un numéro de téléphone.");
+    if (!billing.address || !billing.cp || !billing.city)
+      return setErr("Sélectionnez votre adresse de facturation dans la liste.");
+    if (!isValidPhone(phone))
+      return setErr("Le téléphone doit comporter 10 chiffres.");
+    if (diff && (!delivery.address || !delivery.cp || !delivery.city))
+      return setErr("Sélectionnez l'adresse de livraison dans la liste.");
     if (!sig) return setErr("Votre signature est requise.");
     if (!accept) return setErr("Veuillez accepter le devis pour valider.");
 
@@ -123,10 +214,8 @@ export function DevisSignForm({
       body: JSON.stringify({
         signerName: name.trim(),
         signatureDataUrl: sig,
-        billing: { address: address.trim(), cp: cp.trim(), city: city.trim(), phone: phone.trim() },
-        ...(diff
-          ? { delivery: { address: dAddress.trim(), cp: dCp.trim(), city: dCity.trim() } }
-          : {}),
+        billing: { ...billing, phone: phoneDigits(phone) },
+        ...(diff ? { delivery } : {}),
       }),
     });
     const data = await res.json().catch(() => ({}));
@@ -141,37 +230,62 @@ export function DevisSignForm({
 
   return (
     <div className="mt-8 border-t border-line pt-7">
-      {/* Coordonnées */}
       <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
         Vos coordonnées
       </h4>
       <div className="mt-3 space-y-3">
-        <div className="grid gap-3 sm:grid-cols-2">
-          <input className={`${INPUT} sm:col-span-2`} placeholder="Adresse postale" value={address} onChange={(e) => setAddress(e.target.value)} />
-          <input className={INPUT} placeholder="Code postal" value={cp} onChange={(e) => setCp(e.target.value)} />
-          <input className={INPUT} placeholder="Ville" value={city} onChange={(e) => setCity(e.target.value)} />
-          <input className={`${INPUT} sm:col-span-2`} placeholder="Téléphone" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <div>
+          <label className="mb-1 block text-xs text-muted">
+            Adresse de facturation
+          </label>
+          <AddressAutocomplete selected={billing} onSelect={setBilling} />
+        </div>
+        <div>
+          <label className="mb-1 block text-xs text-muted">Téléphone</label>
+          <input
+            className={INPUT}
+            inputMode="numeric"
+            placeholder="06 12 34 56 78"
+            value={phone}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+          />
         </div>
         <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" checked={diff} onChange={(e) => setDiff(e.target.checked)} />
+          <input
+            type="checkbox"
+            checked={diff}
+            onChange={(e) => setDiff(e.target.checked)}
+          />
           Adresse de livraison différente de la facturation
         </label>
         {diff && (
-          <div className="grid gap-3 rounded-xl bg-cream/50 p-3 sm:grid-cols-2">
-            <input className={`${INPUT} sm:col-span-2`} placeholder="Adresse de livraison" value={dAddress} onChange={(e) => setDAddress(e.target.value)} />
-            <input className={INPUT} placeholder="Code postal (livraison)" value={dCp} onChange={(e) => setDCp(e.target.value)} />
-            <input className={INPUT} placeholder="Ville (livraison)" value={dCity} onChange={(e) => setDCity(e.target.value)} />
+          <div className="rounded-xl bg-cream/50 p-3">
+            <label className="mb-1 block text-xs text-muted">
+              Adresse de livraison
+            </label>
+            <AddressAutocomplete selected={delivery} onSelect={setDelivery} />
           </div>
         )}
       </div>
 
-      {/* Signature */}
       <div className="mt-7 rounded-xl border border-line bg-cream/40 p-5">
-        <div className="mb-2 text-sm font-semibold">Bon pour accord — Nom du signataire</div>
-        <input className={`${INPUT} mb-3`} value={name} onChange={(e) => setName(e.target.value)} placeholder="Nom et prénom" />
+        <div className="mb-2 text-sm font-semibold">
+          Bon pour accord — Nom du signataire
+        </div>
+        <input
+          className={`${INPUT} mb-3`}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Nom et prénom"
+        />
         <SignaturePad onChange={setSig} />
         <label className="mt-3 flex items-start gap-2 text-[11px] leading-relaxed text-muted">
-          <input type="checkbox" className="mt-0.5" checked={accept} onChange={(e) => setAccept(e.target.checked)} />
+          <input
+            type="checkbox"
+            className="mt-0.5"
+            checked={accept}
+            onChange={(e) => setAccept(e.target.checked)}
+          />
           <span>
             J&apos;accepte ce devis. Mon adresse IP, la date et l&apos;heure sont
             enregistrées à des fins de preuve légale.

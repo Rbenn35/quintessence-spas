@@ -7,6 +7,7 @@ import {
   addDevisRequest,
 } from "@/lib/store";
 import { buildDevis, buildInfoEmail } from "@/lib/devis-generate";
+import { formatPrenom, formatNom } from "@/lib/format";
 
 /**
  * Réception d'une demande de devis.
@@ -46,6 +47,10 @@ export async function POST(request: Request) {
       { status: 422 },
     );
   }
+
+  // Normalisation : prénom « Marie », nom « DOMPIERRE ».
+  data.prenom = formatPrenom(data.prenom);
+  data.nom = formatNom(data.nom);
 
   const [spas, config, settings, existing] = await Promise.all([
     getAllSpas(),

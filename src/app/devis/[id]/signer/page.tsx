@@ -7,6 +7,7 @@ import {
 } from "@/lib/store";
 import { buildDevisDocData } from "@/lib/devis-document";
 import { DevisDocument } from "@/components/DevisDocument";
+import { formatPrenom, formatNom } from "@/lib/format";
 import { DevisSignForm } from "./DevisSignForm";
 
 export const dynamic = "force-dynamic";
@@ -61,11 +62,14 @@ export default async function SignerPage({
         <DevisDocument
           devisRef={req.ref}
           dateLabel={fmtDate(req.createdAt)}
-          clientName={`${req.prenom} ${req.nom}`}
+          clientName={`${formatPrenom(req.prenom)} ${formatNom(req.nom)}`}
           clientEmail={req.email}
           data={data}
         >
-          <DevisSignForm requestId={id} defaultName={`${req.prenom} ${req.nom}`} />
+          <DevisSignForm
+            requestId={id}
+            defaultName={`${formatPrenom(req.prenom)} ${formatNom(req.nom)}`}
+          />
         </DevisDocument>
       </div>
     </div>

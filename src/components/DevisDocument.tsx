@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { DevisDocData } from "@/lib/devis-document";
 import type { DevisAddress } from "@/lib/devis-requests";
+import { formatPhone } from "@/lib/format";
 
 /**
  * Document de devis (design « Template A » : type facture A4).
@@ -50,20 +51,26 @@ export function DevisDocument({
       </div>
 
       {/* Client (avec facturation / livraison) */}
-      <div className="mt-5 text-sm">
+      <div className="mt-5 text-sm leading-relaxed">
         <span className="text-xs uppercase tracking-wide text-muted">Client</span>
-        <div className="font-medium">{clientName}</div>
+        <div className="mt-1 font-medium">{clientName}</div>
         {billing && (
           <div className="text-muted">
-            {billing.address}, {billing.cp} {billing.city}
-            {billing.phone ? ` · Tél. ${billing.phone}` : ""}
+            <div>{billing.address}</div>
+            <div>
+              {billing.cp} {billing.city}
+            </div>
+            {billing.phone && <div>{formatPhone(billing.phone)}</div>}
           </div>
         )}
         <div className="text-muted">{clientEmail}</div>
         {delivery && (
-          <div className="mt-1 text-muted">
-            <span className="text-xs uppercase tracking-wide">Livraison : </span>
-            {delivery.address}, {delivery.cp} {delivery.city}
+          <div className="mt-2 text-muted">
+            <span className="text-xs uppercase tracking-wide">Livraison</span>
+            <div>{delivery.address}</div>
+            <div>
+              {delivery.cp} {delivery.city}
+            </div>
           </div>
         )}
       </div>

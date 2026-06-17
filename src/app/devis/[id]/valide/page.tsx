@@ -8,6 +8,7 @@ import {
 } from "@/lib/store";
 import { buildDevisDocData } from "@/lib/devis-document";
 import { DevisDocument } from "@/components/DevisDocument";
+import { formatPrenom, formatNom } from "@/lib/format";
 import { PrintButton } from "./PrintButton";
 
 export const dynamic = "force-dynamic";
@@ -60,7 +61,7 @@ export default async function ValideDevisPage({
         <DevisDocument
           devisRef={req.ref}
           dateLabel={fmtDate(req.createdAt)}
-          clientName={`${req.prenom} ${req.nom}`}
+          clientName={`${formatPrenom(req.prenom)} ${formatNom(req.nom)}`}
           clientEmail={req.email}
           data={data}
           billing={req.billing}
