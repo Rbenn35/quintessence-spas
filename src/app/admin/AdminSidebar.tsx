@@ -100,7 +100,11 @@ function NavIcon({ paths }: { paths: string[] }) {
   );
 }
 
-export function AdminSidebar() {
+export function AdminSidebar({
+  unreadMessages = 0,
+}: {
+  unreadMessages?: number;
+}) {
   const pathname = usePathname() ?? "";
   const router = useRouter();
 
@@ -115,21 +119,35 @@ export function AdminSidebar() {
     router.refresh();
   }
 
-  const link = (item: Item, active: boolean) => (
-    <Link
-      key={item.href}
-      href={item.href}
-      className={clsx(
-        "flex shrink-0 items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm transition-colors",
-        active
-          ? "bg-terra/10 font-medium text-terra"
-          : "text-ink hover:bg-cream",
-      )}
-    >
-      <NavIcon paths={item.paths} />
-      {item.label}
-    </Link>
-  );
+  const link = (item: Item, active: boolean) => {
+    const badge =
+      item.href === "/admin/messages" && unreadMessages > 0
+        ? unreadMessages
+        : null;
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        className={clsx(
+          "flex shrink-0 items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm transition-colors",
+          active
+            ? "bg-terra/10 font-medium text-terra"
+            : "text-ink hover:bg-cream",
+        )}
+      >
+        <NavIcon paths={item.paths} />
+        {item.label}
+        {badge !== null && (
+          <span
+            className="ml-auto inline-flex min-w-[20px] items-center justify-center rounded-full bg-terra px-1.5 py-0.5 text-[11px] font-semibold leading-none text-white"
+            aria-label={`${badge} message${badge > 1 ? "s" : ""} non lu${badge > 1 ? "s" : ""}`}
+          >
+            {badge}
+          </span>
+        )}
+      </Link>
+    );
+  };
 
   return (
     <aside className="border-b border-line bg-cream/40 md:w-60 md:shrink-0 md:border-b-0 md:border-r">

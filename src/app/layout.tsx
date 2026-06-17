@@ -53,7 +53,6 @@ export async function generateMetadata(): Promise<Metadata> {
       images: ["/products/lucerne-installe.jpg"],
     },
     alternates: { canonical: "/" },
-    icons: { apple: "/brand/apple-touch-icon.png" },
   };
 }
 
