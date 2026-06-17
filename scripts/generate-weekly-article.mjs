@@ -63,6 +63,35 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans balises Markdown), au format
       model: "claude-sonnet-4-6",
       max_tokens: 4000,
       system,
+      // Sorties structurées : l'API garantit un JSON conforme au schéma.
+      output_config: {
+        format: {
+          type: "json_schema",
+          schema: {
+            type: "object",
+            properties: {
+              title: { type: "string" },
+              meta_desc: { type: "string" },
+              excerpt: { type: "string" },
+              content_html: { type: "string" },
+              faq: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    q: { type: "string" },
+                    a: { type: "string" },
+                  },
+                  required: ["q", "a"],
+                  additionalProperties: false,
+                },
+              },
+            },
+            required: ["title", "meta_desc", "excerpt", "content_html", "faq"],
+            additionalProperties: false,
+          },
+        },
+      },
       messages: [
         {
           role: "user",
@@ -75,7 +104,14 @@ Réponds UNIQUEMENT avec un objet JSON valide (sans balises Markdown), au format
   const data = await res.json();
   let txt = data.content.map((b) => b.text || "").join("").trim();
   txt = txt.replace(/^```json\s*/i, "").replace(/```$/i, "").trim();
-  return JSON.parse(txt);
+  try {
+    return JSON.parse(txt);
+  } catch {
+    // Filet de sécurité : extraire le 1er objet JSON du texte.
+    const m = txt.match(/\{[\s\S]*\}/);
+    if (m) return JSON.parse(m[0]);
+    throw new Error(`Réponse Claude non JSON : ${txt.slice(0, 300)}`);
+  }
 }
 
 // 3) Publication sur le site via l'endpoint sécurisé.
@@ -111,5 +147,6 @@ if (!topic) {
 }
 console.log(`📝 Sujet retenu : ${topic.topic}`);
 const article = await generateArticle(topic);
+console.log(`✍️  Article généré : "${article.title}" (${(article.faq || []).length} FAQ) — publication…`);
 await publish(topic, article);
 console.log(`✅ Publié sur ${SITE_URL}/guides/${topic.slug} — "${article.title}"`);
