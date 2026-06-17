@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formatPrenom, formatNom } from "@/lib/format";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -73,6 +74,9 @@ export function DevisForm({
             name="prenom"
             autoComplete="given-name"
             required
+            onBlur={(e) => {
+              e.currentTarget.value = formatPrenom(e.currentTarget.value);
+            }}
             className={`mt-1.5 ${inputClass}`}
           />
         </div>
@@ -85,6 +89,9 @@ export function DevisForm({
             name="nom"
             autoComplete="family-name"
             required
+            onBlur={(e) => {
+              e.currentTarget.value = formatNom(e.currentTarget.value);
+            }}
             className={`mt-1.5 ${inputClass}`}
           />
         </div>
