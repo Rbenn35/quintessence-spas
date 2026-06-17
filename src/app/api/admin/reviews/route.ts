@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertReview } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Review } from "@/lib/reviews";
 
 export async function POST(request: Request) {
@@ -16,5 +17,6 @@ export async function POST(request: Request) {
   }
   if (!review.id) review.id = `r-${Date.now()}`;
   await upsertReview(review);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, id: review.id });
 }

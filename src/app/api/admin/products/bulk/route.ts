@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { bulkPatchSpas, type SpaBulkPatch } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 
 interface BulkBody {
   slugs?: unknown;
@@ -45,5 +46,6 @@ export async function PATCH(request: Request) {
   }
 
   const count = await bulkPatchSpas(slugs, patch);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, count });
 }

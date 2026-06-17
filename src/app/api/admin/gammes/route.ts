@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { saveGammes } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 
 export async function POST(request: Request) {
   if (!(await isAdmin())) {
@@ -16,5 +17,6 @@ export async function POST(request: Request) {
     );
   }
   await saveGammes(body.gammes);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true });
 }

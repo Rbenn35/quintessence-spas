@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertSpa, deleteSpa } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Spa } from "@/lib/spas";
 
 export async function PUT(
@@ -23,6 +24,7 @@ export async function PUT(
     await deleteSpa(slug);
   }
   await upsertSpa(spa);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, slug: spa.slug });
 }
 
@@ -35,5 +37,6 @@ export async function DELETE(
   }
   const { slug } = await params;
   await deleteSpa(slug);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true });
 }

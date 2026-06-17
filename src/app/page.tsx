@@ -11,7 +11,9 @@ import { HeroVassania } from "@/components/HeroVassania";
 import { getAllSpas, getAllReviews } from "@/lib/store";
 import { statsForProduct } from "@/lib/reviews";
 
-export const dynamic = "force-dynamic";
+// ISR : page mise en cache au CDN, régénérée au plus toutes les 10 min.
+// Les modifs admin déclenchent une revalidation immédiate (revalidatePath).
+export const revalidate = 600;
 
 const guides = [
   {

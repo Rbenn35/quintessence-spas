@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertAccessoire, deleteAccessoire } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Accessoire } from "@/lib/accessoires";
 
 export async function PUT(
@@ -20,6 +21,7 @@ export async function PUT(
   }
   item.id = id;
   await upsertAccessoire(item);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, id });
 }
 
@@ -32,5 +34,6 @@ export async function DELETE(
   }
   const { id } = await params;
   await deleteAccessoire(id);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true });
 }

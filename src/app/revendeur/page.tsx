@@ -9,7 +9,7 @@ import { getAllSpas } from "@/lib/store";
 import { site } from "@/lib/site";
 import { breadcrumbSchema, orgRef } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   // Le titre du site ajoute déjà « · Quintessence Spas » via le template.

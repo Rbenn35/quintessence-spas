@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeading";
 import { getAllArticles } from "@/lib/store";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Guides & conseils sur le spa rigide",

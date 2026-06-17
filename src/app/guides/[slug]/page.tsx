@@ -8,7 +8,13 @@ import { getAllArticles, getArticleBySlug } from "@/lib/store";
 import { site } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 600;
+
+// Pré-génère tous les articles publiés au build (cache CDN dès le 1er accès).
+export async function generateStaticParams() {
+  const articles = (await getAllArticles()).filter((a) => a.published);
+  return articles.map((a) => ({ slug: a.slug }));
+}
 
 export async function generateMetadata({
   params,

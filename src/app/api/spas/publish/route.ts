@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { upsertSpa } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Spa } from "@/lib/spas";
 
 /**
@@ -37,5 +38,6 @@ export async function POST(request: Request) {
 
   // On fait confiance à la structure fournie (usage interne, secret requis).
   await upsertSpa(b as Spa);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, slug: b.slug });
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertAccessoire } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Accessoire } from "@/lib/accessoires";
 
 export async function POST(request: Request) {
@@ -16,5 +17,6 @@ export async function POST(request: Request) {
   }
   if (!item.id) item.id = `acc-${Date.now()}`;
   await upsertAccessoire(item);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, id: item.id });
 }

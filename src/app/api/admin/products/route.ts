@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertSpa, getSpaBySlug } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Spa } from "@/lib/spas";
 
 export async function POST(request: Request) {
@@ -21,5 +22,6 @@ export async function POST(request: Request) {
     );
   }
   await upsertSpa(spa);
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, slug: spa.slug });
 }

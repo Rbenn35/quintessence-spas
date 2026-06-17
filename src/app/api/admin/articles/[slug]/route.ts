@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { upsertArticle, deleteArticle } from "@/lib/store";
+import { revalidateGuides } from "@/lib/revalidate";
 import type { Article } from "@/lib/articles";
 
 export async function PUT(
@@ -22,6 +23,7 @@ export async function PUT(
     await deleteArticle(slug);
   }
   await upsertArticle(article);
+  revalidateGuides();
   return NextResponse.json({ ok: true, slug: article.slug });
 }
 
@@ -34,5 +36,6 @@ export async function DELETE(
   }
   const { slug } = await params;
   await deleteArticle(slug);
+  revalidateGuides();
   return NextResponse.json({ ok: true });
 }

@@ -36,7 +36,15 @@ import { reviewStats, statsForProduct, initiales } from "@/lib/reviews";
 import { breadcrumbSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const dynamic = "force-dynamic";
+// ISR : fiche mise en cache au CDN, régénérée au plus toutes les 10 min.
+// Une modif produit/avis déclenche une revalidation immédiate.
+export const revalidate = 600;
+
+// Pré-génère toutes les fiches au build (cache CDN dès le 1er accès).
+export async function generateStaticParams() {
+  const spas = await getAllSpas();
+  return spas.map((s) => ({ slug: s.slug }));
+}
 
 export async function generateMetadata({
   params,

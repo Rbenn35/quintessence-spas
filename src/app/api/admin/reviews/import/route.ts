@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { getAllReviews, saveAllReviews, getAllSpas } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 import type { Review } from "@/lib/reviews";
 
 /** Parseur CSV minimal : gère les champs entre guillemets, virgules et CRLF. */
@@ -132,6 +133,7 @@ export async function POST(request: Request) {
 
   const all = await getAllReviews();
   await saveAllReviews([...newReviews, ...all]);
+  revalidateCatalogue();
 
   return NextResponse.json({
     ok: true,

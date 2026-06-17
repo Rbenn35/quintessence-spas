@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { deleteReviews, setReviewsPublished } from "@/lib/store";
+import { revalidateCatalogue } from "@/lib/revalidate";
 
 /**
  * Actions groupées sur les avis (modération).
@@ -43,5 +44,6 @@ export async function POST(request: Request) {
       );
   }
 
+  revalidateCatalogue();
   return NextResponse.json({ ok: true, count });
 }

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { upsertArticle } from "@/lib/store";
+import { revalidateGuides } from "@/lib/revalidate";
 import type { Article } from "@/lib/articles";
 
 /**
@@ -61,5 +62,6 @@ export async function POST(request: Request) {
   };
 
   await upsertArticle(article);
+  revalidateGuides();
   return NextResponse.json({ ok: true, slug: article.slug });
 }

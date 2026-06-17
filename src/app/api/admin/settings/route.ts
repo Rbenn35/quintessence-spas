@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
 import { saveSettings } from "@/lib/store";
+import { revalidateSite } from "@/lib/revalidate";
 import type { SiteSettings } from "@/lib/settings";
 
 export async function POST(request: Request) {
@@ -15,5 +16,6 @@ export async function POST(request: Request) {
     );
   }
   await saveSettings(s);
+  revalidateSite();
   return NextResponse.json({ ok: true });
 }
