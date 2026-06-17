@@ -32,7 +32,7 @@ export function DevisDocument({
   return (
     <div className="mx-auto max-w-3xl rounded-2xl bg-white p-7 shadow-[0_10px_40px_rgba(19,49,61,0.08)] print:shadow-none sm:p-12">
       {/* En-tête : logo + mentions légales / réf */}
-      <div className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-5">
+      <div className="flex flex-wrap items-start justify-between gap-4 break-inside-avoid border-b border-line pb-5">
         <div>
           <img src="/brand/logo.png" alt="Quintessence Spas" className="h-10" />
           <div className="mt-3 text-xs leading-relaxed text-muted">
@@ -53,7 +53,7 @@ export function DevisDocument({
       </div>
 
       {/* Client (avec facturation / livraison) */}
-      <div className="mt-5 text-sm leading-relaxed">
+      <div className="mt-5 break-inside-avoid text-sm leading-relaxed">
         <span className="text-xs uppercase tracking-wide text-muted">Client</span>
         <div className="mt-1 font-medium">{clientName}</div>
         {billing && (
@@ -78,7 +78,7 @@ export function DevisDocument({
       </div>
 
       {/* Photo + caractéristiques */}
-      <div className="mt-6 grid gap-5 sm:grid-cols-[1fr_1.2fr]">
+      <div className="mt-6 grid gap-5 break-inside-avoid sm:grid-cols-[1fr_1.2fr]">
         {data.photo ? (
           <img
             src={data.photo}
@@ -111,7 +111,7 @@ export function DevisDocument({
         {data.lines.map((l) => (
           <div
             key={l.label}
-            className="flex items-start justify-between gap-4 py-3"
+            className="flex break-inside-avoid items-start justify-between gap-4 py-3"
           >
             <div className="min-w-0">
               <div className="font-medium">{l.label}</div>
@@ -134,13 +134,15 @@ export function DevisDocument({
           </div>
         ))}
       </div>
-      <div className="mt-3 flex items-center justify-between border-t-2 border-ink pt-3 text-lg font-semibold">
-        <span>Total TTC</span>
-        <span>{data.total}</span>
+      <div className="mt-3 break-inside-avoid border-t-2 border-ink pt-3">
+        <div className="flex items-center justify-between text-lg font-semibold">
+          <span>Total TTC</span>
+          <span>{data.total}</span>
+        </div>
+        <p className="mt-1 text-right text-sm text-[#00917f]">
+          Économie de {data.economie}
+        </p>
       </div>
-      <p className="mt-1 text-right text-sm text-[#00917f]">
-        Économie de {data.economie}
-      </p>
 
       {children}
     </div>

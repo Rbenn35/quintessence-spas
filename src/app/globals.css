@@ -196,12 +196,11 @@
   footer {
     display: none !important;
   }
-  /* Couleur de fond du devis sur TOUTE la page (html + body + conteneur),
-     y compris jusqu'aux bords (marges @page nulles). */
+  /* Fond blanc sur TOUTE la page (html + body + conteneur du devis). */
   html,
   body,
   .devis-print {
-    background: var(--color-bg) !important;
+    background: #fff !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -209,6 +208,6 @@
     min-height: 0 !important;
   }
   @page {
-    margin: 0;
+    margin: 12mm;
   }
 }
