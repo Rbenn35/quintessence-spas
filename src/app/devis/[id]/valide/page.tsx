@@ -8,13 +8,9 @@ import {
 } from "@/lib/store";
 import { buildDevisDocData } from "@/lib/devis-document";
 import { DevisDocument } from "@/components/DevisDocument";
-import type { DevisAddress } from "@/lib/devis-requests";
 import { PrintButton } from "./PrintButton";
 
 export const dynamic = "force-dynamic";
-
-const fmtAddr = (a?: DevisAddress) =>
-  a ? `${a.address}, ${a.cp} ${a.city}${a.phone ? ` · ${a.phone}` : ""}` : "—";
 
 function fmtDate(iso?: string): string {
   if (!iso) return "—";
@@ -67,28 +63,12 @@ export default async function ValideDevisPage({
           clientName={`${req.prenom} ${req.nom}`}
           clientEmail={req.email}
           data={data}
+          billing={req.billing}
+          delivery={req.delivery}
         >
-          {/* Coordonnées */}
-          <div className="mt-8 grid gap-5 border-t border-line pt-6 text-sm sm:grid-cols-2">
-            <div>
-              <div className="text-xs uppercase tracking-wide text-muted">
-                Facturation
-              </div>
-              <div className="mt-1">{fmtAddr(req.billing)}</div>
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wide text-muted">
-                Livraison
-              </div>
-              <div className="mt-1">
-                {req.delivery ? fmtAddr(req.delivery) : "Identique à la facturation"}
-              </div>
-            </div>
-          </div>
-
           {/* Tampon de signature */}
           {req.signed ? (
-            <div className="mt-6 rounded-xl border border-[#00917f]/30 bg-[#00917f]/5 p-5">
+            <div className="mt-8 break-inside-avoid rounded-xl border border-[#00917f]/30 bg-[#00917f]/5 p-5">
               <div className="flex items-center gap-2 font-semibold text-[#00917f]">
                 ✓ Devis validé et signé
               </div>

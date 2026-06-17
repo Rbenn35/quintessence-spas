@@ -188,3 +188,15 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Impression propre (devis PDF, fiches) : on masque l'en-tête et le pied de
+   page du site, on force un fond blanc. */
+@media print {
+  header,
+  footer {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+}

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { DevisDocData } from "@/lib/devis-document";
+import type { DevisAddress } from "@/lib/devis-requests";
 
 /**
  * Document de devis (design « Template A » : type facture A4).
@@ -14,6 +15,8 @@ export function DevisDocument({
   clientName,
   clientEmail,
   data,
+  billing,
+  delivery,
   children,
 }: {
   devisRef: string;
@@ -21,10 +24,12 @@ export function DevisDocument({
   clientName: string;
   clientEmail: string;
   data: DevisDocData;
+  billing?: DevisAddress;
+  delivery?: DevisAddress;
   children?: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto max-w-3xl rounded-2xl bg-white p-7 shadow-[0_10px_40px_rgba(19,49,61,0.08)] sm:p-12">
+    <div className="mx-auto max-w-3xl rounded-2xl bg-white p-7 shadow-[0_10px_40px_rgba(19,49,61,0.08)] print:rounded-none print:shadow-none sm:p-12">
       {/* En-tête : logo + mentions légales / réf */}
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-line pb-5">
         <div>
@@ -34,7 +39,7 @@ export function DevisDocument({
             <br />
             14 Avenue des Vignes, 17320 Saint-Just-Luzac
             <br />
-            contact@quintessencespas.com · SIREN 832 359 137
+            contact@quintessencespas.com
           </div>
         </div>
         <div className="shrink-0 text-right text-sm">
@@ -44,11 +49,23 @@ export function DevisDocument({
         </div>
       </div>
 
-      {/* Client */}
+      {/* Client (avec facturation / livraison) */}
       <div className="mt-5 text-sm">
         <span className="text-xs uppercase tracking-wide text-muted">Client</span>
         <div className="font-medium">{clientName}</div>
+        {billing && (
+          <div className="text-muted">
+            {billing.address}, {billing.cp} {billing.city}
+            {billing.phone ? ` · Tél. ${billing.phone}` : ""}
+          </div>
+        )}
         <div className="text-muted">{clientEmail}</div>
+        {delivery && (
+          <div className="mt-1 text-muted">
+            <span className="text-xs uppercase tracking-wide">Livraison : </span>
+            {delivery.address}, {delivery.cp} {delivery.city}
+          </div>
+        )}
       </div>
 
       {/* Photo + caractéristiques */}
