@@ -96,7 +96,7 @@ export default async function RevendeurPage() {
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-gold">
               Programme revendeurs · B2B
             </p>
-            <h1 className="mx-auto mt-4 max-w-4xl text-4xl leading-[1.1] sm:text-6xl">
+            <h1 className="mx-auto mt-4 max-w-4xl text-4xl leading-[1.1] text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.45)] sm:text-6xl">
               Distribuez des spas premium qui font la différence
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90">
