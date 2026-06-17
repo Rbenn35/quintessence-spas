@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
 import { getAllReviews, getAllSpas } from "@/lib/store";
 import { ReviewsImport } from "./ReviewsImport";
+import { ReviewsManager } from "./ReviewsManager";
 
 export const dynamic = "force-dynamic";
 
@@ -35,38 +36,8 @@ export default async function AdminAvis() {
         <ReviewsImport products={products} />
       </div>
 
-      <div className="mt-8 overflow-hidden rounded-2xl border border-line">
-        {reviews.map((r, i) => (
-          <Link
-            key={r.id}
-            href={`/admin/avis/${r.id}`}
-            className={`flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-cream ${
-              i % 2 ? "bg-cream/40" : "bg-card"
-            }`}
-          >
-            <div className="min-w-0">
-              <div className="flex items-center gap-2">
-                <span className="text-[#e0a93b]">
-                  {"★".repeat(r.rating)}
-                  <span className="text-line">{"★".repeat(5 - r.rating)}</span>
-                </span>
-                <span className="font-medium">{r.author}</span>
-                {r.city && <span className="text-xs text-muted">· {r.city}</span>}
-              </div>
-              <div className="mt-0.5 truncate text-xs text-muted">
-                {r.productSlug ? `Modèle : ${r.productSlug}` : "Avis global"} ·{" "}
-                {r.text}
-              </div>
-            </div>
-            <span
-              className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
-                r.published ? "bg-terra/10 text-terra" : "bg-line/60 text-muted"
-              }`}
-            >
-              {r.published ? "Publié" : "Masqué"}
-            </span>
-          </Link>
-        ))}
+      <div className="mt-8">
+        <ReviewsManager reviews={reviews} products={products} />
       </div>
     </div>
   );

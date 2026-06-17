@@ -168,6 +168,32 @@ export async function deleteReview(id: string): Promise<void> {
   await saveAllReviews(all.filter((r) => r.id !== id));
 }
 
+/** Supprime plusieurs avis d'un coup. Renvoie le nombre supprimé. */
+export async function deleteReviews(ids: string[]): Promise<number> {
+  const target = new Set(ids);
+  const all = await getAllReviews();
+  const next = all.filter((r) => !target.has(r.id));
+  await saveAllReviews(next);
+  return all.length - next.length;
+}
+
+/** Publie ou masque plusieurs avis d'un coup. Renvoie le nombre modifié. */
+export async function setReviewsPublished(
+  ids: string[],
+  published: boolean,
+): Promise<number> {
+  const target = new Set(ids);
+  const all = await getAllReviews();
+  let count = 0;
+  const next = all.map((r) => {
+    if (!target.has(r.id)) return r;
+    count++;
+    return { ...r, published };
+  });
+  await saveAllReviews(next);
+  return count;
+}
+
 /* ----------------------------- Réglages du site --------------------------- */
 
 export async function getSettings(): Promise<SiteSettings> {
