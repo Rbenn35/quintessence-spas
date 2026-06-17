@@ -38,7 +38,9 @@ export function DevisDocument({
           <div className="mt-3 text-xs leading-relaxed text-muted">
             <span className="font-semibold text-ink">Quintessence Spas</span>
             <br />
-            14 Avenue des Vignes, 17320 Saint-Just-Luzac
+            14 Avenue des Vignes,
+            <br />
+            17320 Saint-Just-Luzac
             <br />
             contact@quintessencespas.com
           </div>
