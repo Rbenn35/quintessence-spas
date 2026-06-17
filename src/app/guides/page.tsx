@@ -53,7 +53,7 @@ export default async function GuidesIndex() {
         <div className="mt-10 grid gap-6 lg:grid-cols-[2.2fr_1fr]">
           <Link
             href={`/guides/${featured.slug}`}
-            className="group relative flex min-h-[340px] items-end overflow-hidden rounded-[22px] bg-cover bg-center p-8 text-white lg:min-h-[420px]"
+            className="group relative flex min-h-[180px] items-end overflow-hidden rounded-[22px] bg-cover bg-center p-8 text-white lg:min-h-[210px]"
             style={{ backgroundImage: cover(featured.tint, featured.cover) }}
           >
             <span className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
