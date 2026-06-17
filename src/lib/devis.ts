@@ -27,8 +27,11 @@ export interface DevisConfig {
   validityDays: number;
   /** Délai d'envoi automatique après la demande, en minutes. */
   delayMinutes: number;
-  /** Texte d'accompagnement sous le titre. */
+  /** Texte d'accompagnement sous le titre (1re variante / repli). */
   intro: string;
+  /** Variantes du texte d'accompagnement : une est tirée au hasard par devis
+   *  (évite d'envoyer toujours le même texte). Max ~5 recommandé. */
+  introVariants?: string[];
   /** Remise supplémentaire (%) accordée sur le devis, en plus de la promo du site. */
   extraRemisePct?: number;
   lines: DevisLine[];
@@ -107,7 +110,14 @@ export const defaultDevisConfig: DevisConfig = {
   delayMinutes: 40,
   extraRemisePct: 5,
   intro:
-    "Merci {prenom} pour votre demande. Voici votre proposition pour le {modele}, soit {prix_total} TTC, avec {economie} d'économie. Offre valable {validite} jours.",
+    "Merci {prenom} pour votre demande. Voici votre proposition pour le {modele}, soit {prix_total} TTC, avec {economie} d'économie.\n\nJ'ai ajouté une petite remise complémentaire et le Kit d'entretien 6 mois offert. Si vous souhaitez la livraison et l'installation du spa, n'hésitez pas à revenir vers moi, je mettrai à jour votre devis.\nOffre valable {validite} jours.\n\nCordialement,\nEric Huault",
+  introVariants: [
+    "Merci {prenom} pour votre demande. Voici votre proposition pour le {modele}, soit {prix_total} TTC, avec {economie} d'économie.\n\nJ'ai ajouté une petite remise complémentaire et le Kit d'entretien 6 mois offert. Si vous souhaitez la livraison et l'installation du spa, n'hésitez pas à revenir vers moi, je mettrai à jour votre devis.\nOffre valable {validite} jours.\n\nCordialement,\nEric Huault",
+    "Bonjour {prenom}, merci pour votre intérêt. Voici votre offre pour le {modele} : {prix_total} TTC, soit {economie} d'économie.\n\nJ'y ai glissé une remise supplémentaire ainsi que le Kit d'entretien 6 mois, offert. Besoin de la livraison et de l'installation ? Dites-le moi et j'actualise votre devis.\nProposition valable {validite} jours.\n\nBien à vous,\nEric Huault",
+    "{prenom}, merci de votre confiance. Voici ma proposition pour le {modele}, à {prix_total} TTC ({economie} d'économie).\n\nJ'ai inclus une remise complémentaire et le Kit d'entretien 6 mois en cadeau. Pour ajouter la livraison et l'installation, un simple message suffit et je mets votre devis à jour.\nCette offre reste valable {validite} jours.\n\nÀ très bientôt,\nEric Huault",
+    "Merci {prenom} pour votre demande de devis. Voici ce que je peux vous proposer sur le {modele} : {prix_total} TTC, avec déjà {economie} d'économie.\n\nEn bonus, une remise additionnelle et le Kit d'entretien 6 mois offert. Si la livraison et l'installation vous intéressent, revenez vers moi : je réajuste le devis en conséquence.\nOffre valable {validite} jours.\n\nCordialement,\nEric Huault",
+    "Bonjour {prenom}, ravi de vous accompagner dans votre projet. Voici votre proposition pour le {modele} : {prix_total} TTC, soit {economie} d'économie.\n\nJ'ai ajouté une remise complémentaire et je vous offre le Kit d'entretien 6 mois. La livraison et l'installation peuvent être ajoutées sur simple demande, je mettrai alors votre devis à jour.\nValable {validite} jours.\n\nBien cordialement,\nEric Huault",
+  ],
   genericDelayMinutes: 12,
   genericSubject: "{prenom}, parlons de votre projet de spa",
   genericTitle: "Bonjour {prenom},\nparlons de votre *projet*",

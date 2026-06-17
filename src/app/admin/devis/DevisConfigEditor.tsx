@@ -26,7 +26,11 @@ export function DevisConfigEditor({ initial }: { initial: DevisConfig }) {
   const [extraRemise, setExtraRemise] = useState(
     String(initial.extraRemisePct ?? 0),
   );
-  const [intro, setIntro] = useState(initial.intro);
+  const [intro, setIntro] = useState(
+    initial.introVariants?.length
+      ? initial.introVariants.join("\n---\n")
+      : initial.intro,
+  );
   const [lines, setLines] = useState<DevisLine[]>(initial.lines);
   const [genericDelay, setGenericDelay] = useState(
     String(initial.genericDelayMinutes),
@@ -91,6 +95,12 @@ export function DevisConfigEditor({ initial }: { initial: DevisConfig }) {
     ]);
 
   async function save() {
+    // Le champ « texte d'accompagnement » contient une ou plusieurs variantes
+    // séparées par une ligne « --- ». Une est tirée au hasard à chaque devis.
+    const introList = intro
+      .split(/\n*---\n*/)
+      .map((t) => t.trim())
+      .filter(Boolean);
     const config: DevisConfig = {
       template: initial.template,
       subject: subject.trim(),
@@ -98,7 +108,8 @@ export function DevisConfigEditor({ initial }: { initial: DevisConfig }) {
       validityDays: Number(validityDays) || 30,
       delayMinutes: Number(delayMinutes) || 40,
       extraRemisePct: Number(extraRemise) || 0,
-      intro: intro.trim(),
+      intro: introList[0] ?? intro.trim(),
+      introVariants: introList,
       lines: lines
         .filter((l) => l.label.trim())
         .map((l) => ({
@@ -233,13 +244,21 @@ export function DevisConfigEditor({ initial }: { initial: DevisConfig }) {
           />
         </div>
 
-        {/* Texte d'accompagnement */}
+        {/* Texte d'accompagnement (variantes) */}
         <div className="mt-4">
-          <label className={label}>Texte d&apos;accompagnement</label>
+          <label className={label}>
+            Textes d&apos;accompagnement (variantes)
+          </label>
+          <p className="mt-1 text-xs text-muted">
+            Séparez chaque variante par une ligne contenant uniquement{" "}
+            <code className="rounded bg-cream px-1">---</code>. À chaque devis,
+            une variante est choisie au hasard (évite d&apos;envoyer toujours le
+            même texte). Les sauts de ligne et la signature sont conservés.
+          </p>
           <textarea
             ref={introRef}
             onFocus={() => setFocused("intro")}
-            rows={3}
+            rows={14}
             className={`mt-1.5 ${input}`}
             value={intro}
             onChange={(e) => setIntro(e.target.value)}

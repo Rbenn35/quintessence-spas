@@ -100,6 +100,13 @@ export function buildDevis(o: BuildDevisOpts): BuiltDevis {
 
   const subject = applyDevisVars(o.config.subject, vars);
 
+  // Texte d'accompagnement : une variante tirée au hasard (jamais le même
+  // texte d'un devis à l'autre), repli sur l'intro simple.
+  const variants = (o.config.introVariants ?? []).filter((t) => t.trim());
+  const introTemplate = variants.length
+    ? variants[Math.floor(Math.random() * variants.length)]
+    : o.config.intro;
+
   // Lien du bouton « Valider mon devis » : à défaut, un e-mail pré-rempli
   // vers le contact (le client valide en répondant, reçu dans la boîte Gmail).
   const mailSubject = encodeURIComponent(
@@ -122,7 +129,7 @@ export function buildDevis(o: BuildDevisOpts): BuiltDevis {
     ref: o.ref,
     dateLabel: o.dateLabel,
     validityDays: o.config.validityDays,
-    intro: o.config.intro,
+    intro: introTemplate,
     lines,
     total,
     savings,
