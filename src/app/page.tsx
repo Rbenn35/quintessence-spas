@@ -99,6 +99,8 @@ export default async function HomePage() {
         </section>
       </Container>
 
+      <RevendeurCTA />
+
       <TrustBar />
 
       {/* MODÈLES PHARES */}
@@ -202,8 +204,6 @@ export default async function HomePage() {
           </div>
         </section>
       </Container>
-
-      <RevendeurCTA />
 
       {/* GUIDES SEO */}
       <Container>
