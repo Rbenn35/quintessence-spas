@@ -155,6 +155,9 @@ export async function POST(request: Request) {
     createdAt: now.toISOString(),
     sendAt,
     status: "pending",
+    // Mémorisé pour pouvoir modifier puis renvoyer le devis depuis l'admin.
+    slug: product.slug,
+    lines: config.lines.filter((l) => l.active),
   });
 
   console.info("[devis] devis mis en file :", {

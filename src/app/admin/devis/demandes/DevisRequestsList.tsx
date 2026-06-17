@@ -107,6 +107,14 @@ export function DevisRequestsList({
                 >
                   Aperçu
                 </a>
+                {r.type === "devis" && (
+                  <a
+                    href={`/admin/devis/demandes/${r.id}/modifier`}
+                    className="rounded-lg border border-line px-3 py-1.5 hover:bg-cream"
+                  >
+                    Modifier &amp; renvoyer
+                  </a>
+                )}
                 {r.status === "pending" ? (
                   <button
                     type="button"
