@@ -100,6 +100,18 @@ export function buildDevis(o: BuildDevisOpts): BuiltDevis {
 
   const subject = applyDevisVars(o.config.subject, vars);
 
+  // Lien du bouton « Valider mon devis » : à défaut, un e-mail pré-rempli
+  // vers le contact (le client valide en répondant, reçu dans la boîte Gmail).
+  const mailSubject = encodeURIComponent(
+    `Validation de mon devis ${o.ref} - ${modeleLabel}`,
+  );
+  const mailBody = encodeURIComponent(
+    `Bonjour,\n\nJe souhaite valider mon devis ${o.ref} pour le ${modeleLabel} (${euro(total)} TTC).\nMerci de me recontacter pour la suite.\n\n${o.prenom} ${o.nom}\n${o.email}`,
+  );
+  const ctaUrl =
+    o.ctaUrl ??
+    `mailto:${o.settings.email}?subject=${mailSubject}&body=${mailBody}`;
+
   const html = renderDevisHtml({
     vars,
     title: o.config.title,
@@ -116,7 +128,8 @@ export function buildDevis(o: BuildDevisOpts): BuiltDevis {
     savings,
     contactEmail: o.settings.email,
     logoUrl: `${base}/brand/logo.png`,
-    ctaUrl: o.ctaUrl ?? "#",
+    siteUrl: base || "https://www.quintessencespas.com",
+    ctaUrl,
   });
 
   return { html, subject, total, savings, modeleLabel };
@@ -156,6 +169,7 @@ export function buildInfoEmail(o: BuildInfoOpts): {
     subjectPreview: o.subjectBanner ? subject : undefined,
     contactEmail: o.settings.email,
     logoUrl: `${base}/brand/logo.png`,
+    siteUrl: base || "https://www.quintessencespas.com",
     ctaUrl: `${base}/contact`,
     ctaLabel: "Préciser ma demande",
   });

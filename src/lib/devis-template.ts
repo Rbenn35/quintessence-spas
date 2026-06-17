@@ -33,6 +33,7 @@ export interface DevisData {
   savings: number;
   contactEmail: string;
   logoUrl: string;
+  siteUrl: string;
   ctaUrl: string;
 }
 
@@ -108,7 +109,7 @@ ${
     : ""
 }
 <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:10px;padding:44px 48px 36px;box-shadow:0 6px 30px rgba(19,49,61,.06)">
-  <div style="text-align:center;margin-bottom:28px"><img src="${d.logoUrl}" alt="Quintessence Spas" style="height:46px" /></div>
+  <div style="text-align:center;margin-bottom:28px"><a href="${d.siteUrl}" target="_blank" style="text-decoration:none"><img src="${d.logoUrl}" alt="Quintessence Spas" style="height:46px;border:0" /></a></div>
   <div style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:${C.muted};text-align:center">Devis personnalisé</div>
   <h1 style="font-family:${serif};font-weight:500;font-size:34px;text-align:center;line-height:1.25;margin:12px 0 0;color:${C.ink}">${titleHtml}</h1>
   <p style="color:${C.muted};font-size:15px;line-height:1.75;margin:20px 0 0;text-align:left">${introHtml}</p>
@@ -169,6 +170,7 @@ export interface InfoData {
   subjectPreview?: string;
   contactEmail: string;
   logoUrl: string;
+  siteUrl: string;
   ctaUrl: string;
   ctaLabel: string;
 }
@@ -216,7 +218,7 @@ ${
     : ""
 }
 <div style="max-width:600px;margin:0 auto;background:#ffffff;border-radius:10px;padding:44px 48px 36px;box-shadow:0 6px 30px rgba(19,49,61,.06)">
-  <div style="text-align:center;margin-bottom:28px"><img src="${d.logoUrl}" alt="Quintessence Spas" style="height:46px" /></div>
+  <div style="text-align:center;margin-bottom:28px"><a href="${d.siteUrl}" target="_blank" style="text-decoration:none"><img src="${d.logoUrl}" alt="Quintessence Spas" style="height:46px;border:0" /></a></div>
   <div style="font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:${C.muted};text-align:center">Votre demande</div>
   <h1 style="font-family:${serif};font-weight:500;font-size:34px;text-align:center;line-height:1.25;margin:12px 0 18px;color:${C.ink}">${titleHtml}</h1>
   ${bodyHtml}
