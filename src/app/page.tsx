@@ -42,26 +42,6 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* BANDEAU PRO (B2B) */}
-      <div className="bg-footer text-white">
-        <Container>
-          <Link
-            href="/revendeur"
-            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2.5 text-center text-sm"
-          >
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">
-              Professionnels
-            </span>
-            <span className="text-white/90">
-              Pisciniste, paysagiste ou revendeur ? Distribuez nos spas premium.
-            </span>
-            <span className="font-semibold underline underline-offset-2">
-              Devenir revendeur →
-            </span>
-          </Link>
-        </Container>
-      </div>
-
       {/* HERO */}
       <Container>
         <section className="grid items-center gap-10 py-12 sm:py-20 lg:grid-cols-[1fr_1.1fr] lg:gap-14">
@@ -99,7 +79,25 @@ export default async function HomePage() {
         </section>
       </Container>
 
-      <RevendeurCTA />
+      {/* BANDEAU PRO (B2B) — juste au-dessus des chiffres */}
+      <div className="bg-footer text-white">
+        <Container>
+          <Link
+            href="/revendeur"
+            className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 py-2.5 text-center text-sm"
+          >
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-gold">
+              Professionnels
+            </span>
+            <span className="text-white/90">
+              Pisciniste, paysagiste ou revendeur ? Distribuez nos spas premium.
+            </span>
+            <span className="font-semibold underline underline-offset-2">
+              Devenir revendeur →
+            </span>
+          </Link>
+        </Container>
+      </div>
 
       <TrustBar />
 
@@ -204,6 +202,8 @@ export default async function HomePage() {
           </div>
         </section>
       </Container>
+
+      <RevendeurCTA />
 
       {/* GUIDES SEO */}
       <Container>
