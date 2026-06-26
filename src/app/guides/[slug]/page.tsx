@@ -7,6 +7,7 @@ import { DevisCTA } from "@/components/DevisCTA";
 import { getAllArticles, getArticleBySlug } from "@/lib/store";
 import { site } from "@/lib/site";
 import { breadcrumbSchema } from "@/lib/seo";
+import { formatDateFr } from "@/lib/format";
 
 export const revalidate = 600;
 
@@ -77,6 +78,10 @@ export default async function ArticlePage({
         url: `${site.url}/brand/logo.png`,
       },
     },
+    ...(a.publishedAt ? { datePublished: a.publishedAt } : {}),
+    ...(a.updatedAt || a.publishedAt
+      ? { dateModified: a.updatedAt || a.publishedAt }
+      : {}),
   };
 
   const breadcrumbJsonLd = breadcrumbSchema([
@@ -110,6 +115,21 @@ export default async function ArticlePage({
             </span>
             <h1 className="mt-3 text-4xl sm:text-5xl">{a.title}</h1>
             <p className="mt-5 text-lg text-muted">{a.excerpt}</p>
+            {a.publishedAt && (
+              <p className="mt-4 text-sm text-muted">
+                <time dateTime={a.publishedAt}>
+                  Publié le {formatDateFr(a.publishedAt)}
+                </time>
+                {a.updatedAt && a.updatedAt !== a.publishedAt && (
+                  <>
+                    {" · "}
+                    <time dateTime={a.updatedAt}>
+                      mis à jour le {formatDateFr(a.updatedAt)}
+                    </time>
+                  </>
+                )}
+              </p>
+            )}
           </header>
 
           {a.cover && (

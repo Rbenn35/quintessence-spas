@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
 import { getAllArticles } from "@/lib/store";
+import { formatDateFr } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
@@ -42,6 +43,7 @@ export default async function AdminArticles() {
               <div className="font-medium">{a.title}</div>
               <div className="truncate text-xs text-muted">
                 {a.category} · /guides/{a.slug}
+                {a.publishedAt && ` · ${formatDateFr(a.publishedAt)}`}
               </div>
             </div>
             <span

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { isAdmin } from "@/lib/auth";
-import { upsertArticle, deleteArticle } from "@/lib/store";
+import { upsertArticle, deleteArticle, getArticleBySlug } from "@/lib/store";
 import { revalidateGuides } from "@/lib/revalidate";
 import type { Article } from "@/lib/articles";
 
@@ -19,6 +19,12 @@ export async function PUT(
       { status: 422 },
     );
   }
+  // Conserve la date de 1re publication et marque la révision du jour.
+  const existing = await getArticleBySlug(slug);
+  const todayIso = new Date().toISOString().slice(0, 10);
+  article.publishedAt = article.publishedAt || existing?.publishedAt || todayIso;
+  if (existing) article.updatedAt = todayIso;
+
   if (article.slug !== slug) {
     await deleteArticle(slug);
   }

@@ -3,13 +3,15 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/SectionHeading";
 import { getAllArticles } from "@/lib/store";
+import { formatDateFr } from "@/lib/format";
+import type { Article } from "@/lib/articles";
 
 export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Guides & conseils sur le spa rigide",
   description:
-    "Tous nos guides et conseils pour bien choisir, installer et entretenir votre spa rigide : achat, comparatif, énergie, entretien, bien-être.",
+    "Tous nos guides et conseils pour bien choisir, installer et entretenir votre spa rigide : achat, comparatif, énergie, entretien, bien-être. Plus un espace dédié aux revendeurs et professionnels.",
   alternates: { canonical: "/guides" },
 };
 
@@ -22,13 +24,35 @@ function cover(tint: [string, string], coverImg?: string): string {
     : `linear-gradient(150deg, ${tint[0]}, ${tint[1]})`;
 }
 
+/** Tri par date de publication décroissante (le plus récent en premier). */
+function byDateDesc(a: Article, b: Article): number {
+  return (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "");
+}
+
+/** Petite ligne de date affichée sous le titre des vignettes. */
+function CardDate({ a }: { a: Article }) {
+  if (!a.publishedAt) return null;
+  return (
+    <time dateTime={a.publishedAt} className="mt-2 block text-xs text-muted">
+      {formatDateFr(a.publishedAt)}
+    </time>
+  );
+}
+
 export default async function GuidesIndex() {
-  const articles = (await getAllArticles()).filter((a) => a.published);
+  const all = (await getAllArticles())
+    .filter((a) => a.published)
+    .sort(byDateDesc);
+
+  // Séparation grand public / professionnels (revendeurs).
+  const pro = all.filter((a) => a.category.toLowerCase() === "revendeur");
+  const articles = all.filter((a) => a.category.toLowerCase() !== "revendeur");
+
   const [featured, ...rest] = articles;
   const side = rest.slice(0, 2);
   const grid = rest.slice(2);
 
-  if (!featured) {
+  if (!featured && pro.length === 0) {
     return (
       <Container>
         <section className="py-20">
@@ -49,81 +73,136 @@ export default async function GuidesIndex() {
           votre spa rigide.
         </p>
 
-        {/* À la une + colonne de droite */}
-        <div className="mt-10 grid gap-6 lg:grid-cols-[2.2fr_1fr]">
-          <Link
-            href={`/guides/${featured.slug}`}
-            className="group relative flex min-h-[180px] items-end overflow-hidden rounded-[22px] bg-cover bg-center p-8 text-white lg:min-h-[210px]"
-            style={{ backgroundImage: cover(featured.tint, featured.cover) }}
-          >
-            <span className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
-            <div className="relative">
-              <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
-                À la une · {featured.category}
-              </span>
-              <h2 className="mt-3 line-clamp-2 max-w-xl text-3xl text-white sm:text-4xl">
-                {featured.title}
-              </h2>
-              <p className="mt-3 line-clamp-2 max-w-md text-white/90">
-                {featured.excerpt}
-              </p>
-              <span className="mt-4 inline-block font-semibold">
-                Lire le guide →
-              </span>
-            </div>
-          </Link>
-
-          <div className="flex flex-col gap-6">
-            {side.map((a) => (
+        {featured && (
+          <>
+            {/* À la une + colonne de droite */}
+            <div className="mt-10 grid gap-6 lg:grid-cols-[2.2fr_1fr]">
               <Link
-                key={a.slug}
-                href={`/guides/${a.slug}`}
-                className="group flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-card transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(19,49,61,0.10)]"
+                href={`/guides/${featured.slug}`}
+                className="group relative flex min-h-[180px] items-end overflow-hidden rounded-[22px] bg-cover bg-center p-8 text-white lg:min-h-[210px]"
+                style={{ backgroundImage: cover(featured.tint, featured.cover) }}
               >
-                <div
-                  className="min-h-[110px] flex-1 bg-cover bg-center"
-                  style={{ backgroundImage: cover(a.tint, a.cover) }}
-                />
-                <div className="p-4">
-                  <span className={chip}>{a.category}</span>
-                  <h3 className="mt-2 line-clamp-2 text-lg leading-snug group-hover:text-terra">
-                    {a.title}
-                  </h3>
+                <span className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
+                <div className="relative">
+                  <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider backdrop-blur">
+                    À la une · {featured.category}
+                  </span>
+                  <h2 className="mt-3 line-clamp-2 max-w-xl text-3xl text-white sm:text-4xl">
+                    {featured.title}
+                  </h2>
+                  <p className="mt-3 line-clamp-2 max-w-md text-white/90">
+                    {featured.excerpt}
+                  </p>
+                  <span className="mt-4 inline-block font-semibold">
+                    Lire le guide →
+                  </span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
 
-        {/* Grille */}
-        {grid.length > 0 && (
-          <>
-            <h2 className="mt-16 text-2xl sm:text-3xl">Tous les articles</h2>
+              <div className="flex flex-col gap-6">
+                {side.map((a) => (
+                  <Link
+                    key={a.slug}
+                    href={`/guides/${a.slug}`}
+                    className="group flex flex-1 flex-col overflow-hidden rounded-2xl border border-line bg-card transition hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(19,49,61,0.10)]"
+                  >
+                    <div
+                      className="min-h-[110px] flex-1 bg-cover bg-center"
+                      style={{ backgroundImage: cover(a.tint, a.cover) }}
+                    />
+                    <div className="p-4">
+                      <span className={chip}>{a.category}</span>
+                      <h3 className="mt-2 line-clamp-2 text-lg leading-snug group-hover:text-terra">
+                        {a.title}
+                      </h3>
+                      <CardDate a={a} />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Grille */}
+            {grid.length > 0 && (
+              <>
+                <h2 className="mt-16 text-2xl sm:text-3xl">Tous les articles</h2>
+                <div className="mt-8 grid gap-6 md:grid-cols-3">
+                  {grid.map((a) => (
+                    <Link
+                      key={a.slug}
+                      href={`/guides/${a.slug}`}
+                      className="group overflow-hidden rounded-[18px] border border-line bg-card transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(19,49,61,0.10)]"
+                    >
+                      <div
+                        className="h-44 w-full bg-cover bg-center"
+                        style={{ backgroundImage: cover(a.tint, a.cover) }}
+                      />
+                      <div className="p-6">
+                        <span className={chip}>{a.category}</span>
+                        <h3 className="mt-2.5 text-xl group-hover:text-terra">
+                          {a.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-muted">{a.excerpt}</p>
+                        <CardDate a={a} />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+          </>
+        )}
+
+        {/* Espace revendeur (B2B) : mis en avant, distinct des guides grand public. */}
+        {pro.length > 0 && (
+          <section className="mt-20 overflow-hidden rounded-[26px] border border-terra/20 bg-gradient-to-br from-terra/[0.06] to-terra/[0.02] p-6 sm:p-10">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <span className="inline-block rounded-full bg-terra px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
+                  Espace revendeur · Pro
+                </span>
+                <h2 className="mt-3 text-2xl sm:text-3xl">
+                  Conseils pour les revendeurs & professionnels
+                </h2>
+                <p className="mt-2 max-w-2xl text-muted">
+                  Devenir distributeur, marges, stock, showroom : nos analyses
+                  pour les piscinistes, paysagistes, hôtels et campings. Un
+                  nouvel article chaque semaine.
+                </p>
+              </div>
+              <Link
+                href="/revendeur"
+                className="rounded-full bg-terra px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-terra-dark"
+              >
+                Devenir revendeur →
+              </Link>
+            </div>
+
             <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {grid.map((a) => (
+              {pro.map((a) => (
                 <Link
                   key={a.slug}
                   href={`/guides/${a.slug}`}
                   className="group overflow-hidden rounded-[18px] border border-line bg-card transition hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(19,49,61,0.10)]"
                 >
                   <div
-                    className="h-44 w-full bg-cover bg-center"
+                    className="h-40 w-full bg-cover bg-center"
                     style={{ backgroundImage: cover(a.tint, a.cover) }}
                   />
                   <div className="p-6">
                     <span className={chip}>{a.category}</span>
-                    <h3 className="mt-2.5 text-xl group-hover:text-terra">
+                    <h3 className="mt-2.5 text-lg group-hover:text-terra">
                       {a.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted">{a.excerpt}</p>
-                    <span className="mt-3 inline-block text-sm font-semibold text-terra">
-                      Lire →
-                    </span>
+                    <p className="mt-2 line-clamp-2 text-sm text-muted">
+                      {a.excerpt}
+                    </p>
+                    <CardDate a={a} />
                   </div>
                 </Link>
               ))}
             </div>
-          </>
+          </section>
         )}
       </section>
     </Container>

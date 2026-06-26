@@ -21,6 +21,10 @@ export async function POST(request: Request) {
       { status: 409 },
     );
   }
+  // Nouvel article : on le date du jour s'il n'a pas de date explicite.
+  if (!article.publishedAt) {
+    article.publishedAt = new Date().toISOString().slice(0, 10);
+  }
   await upsertArticle(article);
   revalidateGuides();
   return NextResponse.json({ ok: true, slug: article.slug });

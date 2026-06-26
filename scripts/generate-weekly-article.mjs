@@ -9,6 +9,15 @@
 //   SITE_URL           — ex. https://www.quintessencespas.com (optionnel)
 // ============================================================
 
+// === MIGRATION PONCTUELLE (TEMPORAIRE — à retirer après exécution) ===
+// Réécrit les 6 guides et date les articles existants, puis s'arrête sans
+// générer de nouvel article. Déclenché manuellement via "Run workflow".
+if (process.env.RUN_MIGRATION !== "0") {
+  await import("./migrate-articles.mjs");
+  process.exit(0);
+}
+// === FIN MIGRATION PONCTUELLE ===
+
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 const PUBLISH_SECRET = process.env.PUBLISH_SECRET;
 const SITE_URL = (process.env.SITE_URL || "https://www.quintessencespas.com").replace(/\/$/, "");
@@ -131,6 +140,7 @@ async function publish(t, art) {
     slug: t.slug,
     title,
     category: "Revendeur",
+    publishedAt: new Date().toISOString().slice(0, 10),
     excerpt: art.excerpt,
     content: art.content_html,
     faq: Array.isArray(art.faq) ? art.faq : [],

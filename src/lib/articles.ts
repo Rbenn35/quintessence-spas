@@ -24,6 +24,10 @@ export interface Article {
   published: boolean;
   metaTitle?: string;
   metaDescription?: string;
+  /** Date de première publication (ISO `YYYY-MM-DD`). */
+  publishedAt?: string;
+  /** Date de dernière mise à jour, si l'article a été révisé (ISO `YYYY-MM-DD`). */
+  updatedAt?: string;
 }
 
 export const seedArticles: Article[] = [

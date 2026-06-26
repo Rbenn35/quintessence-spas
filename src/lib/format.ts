@@ -36,3 +36,17 @@ export function formatPhone(s: string): string {
 export function isValidEmail(s: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 }
+
+/** Date ISO (`2026-06-22`) → « 22 juin 2026 ». Renvoie "" si invalide/absente. */
+export function formatDateFr(iso?: string): string {
+  if (!iso) return "";
+  // On force midi UTC pour éviter tout décalage de jour selon le fuseau.
+  const d = new Date(`${iso.slice(0, 10)}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return "";
+  return d.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "Europe/Paris",
+  });
+}
